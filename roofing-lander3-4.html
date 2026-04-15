@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Is Your Roof Hiding Damage? — Check in 60 Seconds</title>
+<meta name="description" content="Most homeowners don't know their roof is damaged until it's too late. See if your roof qualifies for an insurance-covered repair or replacement at no cost.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<!-- Facebook Pixel goes here -->
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#0D2847;--navy2:#132F52;--navy3:#1A3A66;
+--forest:#156B42;--forest2:#1A8B55;--forestL:#22B56E;--forestG:rgba(21,107,66,.07);
+--gold:#D4A853;--goldG:rgba(212,168,83,.08);
+--white:#FFF;--snow:#F7F9FB;--pearl:#EEF2F6;--silk:#E1E7EE;
+--cloud:#C8D2DD;--mist:#94A3B8;--slate:#5E7084;--graph:#3B4C5E;--ink:#1A2535;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--white);color:var(--graph);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.65}
+::selection{background:var(--forest);color:#fff}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--navy)}
+a{text-decoration:none}
+.ctn{max-width:760px;margin:0 auto;padding:0 24px}
+.ctn-w{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* ===== STICKY BAR ===== */
+.sticky{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);padding:12px 16px;text-align:center;transform:translateY(-100%);transition:transform .4s;box-shadow:0 2px 20px rgba(13,40,71,.15)}
+.sticky.show{transform:translateY(0)}
+.sticky p{font-size:13px;color:rgba(255,255,255,.7);font-weight:500}
+.sticky a{color:var(--forestL);font-weight:700;border-bottom:1px solid rgba(34,181,110,.3);padding-bottom:1px;margin-left:6px;transition:border-color .3s}
+.sticky a:hover{border-color:var(--forestL)}
+
+/* ===== HERO ===== */
+.hero{padding:72px 0 80px;background:var(--white);position:relative;overflow:hidden;text-align:center}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(212,168,83,.1),transparent 55%),radial-gradient(ellipse at 30% 80%,rgba(212,168,83,.05),transparent 45%);pointer-events:none}
+.hero-orb{position:absolute;top:-100px;right:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,168,83,.1),transparent 70%);pointer-events:none}
+.hero-orb2{position:absolute;bottom:-150px;left:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(13,40,71,.04),transparent 70%);pointer-events:none}
+.hero .ctn{position:relative;z-index:2}
+
+/* Micro-commitment badge */
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--goldG);border:1px solid rgba(212,168,83,.2);padding:8px 18px;border-radius:100px;font-size:12px;font-weight:700;color:var(--navy);margin-bottom:28px;letter-spacing:.3px}
+.hero-badge svg{width:16px;height:16px;color:var(--gold)}
+
+/* Stage 4 Awareness Headline — lead with THEIR situation */
+.hero h1{font-size:46px;line-height:1.1;letter-spacing:-.5px;margin-bottom:24px;max-width:680px;margin-left:auto;margin-right:auto}
+.hero h1 em{font-style:italic;color:var(--forest)}
+
+/* The Agreement → Disruption opening */
+.hero-lead{font-size:18px;color:var(--slate);max-width:560px;margin:0 auto 12px;line-height:1.8}
+.hero-lead strong{color:var(--navy);font-weight:700}
+
+.hero-disrupt{font-size:16px;color:var(--forest);font-weight:600;max-width:520px;margin:0 auto 36px;line-height:1.7;padding:16px 24px;background:var(--forestG);border-left:3px solid var(--forest);border-radius:0 8px 8px 0;text-align:left}
+
+/* CTA cluster */
+.cta-cluster{margin-bottom:40px}
+.btn-main{display:inline-flex;align-items:center;gap:10px;background:var(--forest);color:#fff;padding:18px 40px;border-radius:10px;font-size:16px;font-weight:700;font-family:'Manrope',sans-serif;transition:all .35s;box-shadow:0 4px 24px rgba(21,107,66,.22);border:none;cursor:pointer}
+.btn-main:hover{background:var(--forest2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(21,107,66,.3)}
+.btn-main svg{width:18px;height:18px;transition:transform .3s}
+.btn-main:hover svg{transform:translateX(3px)}
+.cta-sub{font-size:13px;color:var(--mist);margin-top:12px}
+.cta-sub svg{width:14px;height:14px;color:var(--forest);vertical-align:-2px;margin-right:3px}
+
+/* Trust row */
+.hero-trust{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.ht-item{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--slate)}
+.ht-item svg{width:18px;height:18px;color:var(--gold)}
+
+/* ===== TRUST BANNER ===== */
+.trust-ban{padding:36px 0;background:var(--snow);border-top:1px solid var(--pearl);border-bottom:1px solid var(--pearl);text-align:center}
+.tb-row{display:flex;justify-content:center;align-items:center;gap:32px;flex-wrap:wrap}
+.tb-stat{text-align:center}
+.tb-num{font-family:'Fraunces',serif;font-size:32px;font-weight:600;color:var(--navy);line-height:1}
+.tb-num span{color:var(--forest)}
+.tb-lbl{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:var(--mist);font-weight:600;margin-top:4px}
+.tb-div{width:1px;height:40px;background:var(--silk)}
+
+/* ===== AGITATION SECTION (Schwartz: Intensify the desire) ===== */
+.agitate{padding:80px 0;background:var(--white)}
+.sect-tag{display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--forest);font-weight:700;margin-bottom:14px}
+.sect-tag::before,.sect-tag::after{content:'';width:20px;height:1.5px;background:var(--gold);border-radius:1px}
+.sect-h{font-family:'Fraunces',serif;font-size:36px;font-weight:500;color:var(--navy);line-height:1.15;letter-spacing:-.3px;margin-bottom:14px;text-align:center}
+.sect-h em{font-style:italic;color:var(--forest)}
+.sect-p{font-size:16px;color:var(--slate);text-align:center;max-width:520px;margin:0 auto 48px;line-height:1.7}
+
+.ag-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:880px;margin:0 auto}
+.ag-card{display:flex;gap:16px;padding:28px 24px;background:var(--white);border:2px solid var(--silk);border-radius:16px;transition:all .4s}
+.ag-card:hover{border-color:rgba(212,168,83,.3);transform:translateY(-3px);box-shadow:0 12px 36px rgba(13,40,71,.06)}
+.ag-icon{width:48px;height:48px;border-radius:12px;background:var(--goldG);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ag-icon svg{width:22px;height:22px;color:var(--gold)}
+.ag-card h4{font-family:'Manrope',sans-serif;font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.ag-card p{font-size:14px;color:var(--slate);line-height:1.7}
+
+/* Mid-page CTA */
+.mid-cta{text-align:center;padding:56px 0;background:var(--snow);border-top:1px solid var(--pearl);border-bottom:1px solid var(--pearl)}
+.mid-cta p{font-size:18px;color:var(--graph);font-weight:600;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto}
+
+/* ===== HOW IT WORKS ===== */
+.how{padding:80px 0;background:var(--white)}
+.how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:880px;margin:48px auto 0;position:relative}
+.how-steps::before{content:'';position:absolute;top:40px;left:14%;right:14%;height:2px;background:linear-gradient(90deg,var(--gold),var(--silk),var(--forest));z-index:0}
+.h-step{text-align:center;position:relative;z-index:1}
+.h-num{width:80px;height:80px;margin:0 auto 20px;border-radius:50%;background:var(--white);border:2px solid var(--silk);display:flex;align-items:center;justify-content:center;font-family:'Manrope',sans-serif;font-size:24px;font-weight:800;color:var(--forest);transition:all .4s;position:relative}
+.h-step:hover .h-num{border-color:var(--forest);background:var(--forestG);box-shadow:0 0 0 6px rgba(21,107,66,.06)}
+.h-step h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.h-step p{font-size:14px;color:var(--slate);line-height:1.7;max-width:240px;margin:0 auto}
+
+/* ===== TESTIMONIALS ===== */
+.reviews{padding:80px 0;background:var(--snow)}
+.rv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px;margin:48px auto 0}
+.rv-card{background:var(--white);border:1px solid var(--silk);border-radius:16px;padding:28px 24px;transition:all .4s}
+.rv-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(13,40,71,.05)}
+.rv-stars{display:flex;gap:2px;margin-bottom:14px}
+.rv-stars svg{width:16px;height:16px;color:var(--gold)}
+.rv-text{font-size:14px;color:var(--graph);line-height:1.8;margin-bottom:20px}
+.rv-who{display:flex;align-items:center;gap:10px;padding-top:14px;border-top:1px solid var(--pearl)}
+.rv-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--forest));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+.rv-name{font-weight:700;font-size:13px;color:var(--navy)}
+.rv-loc{font-size:11px;color:var(--mist)}
+.rv-badge{display:flex;align-items:center;gap:3px;font-size:9px;color:var(--forest);font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-top:2px}
+.rv-badge svg{width:10px;height:10px}
+
+/* ===== FAQ ===== */
+.faq{padding:80px 0;background:var(--white)}
+.faq-list{max-width:620px;margin:40px auto 0}
+.faq-item{border-bottom:1px solid var(--pearl)}
+.faq-item:first-child{border-top:1px solid var(--pearl)}
+.faq-q{padding:20px 0;display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer}
+.faq-q h4{font-family:'Manrope',sans-serif;font-size:15px;font-weight:700;color:var(--graph);transition:color .3s}
+.faq-item:hover .faq-q h4{color:var(--navy)}
+.faq-tog{width:28px;height:28px;flex-shrink:0;border-radius:50%;border:1.5px solid var(--silk);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.faq-tog svg{width:12px;height:12px;color:var(--mist);transition:all .3s}
+.faq-item.active .faq-tog{background:var(--gold);border-color:var(--gold)}
+.faq-item.active .faq-tog svg{color:#fff;transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s,padding .3s}
+.faq-item.active .faq-a{max-height:260px;padding-bottom:18px}
+.faq-a p{font-size:14px;color:var(--slate);line-height:1.8;padding-right:42px}
+
+/* ===== FINAL CTA ===== */
+.final{padding:80px 0;background:linear-gradient(160deg,var(--snow),rgba(212,168,83,.06),var(--snow));text-align:center;border-top:1px solid var(--pearl)}
+.final h2{font-size:34px;margin-bottom:14px}
+.final h2 em{color:var(--forest)}
+.final>div>p{font-size:16px;color:var(--slate);max-width:440px;margin:0 auto 32px;line-height:1.7}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--navy);padding:36px 0;text-align:center}
+.ft-brand{font-weight:800;font-size:16px;color:#fff;margin-bottom:12px}
+.ft-brand span{color:var(--gold)}
+.ft-links{display:flex;justify-content:center;gap:20px;margin-bottom:16px}
+.ft-links a{font-size:12px;color:rgba(255,255,255,.3);transition:color .3s}
+.ft-links a:hover{color:#fff}
+.ft-disclaimer{font-size:10px;color:rgba(255,255,255,.15);max-width:600px;margin:0 auto;line-height:1.8;padding-top:16px;border-top:1px solid rgba(255,255,255,.05)}
+
+/* ===== ANIMATIONS ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:all .7s cubic-bezier(.16,1,.3,1)}
+.reveal.vis{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .hero h1{font-size:32px}
+  .hero{padding:56px 0 64px}
+  .ag-grid{grid-template-columns:1fr}
+  .how-steps{grid-template-columns:1fr;gap:28px;max-width:320px}
+  .how-steps::before{display:none}
+  .rv-grid{grid-template-columns:1fr}
+  .tb-row{gap:20px}
+  .tb-div{display:none}
+  .sect-h{font-size:28px}
+  .final h2{font-size:28px}
+  .hero-lead{font-size:16px}
+  .agitate,.how,.reviews,.faq,.final{padding:64px 0}
+}
+@media(max-width:480px){
+  .hero h1{font-size:26px}
+  .btn-main{width:100%;justify-content:center;padding:16px 32px}
+  .hero-trust{flex-direction:column;align-items:center;gap:10px}
+  .hero-disrupt{font-size:14px;padding:14px 18px}
+  .tb-num{font-size:26px}
+  .ctn,.ctn-w{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY CTA BAR (appears on scroll) -->
+<div class="sticky" id="sticky">
+  <p>Your roof may qualify for a no-cost replacement.<a href="#form">Check now — takes 60 seconds</a></p>
+</div>
+
+<!-- ===== HERO =====
+AWARENESS: Stage 4 (Problem Aware) — They know their roof is aging or storms have hit, but have no urgency.
+SOPHISTICATION: Stage 4 — Lead with THEIR situation, not our mechanism. 
+STRATEGY: Agreement → Disruption → Personalization → Risk-free path -->
+<section class="hero" id="form">
+  <div class="hero-orb"></div>
+  <div class="hero-orb2"></div>
+  <div class="ctn">
+
+    <!-- Badge: social proof + low friction signal -->
+    <div class="hero-badge"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>11,000+ homeowners have checked their roof</div>
+
+    <!-- HEADLINE: Identification device — place them IN the story -->
+    <h1>If Your Roof Is Over 10 Years Old, You're Probably Sitting on Damage You <em>Can't See</em></h1>
+
+    <!-- AGREEMENT: Say what THEY already believe -->
+    <p class="hero-lead">If there's no leak, it's probably fine — <strong>right?</strong></p>
+
+    <!-- DISRUPTION: Break the belief with a specific, uncomfortable truth -->
+    <div class="hero-disrupt">Not quite. 80% of storm damage is invisible from the ground. Cracked granules, lifted shingles, and compromised flashing don't cause leaks for months — sometimes years. By the time water hits your ceiling, a $0 insurance repair has become a $15,000 emergency.</div>
+
+    <!-- CTA: The risk-free path -->
+    <div class="cta-cluster">
+      <a href="#" class="btn-main">See If My Roof Qualifies <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+      <div class="cta-sub"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>60 seconds · 100% free · Zero obligation</div>
+    </div>
+
+    <!-- Trust signals: placed at the decision point -->
+    <div class="hero-trust">
+      <div class="ht-item"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Licensed & Insured Pros</div>
+      <div class="ht-item"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Insurance Claim Help</div>
+      <div class="ht-item"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>No Pressure, Ever</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRUST BANNER ===== -->
+<div class="trust-ban reveal">
+  <div class="ctn-w">
+    <div class="tb-row">
+      <div class="tb-stat"><div class="tb-num">11<span>,</span>000<span>+</span></div><div class="tb-lbl">Roofs Checked</div></div>
+      <div class="tb-div"></div>
+      <div class="tb-stat"><div class="tb-num">94<span>%</span></div><div class="tb-lbl">Claim Success</div></div>
+      <div class="tb-div"></div>
+      <div class="tb-stat"><div class="tb-num"><span>$</span>0</div><div class="tb-lbl">Cost to You</div></div>
+      <div class="tb-div"></div>
+      <div class="tb-stat"><div class="tb-num">4<span>.</span>9<span>★</span></div><div class="tb-lbl">Homeowner Rating</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== AGITATION SECTION =====
+Schwartz: "Intensify the desire" — make the cost of inaction feel unbearable -->
+<section class="agitate">
+  <div class="ctn-w">
+    <div class="reveal">
+      <div class="sect-tag">Why This Can't Wait</div>
+      <h2 class="sect-h">Every Week You Wait Costs You <em>Money</em></h2>
+      <p class="sect-p">Roof damage doesn't announce itself. It compounds silently — turning covered claims into denied ones, and free repairs into five-figure emergencies.</p>
+    </div>
+    <div class="ag-grid">
+      <div class="ag-card reveal d1">
+        <div class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v2m0 4h.01M5.07 19h13.86c1.1 0 1.73-1.22 1.08-2.1L13.08 3.76c-.65-.88-1.93-.88-2.58 0L3.99 16.9c-.65.88-.02 2.1 1.08 2.1z"/></svg></div>
+        <div>
+          <h4>The damage is already there</h4>
+          <p>Hail cracks and wind lifts don't stop after the storm. They accelerate. What insurance would cover today for $0 out of pocket may cost you $12,000+ next year.</p>
+        </div>
+      </div>
+      <div class="ag-card reveal d2">
+        <div class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div>
+          <h4>Your claim window is closing</h4>
+          <p>Most insurance policies require storm damage claims within 12-24 months. Once the deadline passes, your coverage vanishes — even if damage is clearly documented.</p>
+        </div>
+      </div>
+      <div class="ag-card reveal d3">
+        <div class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></div>
+        <div>
+          <h4>Water always finds a way in</h4>
+          <p>A compromised roof doesn't just leak — it damages insulation, wiring, drywall, and structural framing. Secondary water damage often costs more than the roof itself.</p>
+        </div>
+      </div>
+      <div class="ag-card reveal d4">
+        <div class="ag-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"/></svg></div>
+        <div>
+          <h4>Your neighbor's getting it done for free</h4>
+          <p>Right now, homeowners in your area are getting full roof replacements covered by insurance. Same storms, same damage. The only difference? They checked.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MID-PAGE CTA ===== 
+Schwartz: Repeat the offer at peak emotional state — right after agitation -->
+<div class="mid-cta reveal">
+  <p>A 60-second check could save you $15,000.<br>Find out if your roof qualifies.</p>
+  <a href="#form" class="btn-main">Check My Roof Now <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+</div>
+
+<!-- ===== HOW IT WORKS =====
+Schwartz: Remove complexity — make the path feel effortless -->
+<section class="how">
+  <div class="ctn-w">
+    <div class="reveal">
+      <div class="sect-tag">How It Works</div>
+      <h2 class="sect-h">Three Steps. <em>That's It.</em></h2>
+    </div>
+    <div class="how-steps">
+      <div class="h-step reveal d1">
+        <div class="h-num">1</div>
+        <h3>Answer a Few Questions</h3>
+        <p>Tell us about your roof — age, condition, recent storms. Takes under 60 seconds. No account needed.</p>
+      </div>
+      <div class="h-step reveal d2">
+        <div class="h-num">2</div>
+        <h3>Get Matched Instantly</h3>
+        <p>We pair you with a licensed, insured roofing professional in your area. Expect a call within hours, not days.</p>
+      </div>
+      <div class="h-step reveal d3">
+        <div class="h-num">3</div>
+        <h3>Know Where You Stand</h3>
+        <p>Your pro inspects everything, documents it with photos, and walks you through your options — including insurance coverage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS =====
+Schwartz: Proof — the three scenarios your prospect sees themselves in -->
+<section class="reviews">
+  <div class="ctn-w">
+    <div class="reveal">
+      <div class="sect-tag">From Homeowners Like You</div>
+      <h2 class="sect-h">They Checked. Here's What <em>Happened</em></h2>
+    </div>
+    <div class="rv-grid">
+      <!-- Testimonial 1: "I had damage I didn't know about" (Stage 5 → converted) -->
+      <div class="rv-card reveal d1">
+        <div class="rv-stars"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+        <div class="rv-text">Had a hailstorm two months before I found this. Thought our roof was fine — no leaks, nothing visible. Turns out there was damage across the entire south side. Insurance covered the whole replacement. Would have missed the claim deadline if I'd waited any longer.</div>
+        <div class="rv-who"><div class="rv-av">M</div><div><div class="rv-name">Michael R.</div><div class="rv-loc">Dallas, TX</div><div class="rv-badge"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</div></div></div>
+      </div>
+      <!-- Testimonial 2: "Old roof, didn't think I qualified" (Stage 4 → converted) -->
+      <div class="rv-card reveal d2">
+        <div class="rv-stars"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+        <div class="rv-text">Kept putting off getting our 18-year-old roof checked. Filled out the form on a whim and had a professional at my house two days later. Turns out we had damage from a storm I barely remembered. Insurance covered everything. Paid almost nothing out of pocket.</div>
+        <div class="rv-who"><div class="rv-av">S</div><div><div class="rv-name">Sarah T.</div><div class="rv-loc">Fort Worth, TX</div><div class="rv-badge"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</div></div></div>
+      </div>
+      <!-- Testimonial 3: "Professional, no pressure" (Trust objection) -->
+      <div class="rv-card reveal d3">
+        <div class="rv-stars"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg><svg viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+        <div class="rv-text">The contractor they matched me with was the most professional roofer I've dealt with. Showed up on time, took photos of everything, explained exactly what was going on. No pressure, no hard sell. Just straight information. That's rare in this industry.</div>
+        <div class="rv-who"><div class="rv-av">J</div><div><div class="rv-name">James L.</div><div class="rv-loc">Plano, TX</div><div class="rv-badge"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ =====
+Schwartz: Remove the last objections standing between desire and action -->
+<section class="faq">
+  <div class="ctn">
+    <div class="reveal">
+      <div class="sect-tag">Your Questions</div>
+      <h2 class="sect-h">Straight <em>Answers</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item active" onclick="tFaq(this)"><div class="faq-q"><h4>Is this actually free? What's the catch?</h4><div class="faq-tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a"><p>No catch. The inspection is 100% free and there's zero obligation to move forward with any work. The roofing professional covers the cost. You get a full assessment of your roof's condition at no cost, period.</p></div></div>
+      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><h4>Will my insurance go up if I file a claim?</h4><div class="faq-tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a"><p>Storm damage claims are classified as "Acts of God" — they're different from at-fault claims. In most cases, premiums increase area-wide due to storm activity regardless of whether you personally file. Your matched pro can walk you through your specific policy.</p></div></div>
+      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><h4>How fast will someone contact me?</h4><div class="faq-tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a"><p>Most homeowners hear from their matched professional within a few hours during business hours. Inspections are typically scheduled within the same week.</p></div></div>
+      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><h4>What if there's no damage? Did I waste my time?</h4><div class="faq-tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a"><p>If there's no damage, you just got a free professional assessment and complete peace of mind that your home is protected. That's not a waste — that's the best possible outcome.</p></div></div>
+      <div class="faq-item" onclick="tFaq(this)"><div class="faq-q"><h4>Am I going to get pressured into buying something?</h4><div class="faq-tog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></div></div><div class="faq-a"><p>No. Our professionals document what they find, explain your options, and leave you to decide on your own terms. No pressure, no hard sell, no timeline ultimatums. Your decision, your pace.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA =====
+Schwartz: The close — reframe the offer as risk elimination, not a purchase -->
+<section class="final">
+  <div class="ctn">
+    <div class="reveal">
+      <div class="sect-tag">One Last Thing</div>
+      <h2>Your Roof Won't Send You a <em>Warning</em></h2>
+      <p>But you can find out right now — in 60 seconds — whether your home is protected or whether you're sitting on a problem that's getting more expensive every day. Either way, it costs you nothing.</p>
+      <a href="#form" class="btn-main">See If My Roof Qualifies <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+      <div class="cta-sub" style="margin-top:14px"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Free · No obligation · Takes 60 seconds</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="ft-brand">Service <span>Matchup</span></div>
+  <div class="ft-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">TCPA Disclosure</a></div>
+  <div class="ft-disclaimer">ServiceMatchup is an advertising and lead generation service. We are not a roofing contractor. We connect homeowners with independent, third-party roofing professionals. ServiceMatchup does not perform, warranty, or guarantee any work performed by third-party providers. All services are provided solely by independent licensed contractors. By submitting your information, you consent to being contacted by one or more service professionals regarding your project.</div>
+</footer>
+
+<script>
+// Sticky bar on scroll
+const sticky=document.getElementById('sticky');
+window.addEventListener('scroll',()=>{sticky.classList.toggle('show',scrollY>600)});
+// FAQ
+function tFaq(e){const a=e.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!a)e.classList.add('active')}
+// Reveal
+const ro=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('vis')}),{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
+</script>
+</body>
+</html>
