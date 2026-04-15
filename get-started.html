@@ -99,9 +99,9 @@ a{text-decoration:none}
 .sp-inline{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 32px 20px;font-family:'Manrope',sans-serif}
 .sp-dot{width:8px;height:8px;border-radius:50%;background:var(--forestL);flex-shrink:0;animation:spPulse 1.5s infinite}
 @keyframes spPulse{0%,100%{box-shadow:0 0 0 0 rgba(34,181,110,.4)}50%{box-shadow:0 0 0 5px rgba(34,181,110,0)}}
-.sp-inline span{font-size:13px;color:var(--slate);transition:opacity .3s}
+.sp-inline span{font-size:13px;color:var(--slate);transition:opacity .6s ease}
 .sp-inline b{color:var(--navy);font-weight:700}
-.sp-time{font-size:11px;color:var(--mist);font-weight:500;padding-left:4px;border-left:1px solid var(--silk);margin-left:4px}
+.sp-time{font-size:11px;color:var(--mist);font-weight:500;padding-left:4px;border-left:1px solid var(--silk);margin-left:4px;transition:opacity .6s ease}
 .sp-inline.fade span{opacity:0}
 @media(max-width:480px){.sp-inline{padding:12px 20px 16px;gap:8px}.sp-inline span{font-size:12px}.sp-time{display:none}}
 
@@ -197,15 +197,6 @@ a{text-decoration:none}
           <div class="chip"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>60 Seconds</div>
         </div>
       </div>
-
-      
-        <!-- Live social proof ticker -->
-        <div class="proof-ticker">
-          <div class="ticker-item">
-            <div class="ticker-dot"></div>
-            <span><strong>Sarah T.</strong> in Fort Worth, TX just checked her roof</span>
-          </div>
-        </div>
 
 
         <!-- Inline social proof ticker -->
@@ -348,12 +339,12 @@ function showNext(){
     spTxt.innerHTML='<b>'+p.n+'</b> in '+p.c+' just checked their roof';
     if(spTime)spTime.textContent=p.t;
     if(spEl)spEl.classList.remove('fade');
-  },300);
+  },600);
   pi++;
 }
 function startTicker(){
   showNext();
-  setInterval(showNext,3000);
+  setInterval(showNext,5000);
 }
 // Start immediately with defaults - don't wait for geolocation
 mkPool(cityDB.DF,'');
