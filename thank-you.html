@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're All Set — ServiceMatchup</title>
+<meta name="description" content="Your request has been received. A licensed roofing professional in your area will reach out shortly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<!-- Facebook Pixel — fire your "Lead" conversion event here -->
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#0D2847;--navy2:#132F52;
+--forest:#156B42;--forestL:#22B56E;--forestG:rgba(21,107,66,.07);
+--gold:#D4A853;--goldG:rgba(212,168,83,.08);
+--white:#FFF;--snow:#F7F9FB;--pearl:#EEF2F6;--silk:#E1E7EE;
+--mist:#94A3B8;--slate:#5E7084;--graph:#3B4C5E;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--snow);color:var(--graph);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;color:var(--navy)}
+a{text-decoration:none}
+
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
+.main::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(21,107,66,.06),transparent 50%),radial-gradient(ellipse at 70% 70%,rgba(212,168,83,.05),transparent 45%);pointer-events:none}
+
+.card{position:relative;z-index:2;width:100%;max-width:560px;background:var(--white);border:1px solid var(--silk);border-radius:24px;box-shadow:0 24px 64px rgba(13,40,71,.08);overflow:hidden;text-align:center}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy),var(--gold),var(--forest))}
+
+.card-body{padding:48px 36px 40px}
+
+/* Success icon */
+.success-icon{width:80px;height:80px;margin:0 auto 28px;border-radius:50%;background:linear-gradient(135deg,var(--forestG),rgba(21,107,66,.12));display:flex;align-items:center;justify-content:center;animation:iconPop .6s cubic-bezier(.16,1,.3,1) .2s both}
+.success-icon svg{width:40px;height:40px;color:var(--forestL)}
+@keyframes iconPop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+
+.success-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(34,181,110,.15);animation:ringPulse 2s ease-out .5s both}
+@keyframes ringPulse{0%{transform:scale(.8);opacity:0}50%{opacity:1}100%{transform:scale(1.15);opacity:0}}
+
+h1{font-size:30px;margin-bottom:12px;letter-spacing:-.3px}
+h1 em{font-style:italic;color:var(--forest)}
+.sub{font-size:16px;color:var(--slate);line-height:1.7;margin-bottom:36px}
+
+/* What to expect */
+.expect{text-align:left;background:var(--snow);border:1px solid var(--pearl);border-radius:14px;padding:28px 24px;margin-bottom:32px}
+.expect-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.expect-list{display:flex;flex-direction:column;gap:16px}
+.expect-item{display:flex;align-items:flex-start;gap:12px}
+.expect-num{width:28px;height:28px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;margin-top:1px}
+.expect-item p{font-size:14px;color:var(--graph);line-height:1.7}
+.expect-item strong{color:var(--navy);font-weight:700}
+
+/* Reassurance */
+.reassure{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;background:var(--forestG);border-radius:10px;margin-bottom:28px}
+.reassure svg{width:18px;height:18px;color:var(--forest);flex-shrink:0}
+.reassure p{font-size:13px;color:var(--forest);font-weight:600}
+
+/* Pro tip */
+.tip{text-align:left;padding:20px 24px;background:var(--goldG);border:1px solid rgba(212,168,83,.15);border-radius:12px;margin-bottom:0}
+.tip-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tip p{font-size:13px;color:var(--slate);line-height:1.7}
+
+/* Footer */
+.footer{background:var(--navy);padding:24px 0;text-align:center}
+.ft-brand{font-weight:800;font-size:14px;color:#fff;margin-bottom:8px}
+.ft-brand span{color:var(--gold)}
+.ft-links{display:flex;justify-content:center;gap:16px;margin-bottom:10px}
+.ft-links a{font-size:11px;color:rgba(255,255,255,.3);transition:color .3s}
+.ft-links a:hover{color:#fff}
+.ft-disc{font-size:9px;color:rgba(255,255,255,.12);max-width:500px;margin:0 auto;line-height:1.7;padding-top:10px;border-top:1px solid rgba(255,255,255,.05)}
+
+/* Responsive */
+@media(max-width:640px){
+  .card-body{padding:36px 24px 32px}
+  h1{font-size:26px}
+  .sub{font-size:15px}
+  .expect{padding:22px 20px}
+}
+@media(max-width:400px){
+  h1{font-size:23px}
+  .sub{font-size:14px}
+  .card-body{padding:32px 18px 28px}
+  .expect-item p{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="main">
+  <div class="card">
+    <div class="card-body">
+
+      <!-- Success animation -->
+      <div class="success-icon" style="position:relative">
+        <div class="success-ring"></div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+      </div>
+
+      <h1>You're All <em>Set</em></h1>
+      <p class="sub">Your request has been received. A licensed roofing professional in your area will be reaching out shortly to schedule your free inspection.</p>
+
+      <!-- What to expect -->
+      <div class="expect">
+        <div class="expect-label">What happens next</div>
+        <div class="expect-list">
+          <div class="expect-item">
+            <div class="expect-num">1</div>
+            <p><strong>You'll get a call from a local pro</strong> — not a call center. A licensed, insured roofing specialist in your area will reach out within a few hours during business hours.</p>
+          </div>
+          <div class="expect-item">
+            <div class="expect-num">2</div>
+            <p><strong>They'll schedule your inspection</strong> at a time that works for you. The inspection takes about 15 minutes and costs you absolutely nothing.</p>
+          </div>
+          <div class="expect-item">
+            <div class="expect-num">3</div>
+            <p><strong>You'll get a clear answer</strong> — photos of your roof's condition, an honest assessment, and your options explained simply. Including whether insurance may cover it.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reassurance -->
+      <div class="reassure">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+        <p>No pressure to make any decisions. This is about getting answers.</p>
+      </div>
+
+      <!-- Pro tip -->
+      <div class="tip">
+        <div class="tip-label">Quick tip</div>
+        <p>When your specialist calls, it'll come from a local number. If you miss it, they'll leave a voicemail — just call back at your convenience. Having access to your roof and knowing your insurance provider (if applicable) will help the inspection go smoothly.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="ft-brand">Service <span>Matchup</span></div>
+  <div class="ft-links"><a href="/">Home</a><a href="/roof-inspection.html">Roof Inspection</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  <div class="ft-disc">ServiceMatchup is an advertising and lead generation service. We are not a roofing contractor. We connect homeowners with independent, third-party roofing professionals. ServiceMatchup does not perform, warranty, or guarantee any work performed by third-party providers.</div>
+</footer>
+
+</body>
+</html>
