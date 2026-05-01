@@ -3,65 +3,73 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You're All Set — ServiceMatchup</title>
-<meta name="description" content="Your request has been received. A licensed roofing professional in your area will reach out shortly.">
+<title>Specialist Assigned — ServiceMatchup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
-<!-- Facebook Pixel — fire your "Lead" conversion event here -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1605200247372902');fbq('track','PageView');</script>
+<script>fbq('track','Lead');</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"/></noscript>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
---navy:#0D2847;--navy2:#132F52;
---forest:#156B42;--forestL:#22B56E;--forestG:rgba(21,107,66,.07);
---gold:#D4A853;--goldG:rgba(212,168,83,.08);
---white:#FFF;--snow:#F7F9FB;--pearl:#EEF2F6;--silk:#E1E7EE;
---mist:#94A3B8;--slate:#5E7084;--graph:#3B4C5E;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Manrope',sans-serif;background:var(--snow);color:var(--graph);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
-h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;color:var(--navy)}
+:root{--navy:#0D2847;--forest:#156B42;--forestL:#22B56E;--forestG:rgba(21,107,66,.07);--gold:#D4A853;--goldG:rgba(212,168,83,.08);--white:#FFF;--snow:#F7F9FB;--pearl:#EEF2F6;--silk:#E1E7EE;--mist:#94A3B8;--slate:#5E7084;--graph:#3B4C5E}
+body{font-family:'Manrope',sans-serif;background:var(--snow);color:var(--graph);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column;margin:0}
+h1,h2{font-family:'Fraunces',serif;font-weight:500;color:var(--navy)}
 a{text-decoration:none}
-
-.main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative}
 .main::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(21,107,66,.06),transparent 50%),radial-gradient(ellipse at 70% 70%,rgba(212,168,83,.05),transparent 45%);pointer-events:none}
-
 .card{position:relative;z-index:2;width:100%;max-width:560px;background:var(--white);border:1px solid var(--silk);border-radius:24px;box-shadow:0 24px 64px rgba(13,40,71,.08);overflow:hidden;text-align:center}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--navy),var(--gold),var(--forest))}
-
 .card-body{padding:48px 36px 40px}
 
-/* Success icon */
-.success-icon{width:80px;height:80px;margin:0 auto 28px;border-radius:50%;background:linear-gradient(135deg,var(--forestG),rgba(21,107,66,.12));display:flex;align-items:center;justify-content:center;animation:iconPop .6s cubic-bezier(.16,1,.3,1) .2s both}
-.success-icon svg{width:40px;height:40px;color:var(--forestL)}
+/* Loading */
+@keyframes tySpin{to{transform:rotate(360deg)}}
+#tyLoading{transition:opacity .5s}
+.ty-loader{width:70px;height:70px;margin:0 auto 20px;position:relative}
+.ty-ring{width:70px;height:70px;border-radius:50%;border:4px solid var(--pearl);border-top-color:var(--forest);animation:tySpin 1s linear infinite;position:absolute;inset:0}
+.ty-house{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.ty-house svg{width:28px;height:28px;color:var(--navy)}
+.ty-title{font-size:20px;margin:0 0 10px}
+.ty-sub{font-size:13px;color:var(--slate);margin:0 0 24px;line-height:1.6}
+.ty-steps{text-align:left;max-width:300px;margin:0 auto}
+.ts{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--pearl);opacity:.3;transition:all .5s}
+.ts.active,.ts.done{opacity:1}
+.ts-i{width:24px;height:24px;border-radius:50%;border:2px solid var(--silk);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .5s}
+.ts.active .ts-i{border-color:var(--forest);background:var(--forestG)}
+.ts.done .ts-i{border-color:var(--forest);background:var(--forest)}
+.ts-i svg{width:12px;height:12px;color:var(--mist);transition:all .5s}
+.ts.active .ts-i svg{color:var(--forest)}
+.ts.done .ts-i svg{color:#fff}
+.ts-sp{width:12px;height:12px;border:2px solid var(--pearl);border-top-color:var(--forest);border-radius:50%;animation:tySpin .8s linear infinite;display:none}
+.ts.active .ts-sp{display:block}
+.ts.active .ts-ck{display:none}
+.ts span{font-size:13px;font-weight:600;color:var(--slate);transition:color .3s}
+.ts.active span{color:var(--navy)}
+.ts.done span{color:var(--forest)}
+
+/* Content (hidden until loading done) */
+#tyContent{display:none;opacity:0;transition:opacity .5s}
 @keyframes iconPop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
-
-.success-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(34,181,110,.15);animation:ringPulse 2s ease-out .5s both}
 @keyframes ringPulse{0%{transform:scale(.8);opacity:0}50%{opacity:1}100%{transform:scale(1.15);opacity:0}}
-
-h1{font-size:30px;margin-bottom:12px;letter-spacing:-.3px}
+.success-icon{width:80px;height:80px;margin:0 auto 28px;border-radius:50%;background:linear-gradient(135deg,var(--forestG),rgba(21,107,66,.12));display:flex;align-items:center;justify-content:center;animation:iconPop .6s cubic-bezier(.16,1,.3,1) .2s both;position:relative}
+.success-icon svg{width:40px;height:40px;color:var(--forestL)}
+.success-ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(34,181,110,.15);animation:ringPulse 2s ease-out .5s both}
+h1{font-size:30px;margin:0 0 12px;letter-spacing:-.3px}
 h1 em{font-style:italic;color:var(--forest)}
-.sub{font-size:16px;color:var(--slate);line-height:1.7;margin-bottom:36px}
-
-/* What to expect */
+.sub{font-size:16px;color:var(--slate);line-height:1.7;margin:0 0 36px}
 .expect{text-align:left;background:var(--snow);border:1px solid var(--pearl);border-radius:14px;padding:28px 24px;margin-bottom:32px}
 .expect-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
 .expect-list{display:flex;flex-direction:column;gap:16px}
 .expect-item{display:flex;align-items:flex-start;gap:12px}
 .expect-num{width:28px;height:28px;border-radius:50%;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;margin-top:1px}
-.expect-item p{font-size:14px;color:var(--graph);line-height:1.7}
+.expect-item p{font-size:14px;color:var(--graph);line-height:1.7;margin:0}
 .expect-item strong{color:var(--navy);font-weight:700}
-
-/* Reassurance */
 .reassure{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;background:var(--forestG);border-radius:10px;margin-bottom:28px}
 .reassure svg{width:18px;height:18px;color:var(--forest);flex-shrink:0}
-.reassure p{font-size:13px;color:var(--forest);font-weight:600}
-
-/* Pro tip */
-.tip{text-align:left;padding:20px 24px;background:var(--goldG);border:1px solid rgba(212,168,83,.15);border-radius:12px;margin-bottom:0}
+.reassure p{font-size:13px;color:var(--forest);font-weight:600;margin:0}
+.tip{text-align:left;padding:20px 24px;background:var(--goldG);border:1px solid rgba(212,168,83,.15);border-radius:12px}
 .tip-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.tip p{font-size:13px;color:var(--slate);line-height:1.7}
+.tip p{font-size:13px;color:var(--slate);line-height:1.7;margin:0}
 
-/* Footer */
 .footer{background:var(--navy);padding:24px 0;text-align:center}
 .ft-brand{font-weight:800;font-size:14px;color:#fff;margin-bottom:8px}
 .ft-brand span{color:var(--gold)}
@@ -70,38 +78,9 @@ h1 em{font-style:italic;color:var(--forest)}
 .ft-links a:hover{color:#fff}
 .ft-disc{font-size:9px;color:rgba(255,255,255,.12);max-width:500px;margin:0 auto;line-height:1.7;padding-top:10px;border-top:1px solid rgba(255,255,255,.05)}
 
-/* Responsive */
-@media(max-width:640px){
-  .card-body{padding:36px 24px 32px}
-  h1{font-size:26px}
-  .sub{font-size:15px}
-  .expect{padding:22px 20px}
-}
-@media(max-width:400px){
-  h1{font-size:23px}
-  .sub{font-size:14px}
-  .card-body{padding:32px 18px 28px}
-  .expect-item p{font-size:13px}
-}
+@media(max-width:640px){.card-body{padding:36px 24px 32px}h1{font-size:26px}.sub{font-size:15px}.expect{padding:22px 20px}}
+@media(max-width:400px){h1{font-size:23px}.sub{font-size:14px}.card-body{padding:32px 18px 28px}.expect-item p{font-size:13px}}
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1605200247372902');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<script>fbq('track', 'Lead');</script>
 </head>
 <body>
 
@@ -109,56 +88,94 @@ src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
   <div class="card">
     <div class="card-body">
 
-      <!-- Success animation -->
-      <div class="success-icon" style="position:relative">
-        <div class="success-ring"></div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-      </div>
-
-      <h1>You're All <em>Set</em></h1>
-      <p class="sub">Your request has been received. A licensed roofing professional in your area will be reaching out shortly to schedule your free inspection.</p>
-
-      <!-- What to expect -->
-      <div class="expect">
-        <div class="expect-label">What happens next</div>
-        <div class="expect-list">
-          <div class="expect-item">
-            <div class="expect-num">1</div>
-            <p><strong>You'll get a call from a local pro</strong> — not a call center. A licensed, insured roofing specialist in your area will reach out within a few hours during business hours.</p>
-          </div>
-          <div class="expect-item">
-            <div class="expect-num">2</div>
-            <p><strong>They'll schedule your inspection</strong> at a time that works for you. The inspection takes about 15 minutes and costs you absolutely nothing.</p>
-          </div>
-          <div class="expect-item">
-            <div class="expect-num">3</div>
-            <p><strong>You'll get a clear answer</strong> — photos of your roof's condition, an honest assessment, and your options explained simply. Including whether insurance may cover it.</p>
-          </div>
+      <!-- ===== LOADING STATE ===== -->
+      <div id="tyLoading">
+        <div class="ty-loader">
+          <div class="ty-ring"></div>
+          <div class="ty-house"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg></div>
+        </div>
+        <h2 class="ty-title" id="tyTitle">Matching you with a roofing specialist...</h2>
+        <p class="ty-sub" id="tySub">We're reviewing your project details and finding the best match.</p>
+        <div class="ty-steps">
+          <div class="ts active" id="ts1"><div class="ts-i"><div class="ts-sp"></div><svg class="ts-ck" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg></div><span>Reviewing your project details</span></div>
+          <div class="ts" id="ts2"><div class="ts-i"><div class="ts-sp"></div><svg class="ts-ck" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg></div><span>Finding specialists in your area</span></div>
+          <div class="ts" id="ts3"><div class="ts-i"><div class="ts-sp"></div><svg class="ts-ck" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg></div><span>Confirming your match</span></div>
         </div>
       </div>
 
-      <!-- Reassurance -->
-      <div class="reassure">
-        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
-        <p>No pressure to make any decisions. This is about getting answers.</p>
-      </div>
+      <!-- ===== CONFIRMATION CONTENT (hidden until loading done) ===== -->
+      <div id="tyContent">
+        <div class="success-icon">
+          <div class="success-ring"></div>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+        </div>
 
-      <!-- Pro tip -->
-      <div class="tip">
-        <div class="tip-label">Quick tip</div>
-        <p>When your specialist calls, it'll come from a local number. If you miss it, they'll leave a voicemail — just call back at your convenience. Having access to your roof and knowing your insurance provider (if applicable) will help the inspection go smoothly.</p>
+        <h1>Your Specialist Has Been <em>Assigned</em></h1>
+        <p class="sub">A licensed roofing professional in your area has been notified and will be calling you shortly. <strong>Please keep your phone nearby — they'll be calling from a local number within the next few hours.</strong></p>
+
+        <div class="expect">
+          <div class="expect-label">Important — please read</div>
+          <div class="expect-list">
+            <div class="expect-item">
+              <div class="expect-num">1</div>
+              <p><strong>Your specialist will call from a local number</strong> — it won't say "ServiceMatchup" on your caller ID. It will show a local area code. If you see an unfamiliar local number in the next few hours, that's your specialist. Pick up.</p>
+            </div>
+            <div class="expect-item">
+              <div class="expect-num">2</div>
+              <p><strong>This is a one-time call, not a sales pitch</strong> — they'll confirm your address, ask a couple questions about your roof, and schedule your free inspection. The whole call takes about 2 minutes.</p>
+            </div>
+            <div class="expect-item">
+              <div class="expect-num">3</div>
+              <p><strong>If you miss the call, they may not call back</strong> — your specialist handles a limited number of inspections per week. If they can't reach you, your slot may be given to the next homeowner in your area. If you do miss it, call them back immediately.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reassure">
+          <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>
+          <p>Your inspection is free, your information is secure, and there is zero obligation.</p>
+        </div>
+
+        <div class="tip">
+          <div class="tip-label">Don't miss your call</div>
+          <p>Save this number or keep your phone on ring for the next few hours. Your specialist is a licensed, insured professional — not a telemarketer. They're calling because YOU requested this inspection. Answer the call and you'll have your free inspection booked in under 2 minutes.</p>
+        </div>
       </div>
 
     </div>
   </div>
 </div>
 
-<!-- Footer -->
 <footer class="footer">
   <div class="ft-brand">Service <span>Matchup</span></div>
   <div class="ft-links"><a href="/">Home</a><a href="/roof-inspection.html">Roof Inspection</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
   <div class="ft-disc">ServiceMatchup is an advertising and lead generation service. We are not a roofing contractor. We connect homeowners with independent, third-party roofing professionals. ServiceMatchup does not perform, warranty, or guarantee any work performed by third-party providers.</div>
 </footer>
 
+<script>
+var tSteps=['ts1','ts2','ts3'];
+var tTitles=['Matching you with a roofing specialist...','Finding specialists in your area...','Confirming your match...'];
+var tSubs=["We're reviewing your project details and finding the best match.",'Checking availability with licensed contractors near you.','Almost done — locking in your specialist.'];
+var tc=0,ttEl=document.getElementById('tyTitle'),tsEl=document.getElementById('tySub');
+function tyAdv(){
+  if(tc>0){var p=document.getElementById(tSteps[tc-1]);p.classList.remove('active');p.classList.add('done')}
+  if(tc<tSteps.length){var c=document.getElementById(tSteps[tc]);c.classList.add('active');ttEl.textContent=tTitles[tc];tsEl.textContent=tSubs[tc];tc++}
+}
+setTimeout(function(){tyAdv()},2000);
+setTimeout(function(){tyAdv()},4000);
+setTimeout(function(){
+  document.getElementById(tSteps[2]).classList.remove('active');
+  document.getElementById(tSteps[2]).classList.add('done');
+  ttEl.textContent="Specialist assigned!";tsEl.textContent='';
+},5500);
+setTimeout(function(){
+  var ld=document.getElementById('tyLoading');ld.style.opacity='0';
+  setTimeout(function(){
+    ld.style.display='none';
+    var ct=document.getElementById('tyContent');ct.style.display='block';
+    setTimeout(function(){ct.style.opacity='1'},50);
+  },500);
+},6000);
+</script>
 </body>
 </html>
