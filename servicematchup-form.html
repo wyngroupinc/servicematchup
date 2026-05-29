@@ -4,10 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Complete Your Request — ServiceMatchup</title>
-<meta name="description" content="Check if your roof qualifies for a free professional inspection. Takes 60 seconds. No cost, no obligation.">
+<meta name="description" content="Request a free professional roof inspection. Takes 60 seconds. No cost, no obligation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
-<!-- Facebook Pixel goes here -->
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1315531100000095');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1315531100000095&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -99,9 +115,9 @@ a{text-decoration:none}
 .sp-inline{display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 32px 20px;font-family:'Manrope',sans-serif}
 .sp-dot{width:8px;height:8px;border-radius:50%;background:var(--forestL);flex-shrink:0;animation:spPulse 1.5s infinite}
 @keyframes spPulse{0%,100%{box-shadow:0 0 0 0 rgba(34,181,110,.4)}50%{box-shadow:0 0 0 5px rgba(34,181,110,0)}}
-.sp-inline span{font-size:13px;color:var(--slate);transition:opacity .3s}
+.sp-inline span{font-size:13px;color:var(--slate);transition:opacity .6s ease}
 .sp-inline b{color:var(--navy);font-weight:700}
-.sp-time{font-size:11px;color:var(--mist);font-weight:500;padding-left:4px;border-left:1px solid var(--silk);margin-left:4px}
+.sp-time{font-size:11px;color:var(--mist);font-weight:500;padding-left:4px;border-left:1px solid var(--silk);margin-left:4px;transition:opacity .6s ease}
 .sp-inline.fade span{opacity:0}
 @media(max-width:480px){.sp-inline{padding:12px 20px 16px;gap:8px}.sp-inline span{font-size:12px}.sp-time{display:none}}
 
@@ -198,15 +214,6 @@ a{text-decoration:none}
         </div>
       </div>
 
-      
-        <!-- Live social proof ticker -->
-        <div class="proof-ticker">
-          <div class="ticker-item">
-            <div class="ticker-dot"></div>
-            <span><strong>Sarah T.</strong> in Fort Worth, TX just checked her roof</span>
-          </div>
-        </div>
-
 
         <!-- Inline social proof ticker -->
         <div class="sp-inline" id="spInline">
@@ -230,7 +237,7 @@ a{text-decoration:none}
           <div class="trust-item"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>No obligation</div>
         </div>
 
-        <div class="social-proof">Trusted by <strong>11,000+</strong> homeowners across the country</div>
+        <div class="social-proof">Trusted by <strong>11,000+</strong> homeowners</div>
 
         <!-- TCPA DISCLAIMER -->
         <p class="tcpa">By submitting this form, I provide my express written consent to be contacted by ServiceMatchup and/or one or more of its network partners, including licensed home service professionals, at the phone number and/or email address I have provided regarding products or services, including through the use of automated technology, pre-recorded messages, auto-dialers, and/or text messages. I understand that my consent is not a condition of purchase and that I may revoke my consent at any time. I also agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>. Standard message and data rates may apply.</p>
@@ -248,11 +255,11 @@ a{text-decoration:none}
         <!-- Testimonial slider -->
         <div class="cr-slider" id="crSlider">
           <div class="cr-slide active">
-            <p class="cr-quote">"Had no idea my roof was damaged until the inspector showed me photos. Insurance covered the entire replacement. Would have missed the deadline if I waited any longer."</p>
+            <p class="cr-quote">"Had no idea my roof was damaged until the inspector showed me photos. I never would have caught it on my own. So glad I had it looked at when I did."</p>
             <div class="cr-who"><div class="cr-av">M</div><div><span class="cr-name">Michael R.</span><span class="cr-loc">Dallas, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
-            <p class="cr-quote">"Kept putting off checking our 18-year-old roof. Filled out the form and had a pro at my house in two days. Turns out we had storm damage from years ago. Insurance covered everything."</p>
+            <p class="cr-quote">"Kept putting off checking our 18-year-old roof. Filled out the form and had a pro at my house in two days. Turns out we had storm damage from years ago. Simple process, zero pressure."</p>
             <div class="cr-who"><div class="cr-av">S</div><div><span class="cr-name">Sarah T.</span><span class="cr-loc">Fort Worth, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
@@ -260,12 +267,12 @@ a{text-decoration:none}
             <div class="cr-who"><div class="cr-av">J</div><div><span class="cr-name">James L.</span><span class="cr-loc">Plano, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
-            <p class="cr-quote">"My neighbor got her roof done through insurance and told me to check mine. Glad I did — $14,000 replacement and I only paid my deductible. The whole process took less than 3 weeks."</p>
+            <p class="cr-quote">"My neighbor told me to get mine checked after she had hers done. Glad I did — the inspector found damage I had no idea was there and walked me through my options. Straightforward, no pressure."</p>
             <div class="cr-who"><div class="cr-av">R</div><div><span class="cr-name">Robert K.</span><span class="cr-loc">Arlington, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
-            <p class="cr-quote">"Honestly thought this was too good to be true. It wasn't. Free inspection, found real damage, insurance approved the claim in a week. New roof installed 10 days later."</p>
-            <div class="cr-who"><div class="cr-av">L</div><div><span class="cr-name">Lisa M.</span><span class="cr-loc">Denver, CO</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
+            <p class="cr-quote">"Honestly thought this was too good to be true. It wasn't. Free inspection, found real damage, and the contractor explained exactly what my roof needed. The whole thing was easy."</p>
+            <div class="cr-who"><div class="cr-av">L</div><div><span class="cr-name">Lisa M.</span><span class="cr-loc">McKinney, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
         </div>
         <div class="cr-dots" id="crDots"></div>
@@ -287,7 +294,7 @@ a{text-decoration:none}
   <footer class="footer">
     <div class="ft-brand">Service <span>Matchup</span></div>
     <div class="ft-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">TCPA Disclosure</a></div>
-    <div class="ft-disc">ServiceMatchup is an advertising and lead generation service. We are not a roofing contractor. We connect homeowners with independent, third-party roofing professionals. ServiceMatchup does not perform, warranty, or guarantee any work performed by third-party providers. All services are provided solely by independent licensed contractors. By submitting your information, you consent to being contacted by one or more service professionals regarding your project.</div>
+    <div class="ft-disc">ServiceMatchup is an advertising and lead generation service. We are not a roofing contractor. We connect homeowners with independent, third-party roofing professionals. ServiceMatchup does not perform, warranty, or guarantee any work performed by third-party providers. All services are provided solely by independent licensed contractors. By submitting your information, you consent to being contacted by one or more service professionals regarding your project. ServiceMatchup does not adjust, file, or guarantee any insurance claim or outcome. Any roofing work and insurance matters are solely between the homeowner, their chosen contractor, and their insurance company, and the homeowner is responsible for paying any applicable insurance deductible.</div>
   </footer>
 </div>
 
@@ -348,12 +355,12 @@ function showNext(){
     spTxt.innerHTML='<b>'+p.n+'</b> in '+p.c+' just checked their roof';
     if(spTime)spTime.textContent=p.t;
     if(spEl)spEl.classList.remove('fade');
-  },300);
+  },600);
   pi++;
 }
 function startTicker(){
   showNext();
-  setInterval(showNext,3000);
+  setInterval(showNext,5000);
 }
 // Start immediately with defaults - don't wait for geolocation
 mkPool(cityDB.DF,'');
