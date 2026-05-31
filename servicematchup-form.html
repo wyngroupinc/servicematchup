@@ -6,7 +6,7 @@
 <title>Complete Your Request — ServiceMatchup</title>
 <meta name="description" content="Request a free professional roof inspection. Takes 60 seconds. No cost, no obligation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -36,7 +36,7 @@ src="https://www.facebook.com/tr?id=1315531100000095&ev=PageView&noscript=1"
 html{scroll-behavior:smooth}
 body{font-family:'Manrope',sans-serif;background:var(--snow);color:var(--graph);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.65;min-height:100vh}
 ::selection{background:var(--forest);color:#fff}
-h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--navy)}
+h1,h2,h3,h4{font-family:'Manrope',sans-serif;font-weight:800;color:var(--navy);letter-spacing:-.5px}
 a{text-decoration:none}
 
 /* ===== LAYOUT ===== */
@@ -63,7 +63,7 @@ a{text-decoration:none}
 .logo-txt span{color:var(--forest)}
 
 .card-header h1{font-size:28px;line-height:1.15;letter-spacing:-.3px;margin-bottom:10px}
-.card-header h1 em{font-style:italic;color:var(--forest)}
+.card-header h1 em{font-family:'Manrope',sans-serif;font-style:normal;font-weight:800;color:var(--forest)}
 .card-sub{font-size:15px;color:var(--slate);margin-bottom:24px;line-height:1.6}
 .card-sub strong{color:var(--navy);font-weight:700}
 
@@ -204,8 +204,8 @@ a{text-decoration:none}
           <span class="logo-txt">Service <span>Matchup</span></span>
         </div>
 
-        <h1>You're One Step Away From <em>Answers</em></h1>
-        <p class="card-sub">Complete the quick form below and a licensed roofing specialist in your area will reach out to schedule your <strong>free inspection.</strong></p>
+        <h1>Find Out If Your Roof Needs <em>Replacing</em></h1>
+        <p class="card-sub">Answer a few quick questions and a licensed local specialist will reach out to inspect your roof and walk you through your <strong>repair or replacement options</strong> — free, no obligation.</p>
 
         <div class="trust-chips">
           <div class="chip"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Licensed Professionals</div>
@@ -218,11 +218,18 @@ a{text-decoration:none}
         <!-- Inline social proof ticker -->
         <div class="sp-inline" id="spInline">
           <div class="sp-dot"></div>
-          <span id="spTxt"><b>A homeowner</b> near you just checked their roof</span>
+          <span id="spTxt"><b>A homeowner</b> near you just requested a roof inspection</span>
           <span class="sp-time" id="spTime">Just now</span>
         </div>
 
       <div class="divider"></div>
+
+      <!-- REASSURANCE BAR — reduces form abandonment -->
+      <div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:0 0 18px;font-size:13px;font-weight:700;color:var(--forest)">
+        <span style="display:inline-flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>100% Free</span>
+        <span style="display:inline-flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Takes 90 Seconds</span>
+        <span style="display:inline-flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>No Obligation</span>
+      </div>
 
       <!-- LEADCAPTURE.IO FORM EMBED -->
       <div class="form-body">

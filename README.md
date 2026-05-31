@@ -1,57 +1,72 @@
-# ServiceMatchup Website
+# Service Matchup — Updated Files (Roofing, Replacement-Intent)
 
-## Your URLs
+Everything below is a **drop-in replacement** (same filenames as your live site).
+⚠️ Per your deploy rule: **upload ALL files to GitHub, not just the changed ones.**
 
-| URL | Page | Purpose |
-|-----|------|---------|
-| servicematchup.com | Homepage | General home services overview |
-| servicematchup.com/roof-inspection | Roofing Landing Page | Facebook ads point HERE |
-| servicematchup.com/get-started | Form Page | Landing page CTAs point HERE |
-| servicematchup.com/roofing | Roofing vertical page | From site navigation |
-| servicematchup.com/hvac | HVAC vertical page | From site navigation |
-| servicematchup.com/plumbing | Plumbing vertical page | From site navigation |
-| servicematchup.com/electrical | Electrical vertical page | From site navigation |
-| servicematchup.com/solar | Solar vertical page | From site navigation |
-| servicematchup.com/windows | Windows & Siding vertical page | From site navigation |
+---
 
-## Facebook Ad Flow
+## 🌐 LANDING / FUNNEL PAGES (changed)
 
-```
-Facebook Ad → servicematchup.com/roof-inspection → servicematchup.com/get-started → Lead Captured
-```
+### `servicematchup-roofing-lander.html` — PRIMARY landing page (Variant A)
+- Headline: **"Your Roof Looks Fine. That's Exactly the Problem."**
+- Full conversion rewrite (Schwartz + Hormozi $100M Offers/Leads/Money Models)
+- Reoriented toward **roof replacement** intent (filters out small-repair shoppers)
+- Headings now **Manrope bold** (matching the green accent), no serif
+- Meta Pixel `1315531100000095` (PageView). Compliant — no "free roof / insurance pays / you qualify."
+- **Point your main ads here.**
 
-## File Structure
+### `servicematchup-roofing-lander-b.html` — A/B TEST variant (Variant B)
+- Identical page, different headline: **"Is Your Roof One Storm From Failing?"** + matched subhead
+- Use to split-test headline mindset. Point a duplicate ad set here, split budget 50/50.
+- Judge by **cost-per-qualified-lead + close rate**, NOT raw CPL.
 
-```
-servicematchup/
-├── index.html              # Homepage
-├── roof-inspection.html    # Facebook roofing landing page
-├── get-started.html        # Form page (LeadCapture.io embed)
-├── roofing.html            # Roofing vertical page
-├── hvac.html               # HVAC vertical page
-├── plumbing.html           # Plumbing vertical page
-├── electrical.html         # Electrical vertical page
-├── solar.html              # Solar vertical page
-├── windows.html            # Windows & Siding vertical page
-├── styles.css              # Shared stylesheet
-└── README.md               # This file
-```
+### `servicematchup-form.html` — Lead form page
+- Headline: "Find Out If Your Roof Needs Replacing"
+- NEW: reassurance bar above the form (Free · 90 Seconds · No Obligation) to cut abandonment
+- Meta Pixel PageView only (correct for mid-funnel). TCPA + TrustedForm/Jornaya intact.
+- ⚠️ The actual form QUESTIONS live in LeadCapture.io (funnel `6oeHZT9ts5`), NOT this file — see the spec below.
 
-## How to Deploy / Re-deploy
+### `thank-you.html` — Confirmation page
+- Pixel ID corrected to `1315531100000095` + `Lead` event fires here
+- Headings → Manrope. Already has a strong "answer the call from a local number" section (drives lead→contact rate) — left as-is.
 
-### First time setup:
-1. Go to github.com/new → create repo called "servicematchup"
-2. Upload ALL files from this folder
-3. Go to Cloudflare → Workers & Pages → Create → Pages → Connect to Git
-4. Select your repo, leave build command empty, output directory: /
-5. Deploy
+### `call-now.html` — Pay-per-call page
+- FIXED: buttons no longer overflow the card (added `box-sizing:border-box`, trimmed glow)
+- Headings → Manrope. Meta Pixel added.
+- ⚠️ STILL TODO (compliance): this page has invented scarcity ("14:59 expires," "3 slots left") + a claim-timing line. Recommend a compliance pass before sending FB traffic here.
 
-### To update your site:
-1. Go to your repo on github.com
-2. Click "Add file" → "Upload files"
-3. Drag ALL files in (it will overwrite the old ones)
-4. Click "Commit changes"
-5. Cloudflare auto-deploys in ~30 seconds
+---
 
-### IMPORTANT: Upload ALL files every time
-If you only upload some files, the others won't update. Always upload the complete set.
+## 📄 REFERENCE DOCS
+
+### `leadcapture-form-spec-replacement.md` — **BUILD THIS IN LEADCAPTURE.IO**
+The two-tier qualification logic that makes the whole replacement-intent strategy work:
+- Hard floor: renters + sub-5-yr roofs → disqualify
+- Roof age = the filter (fail fast); scope = a tier tag, never a hard kill
+- Tier A (replacement-ready) fires the `Lead` pixel; Tier B does not
+- **This is the single most important piece for lead quality + low cost-per-qualified-lead.**
+
+### `static-image-ads-aggressive.md` — 8 aggressive, compliant FB static ad concepts
+(Also lives in the ClickUp campaign doc.)
+
+### `servicematchup-roofing-copy.md` — Original full copy + Meta ads package (earlier deliverable)
+
+---
+
+## ✅ WHAT'S DONE vs ⏳ WHAT'S LEFT
+
+DONE:
+- Compliance pass (lander, form, thank-you)
+- Replacement-intent restructure (lander + form copy)
+- Conversion rewrite + A/B headline variant
+- Font fixes (Manrope headings), call-now button fix
+- ClickUp campaign doc (strategy, ad sets, UGC scripts, podcasts, statics, b-roll)
+
+LEFT (when you're ready):
+1. Build the LeadCapture.io two-tier logic (use the spec)
+2. Compliance pass on `call-now.html` (fake scarcity + claim timing)
+3. Campaign restructure finish: ad sets (drop leak angle, add "Roof at End of Life") + strategy doc two-tier model
+4. Set up CAPI alongside the pixel (target EMQ ≥ 7)
+5. Verify your stats/testimonials are real before running (4.9★, 11,000+, named reviews)
+
+— Not legal advice; have counsel review final wording given Texas HB 2102.
