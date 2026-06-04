@@ -4,10 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Complete Your Request — ServiceMatchup</title>
-<meta name="description" content="Check if your roof qualifies for a free professional inspection. Takes 60 seconds. No cost, no obligation.">
+<meta name="description" content="Request a free professional roof inspection. Takes 60 seconds. No cost, no obligation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&display=swap" rel="stylesheet">
-<!-- Facebook Pixel goes here -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1315531100000095');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1315531100000095&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -20,7 +36,7 @@
 html{scroll-behavior:smooth}
 body{font-family:'Manrope',sans-serif;background:var(--snow);color:var(--graph);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.65;min-height:100vh}
 ::selection{background:var(--forest);color:#fff}
-h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;color:var(--navy)}
+h1,h2,h3,h4{font-family:'Manrope',sans-serif;font-weight:800;color:var(--navy);letter-spacing:-.5px}
 a{text-decoration:none}
 
 /* ===== LAYOUT ===== */
@@ -47,7 +63,7 @@ a{text-decoration:none}
 .logo-txt span{color:var(--forest)}
 
 .card-header h1{font-size:28px;line-height:1.15;letter-spacing:-.3px;margin-bottom:10px}
-.card-header h1 em{font-style:italic;color:var(--forest)}
+.card-header h1 em{font-family:'Manrope',sans-serif;font-style:normal;font-weight:800;color:var(--forest)}
 .card-sub{font-size:15px;color:var(--slate);margin-bottom:24px;line-height:1.6}
 .card-sub strong{color:var(--navy);font-weight:700}
 
@@ -168,23 +184,13 @@ a{text-decoration:none}
   .trust-chips{flex-direction:column;align-items:center;gap:6px}
 }
 </style>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1605200247372902');
-fbq('track', 'PageView');
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "x1ji8qoqun");
 </script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -205,8 +211,8 @@ src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
           <span class="logo-txt">Service <span>Matchup</span></span>
         </div>
 
-        <h1>You're One Step Away From <em>Answers</em></h1>
-        <p class="card-sub">Complete the quick form below and a licensed roofing specialist in your area will reach out to schedule your <strong>free inspection.</strong></p>
+        <h1>Find Out If Your Roof Needs <em>Replacing</em></h1>
+        <p class="card-sub">Answer a few quick questions and a licensed local specialist will reach out to inspect your roof and walk you through your <strong>repair or replacement options</strong> — free, no obligation.</p>
 
         <div class="trust-chips">
           <div class="chip"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Licensed Professionals</div>
@@ -219,11 +225,18 @@ src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
         <!-- Inline social proof ticker -->
         <div class="sp-inline" id="spInline">
           <div class="sp-dot"></div>
-          <span id="spTxt"><b>A homeowner</b> near you just checked their roof</span>
+          <span id="spTxt"><b>A homeowner</b> near you just requested a roof inspection</span>
           <span class="sp-time" id="spTime">Just now</span>
         </div>
 
       <div class="divider"></div>
+
+      <!-- REASSURANCE BAR — reduces form abandonment -->
+      <div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:0 0 18px;font-size:13px;font-weight:700;color:var(--forest)">
+        <span style="display:inline-flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>100% Free</span>
+        <span style="display:inline-flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Takes 90 Seconds</span>
+        <span style="display:inline-flex;align-items:center;gap:5px"><svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>No Obligation</span>
+      </div>
 
       <!-- LEADCAPTURE.IO FORM EMBED -->
       <div class="form-body">
@@ -238,7 +251,7 @@ src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
           <div class="trust-item"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>No obligation</div>
         </div>
 
-        <div class="social-proof">Trusted by <strong>11,000+</strong> homeowners across the country</div>
+        <div class="social-proof">Trusted by <strong>11,000+</strong> homeowners</div>
 
         <!-- TCPA DISCLAIMER -->
         <p class="tcpa">By submitting this form, I provide my express written consent to be contacted by ServiceMatchup and/or one or more of its network partners, including licensed home service professionals, at the phone number and/or email address I have provided regarding products or services, including through the use of automated technology, pre-recorded messages, auto-dialers, and/or text messages. I understand that my consent is not a condition of purchase and that I may revoke my consent at any time. I also agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>. Standard message and data rates may apply.</p>
@@ -256,11 +269,11 @@ src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
         <!-- Testimonial slider -->
         <div class="cr-slider" id="crSlider">
           <div class="cr-slide active">
-            <p class="cr-quote">"Had no idea my roof was damaged until the inspector showed me photos. Insurance covered the entire replacement. Would have missed the deadline if I waited any longer."</p>
+            <p class="cr-quote">"Had no idea my roof was damaged until the inspector showed me photos. I never would have caught it on my own. So glad I had it looked at when I did."</p>
             <div class="cr-who"><div class="cr-av">M</div><div><span class="cr-name">Michael R.</span><span class="cr-loc">Dallas, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
-            <p class="cr-quote">"Kept putting off checking our 18-year-old roof. Filled out the form and had a pro at my house in two days. Turns out we had storm damage from years ago. Insurance covered everything."</p>
+            <p class="cr-quote">"Kept putting off checking our 18-year-old roof. Filled out the form and had a pro at my house in two days. Turns out we had storm damage from years ago. Simple process, zero pressure."</p>
             <div class="cr-who"><div class="cr-av">S</div><div><span class="cr-name">Sarah T.</span><span class="cr-loc">Fort Worth, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
@@ -268,12 +281,12 @@ src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
             <div class="cr-who"><div class="cr-av">J</div><div><span class="cr-name">James L.</span><span class="cr-loc">Plano, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
-            <p class="cr-quote">"My neighbor got her roof done through insurance and told me to check mine. Glad I did — $14,000 replacement and I only paid my deductible. The whole process took less than 3 weeks."</p>
+            <p class="cr-quote">"My neighbor told me to get mine checked after she had hers done. Glad I did — the inspector found damage I had no idea was there and walked me through my options. Straightforward, no pressure."</p>
             <div class="cr-who"><div class="cr-av">R</div><div><span class="cr-name">Robert K.</span><span class="cr-loc">Arlington, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
           <div class="cr-slide">
-            <p class="cr-quote">"Honestly thought this was too good to be true. It wasn't. Free inspection, found real damage, insurance approved the claim in a week. New roof installed 10 days later."</p>
-            <div class="cr-who"><div class="cr-av">L</div><div><span class="cr-name">Lisa M.</span><span class="cr-loc">Denver, CO</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
+            <p class="cr-quote">"Honestly thought this was too good to be true. It wasn't. Free inspection, found real damage, and the contractor explained exactly what my roof needed. The whole thing was easy."</p>
+            <div class="cr-who"><div class="cr-av">L</div><div><span class="cr-name">Lisa M.</span><span class="cr-loc">McKinney, TX</span></div><span class="cr-verified"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.78 5.28l-4.5 5a.75.75 0 01-1.06.04l-2.25-2a.75.75 0 111-1.12l1.7 1.52 3.99-4.44a.75.75 0 011.12 1z"/></svg>Verified</span></div>
           </div>
         </div>
         <div class="cr-dots" id="crDots"></div>
@@ -295,7 +308,7 @@ src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"
   <footer class="footer">
     <div class="ft-brand">Service <span>Matchup</span></div>
     <div class="ft-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">TCPA Disclosure</a></div>
-    <div class="ft-disc">ServiceMatchup is an advertising and lead generation service. We are not a roofing contractor. We connect homeowners with independent, third-party roofing professionals. ServiceMatchup does not perform, warranty, or guarantee any work performed by third-party providers. All services are provided solely by independent licensed contractors. By submitting your information, you consent to being contacted by one or more service professionals regarding your project.</div>
+    <div class="ft-disc">ServiceMatchup is an advertising and lead generation service. We are not a roofing contractor. We connect homeowners with independent, third-party roofing professionals. ServiceMatchup does not perform, warranty, or guarantee any work performed by third-party providers. All services are provided solely by independent licensed contractors. By submitting your information, you consent to being contacted by one or more service professionals regarding your project. ServiceMatchup does not adjust, file, or guarantee any insurance claim or outcome. Any roofing work and insurance matters are solely between the homeowner, their chosen contractor, and their insurance company, and the homeowner is responsible for paying any applicable insurance deductible.</div>
   </footer>
 </div>
 
