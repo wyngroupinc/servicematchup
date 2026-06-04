@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Does Your Roof Need Replacing? — Free Inspection in 60 Seconds</title>
+<title>Does Your Roof Need Replacing? — Free Inspection in 90 Seconds</title>
 <meta name="description" content="If your roof is 10+ years old or took a storm, it may be at the end of its life. Request a free inspection and find out whether you need a repair or a full replacement from a vetted local contractor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -196,13 +196,47 @@ a{text-decoration:none}
   .tb-num{font-size:26px}
   .ctn,.ctn-w{padding:0 16px}
 }
+
+/* — conversion machinery — */
+.age-q{margin-bottom:36px}
+.age-label{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:14px;text-transform:uppercase;letter-spacing:.6px}
+.age-grid{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:580px;margin:0 auto}
+.age-btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 20px;border-radius:12px;border:2px solid var(--navy);color:var(--navy);font-weight:800;font-size:15px;background:#fff;transition:all .2s;min-width:138px}
+.age-btn:hover{background:var(--navy);color:#fff;transform:translateY(-2px)}
+.age-btn.hot{background:var(--forest);border-color:var(--forest);color:#fff;box-shadow:0 6px 22px rgba(21,107,66,.3)}
+.age-btn.hot:hover{filter:brightness(1.07);transform:translateY(-2px)}
+@media(max-width:560px){.age-grid{gap:8px}.age-btn{min-width:calc(50% - 4px);padding:15px 8px;font-size:14px}}
+.offer{padding:64px 0;background:#fff}
+.offer-box{max-width:620px;margin:0 auto;background:#fff;border:2px solid var(--forest);border-radius:20px;padding:40px 32px;text-align:center;box-shadow:0 12px 40px rgba(13,40,71,.08)}
+.offer-tag{display:inline-block;background:var(--forest);color:#fff;font-size:12px;font-weight:800;letter-spacing:1px;padding:7px 14px;border-radius:99px;margin-bottom:18px}
+.offer-box h2{font-size:30px;margin-bottom:22px}
+.offer-box h2 em{font-style:normal;color:var(--forest)}
+.offer-list{list-style:none;text-align:left;max-width:470px;margin:0 auto 20px;display:grid;gap:12px;padding:0}
+.offer-list li{position:relative;padding-left:32px;font-size:15.5px;color:var(--graph);line-height:1.5}
+.offer-list li:before{content:"✓";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--forest);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.offer-price{font-size:15px;font-weight:700;color:var(--graph);margin-bottom:22px}
+.offer-price span{color:var(--forest);font-weight:800}
+@media(max-width:560px){.offer-box{padding:30px 18px}.offer-box h2{font-size:23px}}
+.sticky-cta{position:fixed;left:12px;right:12px;bottom:12px;z-index:99;display:none;align-items:center;justify-content:center;gap:8px;background:var(--forest);color:#fff;font-weight:800;font-size:16px;padding:16px;border-radius:14px;box-shadow:0 10px 32px rgba(13,40,71,.4)}
+.sticky-cta svg{width:18px;height:18px}
+@media(max-width:768px){.sticky-cta{display:flex}body{padding-bottom:80px}}
+
+.foryou{padding:64px 0;background:var(--snow)}
+.foryou-box{max-width:620px;margin:0 auto;text-align:center}
+.foryou-box h2{font-size:30px;margin-bottom:24px}
+.foryou-box h2 em{font-style:normal;color:var(--forest)}
+.foryou-list{list-style:none;text-align:left;max-width:500px;margin:0 auto 18px;display:grid;gap:13px;padding:0}
+.foryou-list li{position:relative;padding-left:32px;font-size:15.5px;color:var(--graph);line-height:1.5}
+.foryou-list li:before{content:"✓";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center}
+.foryou-note{font-size:15px;font-weight:800;color:var(--navy)}
+@media(max-width:560px){.foryou-box h2{font-size:23px}}
 </style>
 </head>
 <body>
 
 <!-- STICKY CTA BAR (appears on scroll) -->
 <div class="sticky" id="sticky">
-  <p>See what your roof may need — free inspection request.<a href="form.html">Check now — takes 60 seconds</a></p>
+  <p>See what your roof may need — free inspection request.<a href="form.html">Check now — takes 90 seconds</a></p>
 </div>
 
 <!-- ===== HERO =====
@@ -224,12 +258,21 @@ STRATEGY: Agreement → Disruption → Personalization → Risk-free path -->
     <p class="hero-lead">No leak, no missing shingles you can see — so it's fine, <strong>right?</strong></p>
 
     <!-- DISRUPTION: Break the belief with a specific, uncomfortable truth -->
-    <div class="hero-disrupt">That's exactly what most homeowners think — right up until a contractor is standing on the roof showing them photos. The truth: a 10-to-20-year-old roof can be one storm away from failing, and the damage that forces a full replacement almost never shows from the ground. A 90-second check today tells you whether you're sitting on years of life left… or a five-figure problem that's already started. The check is free. Not knowing isn't.</div>
+    <div class="hero-disrupt">Replacement-level damage almost never shows from the ground — and every storm season it compounds. Pick your roof's age below and find out, free, whether you've got years left… or a five-figure problem that's already started.</div>
 
     <!-- CTA: The risk-free path -->
     <div class="cta-cluster">
-      <a href="form.html" class="btn-main">Request My Free Inspection <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
-      <div class="cta-sub"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>60 seconds · 100% free · Zero obligation</div>
+      <div class="age-q">
+        <div class="age-label">Start here — how old is your roof?</div>
+        <div class="age-grid">
+          <a href="form.html" class="age-btn">Under 5 years</a>
+          <a href="form.html" class="age-btn">5–10 years</a>
+          <a href="form.html" class="age-btn">10–15 years</a>
+          <a href="form.html" class="age-btn hot">15+ years</a>
+          <a href="form.html" class="age-btn">Not sure</a>
+        </div>
+      </div>
+      <div class="cta-sub"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>90 seconds · 100% free · Zero obligation</div>
     </div>
 
     <!-- Trust signals: placed at the decision point -->
@@ -300,6 +343,39 @@ Schwartz: "Intensify the desire" — make the cost of inaction feel unbearable -
 
 <!-- ===== MID-PAGE CTA ===== 
 Schwartz: Repeat the offer at peak emotional state — right after agitation -->
+<section class="foryou reveal">
+  <div style="padding:0 24px">
+    <div class="foryou-box">
+      <h2>This Check Is <em>For You</em> If…</h2>
+      <ul class="foryou-list">
+        <li>Your roof is <strong>10+ years old</strong> — or you honestly don't know how old it is</li>
+        <li><strong>Hail or high winds</strong> have rolled through your area in the last couple of years</li>
+        <li>You've <strong>never had it professionally inspected</strong> — most homeowners haven't</li>
+        <li>You'd rather <strong>plan a roof on your terms</strong> than get ambushed by a leak and a five-figure bill</li>
+      </ul>
+      <div class="foryou-note">Tick even one box? This is exactly who the free check is for.</div>
+    </div>
+  </div>
+</section>
+
+<section class="offer reveal">
+  <div style="padding:0 24px">
+    <div class="offer-box">
+      <div class="offer-tag">THE 90-SECOND ROOF REALITY CHECK</div>
+      <h2>Here's Everything You Get — <em>Free</em></h2>
+      <ul class="offer-list">
+        <li><strong>A full roof inspection</strong> by a licensed, insured local pro — the kind that typically runs $150–$300</li>
+        <li><strong>Photo documentation</strong> of exactly what they find up there</li>
+        <li><strong>A straight answer:</strong> solid, repair, or replace — in plain English</li>
+        <li><strong>ONE vetted local roofer,</strong> hand-matched to you — zero calling around, zero pressure</li>
+      </ul>
+      <div class="offer-price">Your price: <span>$0</span> · Your obligation: <span>none</span> · Your risk: <span>none</span></div>
+      <a href="form.html" class="btn-main">Get My Free Inspection <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+      <div class="cta-sub" style="margin-top:14px">If they find nothing wrong, you've lost 90 seconds — and gained peace of mind.</div>
+    </div>
+  </div>
+</section>
+
 <div class="mid-cta reveal">
   <p>90 seconds now, or a five-figure surprise later.<br>Find out exactly where your roof stands — free.</p>
   <a href="form.html" class="btn-main">Check My Roof Now <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
@@ -390,8 +466,18 @@ Schwartz: The close — reframe the offer as risk elimination, not a purchase --
       <div class="sect-tag">One Last Thing</div>
       <h2>Your Roof Won't Warn You — <em>This Will</em></h2>
       <p>Ninety seconds from now you can know exactly where your roof stands: fine, fixable, or finished. There's no cost, no obligation, and nothing to lose but the not-knowing. The homeowners who get ahead of this are the ones who simply checked first. Be one of them.</p>
-      <a href="form.html" class="btn-main">Request My Free Inspection <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
-      <div class="cta-sub" style="margin-top:14px"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Free · No obligation · Takes 60 seconds</div>
+      <div class="age-q" style="margin:26px 0 8px">
+        <div class="age-label">How old is your roof?</div>
+        <div class="age-grid">
+          <a href="form.html" class="age-btn">Under 5 years</a>
+          <a href="form.html" class="age-btn">5–10 years</a>
+          <a href="form.html" class="age-btn">10–15 years</a>
+          <a href="form.html" class="age-btn hot">15+ years</a>
+          <a href="form.html" class="age-btn">Not sure</a>
+        </div>
+      </div>
+      <a href="form.html" class="btn-main">Get My Free Inspection <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+      <div class="cta-sub" style="margin-top:14px"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/></svg>Free · No obligation · Takes 90 seconds</div>
     </div>
   </div>
 </section>
@@ -415,5 +501,6 @@ document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}));
 </script>
+<a href="form.html" class="sticky-cta">Get My Free Inspection <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
 </body>
 </html>
