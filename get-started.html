@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Roof Inspection — ServiceMatchup</title>
 <meta name="description" content="See exactly what's going on with your roof. One free, no-pressure inspection from a licensed local roofer. Takes about 60 seconds to request.">
+<link rel="preconnect" href="https://my.leadcapture.io">
+<link rel="dns-prefetch" href="https://my.leadcapture.io">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -160,6 +162,12 @@ a{text-decoration:none;color:inherit}
 
 @media(max-width:560px){
   .hero h1{font-size:26px}
+  /* Reserve the LeadCapture embed's space so there is no blank gap while it loads */
+  .form-body{min-height:420px;position:relative}
+  .form-body::before{content:'Loading secure form\2026';position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--mist);pointer-events:none}
+  .form-body>*{position:relative;z-index:1}
+  /* Form above the fold: the .reassure row inside the form card repeats the chip copy */
+  .chips,.hero-img{display:none}
   .hero-sub{font-size:15px}
   .section h2{font-size:22px}
   .rafter p{font-size:15px}
