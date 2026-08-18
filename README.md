@@ -12,7 +12,7 @@ Everything below is a **drop-in replacement** (same filenames as your live site)
 - Full conversion rewrite (Schwartz + Hormozi $100M Offers/Leads/Money Models)
 - Reoriented toward **roof replacement** intent (filters out small-repair shoppers)
 - Headings now **Manrope bold** (matching the green accent), no serif
-- Meta Pixel `1315531100000095` (PageView). Compliant — no "free roof / insurance pays / you qualify."
+- Meta Pixel `1605200247372902` (PageView). Compliant — no "free roof / insurance pays / you qualify."
 - **Point your main ads here.**
 
 ### `servicematchup-roofing-lander-b.html` — A/B TEST variant (Variant B)
@@ -27,7 +27,7 @@ Everything below is a **drop-in replacement** (same filenames as your live site)
 - ⚠️ The actual form QUESTIONS live in LeadCapture.io (funnel `6oeHZT9ts5`), NOT this file — see the spec below.
 
 ### `thank-you.html` — Confirmation page
-- Pixel ID corrected to `1315531100000095` + `Lead` event fires here
+- Pixel ID corrected to `1605200247372902` + `Lead` event fires here
 - Headings → Manrope. Already has a strong "answer the call from a local number" section (drives lead→contact rate) — left as-is.
 
 ### `call-now.html` — Pay-per-call page
