@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Free Roof Remaining-Life Audit — Dallas-Fort Worth — ServiceMatchup</title>
 <meta name="description" content="Roof 15+ years old? Get a free Remaining-Life Audit from a licensed local pro — know exactly how many years you have left before you spend a dime.">
+<link rel="preconnect" href="https://my.leadcapture.io">
+<link rel="dns-prefetch" href="https://my.leadcapture.io">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
@@ -220,6 +222,10 @@ img{max-width:100%;display:block}
 
 @media(max-width:1024px){.hero-in{grid-template-columns:1fr 390px;gap:32px}.tb-in{grid-template-columns:repeat(3,1fr);gap:18px 12px}}
 @media(max-width:920px){
+/* Reserve the LeadCapture embed's space so there is no blank gap while it loads */
+.fc-body{min-height:420px;position:relative}
+.fc-body::before{content:'Loading secure form\2026';position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--mist);pointer-events:none}
+.fc-body>*{position:relative;z-index:1}
 .hero{padding:24px 16px 32px}
 .hero-in{display:flex;flex-direction:column;gap:0}
 .hero-copy{display:contents}
