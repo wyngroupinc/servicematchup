@@ -390,6 +390,6 @@ img{max-width:100%;display:block}
 (function(){var bar=document.getElementById('mobileCta');var form=document.getElementById('form');if(!bar||!form)return;
 function check(){var r=form.getBoundingClientRect();bar.style.transform=(r.bottom<0)?'translateY(0)':'translateY(110%)';}
 window.addEventListener('scroll',check,{passive:true});check();})();
-window.addEventListener('message',function(e){if(e.data&&(e.data.event==='lead_submitted'||e.data.type==='form_submit')){fbq('track','Lead');if(window.clarity)clarity('set','lead','true');}});
+window.addEventListener('message',function(e){if(e.data&&(e.data.event==='lead_submitted'||e.data.type==='form_submit')){if(window.clarity)clarity('set','lead','true');}});
 </script>
 </body></html>
