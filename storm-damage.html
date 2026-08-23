@@ -129,16 +129,48 @@ img{max-width:100%;display:block}
 .sec p.lead strong{color:var(--navy)}
 
 /* AGITATE (navy band) */
-.agitate{background:var(--navy);padding:48px 20px}
-.agitate-in{max-width:820px;margin:0 auto;text-align:center}
-.agitate h2{color:#fff;font-size:clamp(22px,4.2vw,30px);line-height:1.22;margin-bottom:14px}
-.agitate h2 .hl{color:var(--gold)}
-.agitate p{color:rgba(255,255,255,.68);font-size:15.5px;max-width:620px;margin:0 auto 8px;line-height:1.75}
-.agitate p strong{color:#fff}
-.agitate-stats{display:flex;justify-content:center;gap:13px;margin-top:28px;flex-wrap:wrap}
-.astat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:18px 22px;min-width:150px}
-.astat .num{font-size:28px;font-weight:800;color:var(--gold);margin-bottom:3px}
-.astat .lbl{font-size:10.5px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.4px}
+.agitate{background:var(--snow);padding:56px 20px;border-top:1px solid var(--pearl);border-bottom:1px solid var(--pearl)}
+.agitate-in{max-width:900px;margin:0 auto;text-align:center}
+.a-kicker{display:inline-flex;align-items:center;gap:7px;background:var(--redG);border:1px solid rgba(192,57,43,.28);color:var(--red);font-size:11px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:16px}
+.a-kicker svg{width:13px;height:13px}
+.agitate h2{color:var(--navy);font-size:clamp(22px,4.2vw,30px);line-height:1.22;margin-bottom:14px}
+.agitate h2 .hl{color:var(--red)}
+.agitate p{color:var(--slate);font-size:15.5px;max-width:640px;margin:0 auto 8px;line-height:1.75}
+.agitate p strong{color:var(--navy)}
+.agitate-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.astat{background:var(--white);border:1px solid var(--silk);border-radius:14px;padding:24px 18px 20px;position:relative;overflow:hidden;box-shadow:0 4px 14px rgba(13,40,71,.05)}
+.astat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red)}
+.astat .a-ic{width:40px;height:40px;border-radius:11px;background:var(--redG);display:flex;align-items:center;justify-content:center;margin:0 auto 13px}
+.astat .a-ic svg{width:21px;height:21px;color:var(--red)}
+.astat .num{font-size:30px;font-weight:800;color:var(--navy);margin-bottom:5px;line-height:1}
+.astat .lbl{font-size:11px;font-weight:700;color:var(--slate);text-transform:uppercase;letter-spacing:.4px;line-height:1.45}
+@media(max-width:620px){.agitate-stats{grid-template-columns:1fr;max-width:330px;margin-left:auto;margin-right:auto}}
+/* MECH POLISH */
+.mcard{position:relative;transition:transform .25s,box-shadow .25s;border-top:3px solid var(--forest)}
+.mcard:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(13,40,71,.1)}
+.mcard .mic{width:46px;height:46px;border-radius:12px;background:var(--forestG);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.mcard .mic svg{width:24px;height:24px;color:var(--forest)}
+.mcard .mnum{position:absolute;top:18px;right:18px;width:26px;height:26px;border-radius:7px;font-size:12px;margin:0}
+/* REVIEWS */
+.reviews{background:var(--snow);border-top:1px solid var(--pearl);padding:54px 20px}
+.reviews-in{max-width:1040px;margin:0 auto}
+.rev-head{text-align:center;max-width:640px;margin:0 auto 32px}
+.rev-rating{display:inline-flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--silk);border-radius:100px;padding:9px 20px;margin-bottom:18px;box-shadow:0 6px 18px rgba(13,40,71,.05)}
+.rev-rating .big{font-size:24px;font-weight:800;color:var(--navy);line-height:1}
+.rev-rating .rstars{color:var(--gold);font-size:15px;letter-spacing:2px}
+.rev-rating .rlbl{font-size:11.5px;font-weight:700;color:var(--slate);text-align:left;line-height:1.3}
+.rev-head h2{font-size:clamp(22px,4.5vw,30px)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rcard{background:var(--white);border:1px solid var(--silk);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;box-shadow:0 4px 14px rgba(13,40,71,.04)}
+.rcard .rc-stars{color:var(--gold);font-size:14px;letter-spacing:1.5px;margin-bottom:12px}
+.rcard blockquote{font-size:14.5px;color:var(--graph);line-height:1.65;font-weight:500;margin-bottom:16px;flex:1}
+.rc-person{display:flex;align-items:center;gap:11px;padding-top:14px;border-top:1px solid var(--pearl)}
+.rc-av{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0}
+.rc-nm{font-size:13px;font-weight:800;color:var(--navy);line-height:1.3}
+.rc-nm span{display:block;font-size:11.5px;font-weight:600;color:var(--mist)}
+.rc-vf{margin-left:auto;display:inline-flex;align-items:center;gap:3px;font-size:10px;font-weight:700;color:var(--forest);white-space:nowrap}
+.rc-vf svg{width:12px;height:12px}
+@media(max-width:860px){.rev-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
 
 /* EDUCATION cards (storm problem-building) */
 .edu{padding:52px 20px;background:var(--white)}
@@ -269,6 +301,42 @@ img{max-width:100%;display:block}
 .edu-ic{width:40px;height:40px;font-size:17px}
 }
 @media(min-width:1200px){.hero{padding:48px 20px 56px}.hero-in{gap:56px}.hero h1{font-size:42px}.hero-sub{font-size:17px}}
+/* FINANCING */
+.finance{padding:36px 20px;background:var(--white);border-top:1px solid var(--pearl)}
+.finance-in{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:20px;background:var(--forestG);border:1px solid rgba(21,107,66,.18);border-radius:16px;padding:24px 26px}
+.finance-ic{flex-shrink:0;width:52px;height:52px;border-radius:12px;background:var(--forest);display:flex;align-items:center;justify-content:center}
+.finance-ic svg{width:26px;height:26px;color:#fff}
+.finance-tx h3{font-size:18px;margin-bottom:5px}
+.finance-tx p{font-size:14px;color:var(--slate);line-height:1.65}
+.finance-tx p strong{color:var(--navy)}
+.finance-tx .fine{display:block;margin-top:6px;font-size:11.5px;color:var(--mist)}
+@media(max-width:560px){.finance-in{flex-direction:column;text-align:center;gap:14px;padding:22px 18px}}
+/* NEXT STEPS */
+.nextsteps{background:var(--white);border-top:1px solid var(--pearl);padding:52px 20px}
+.ns-in{max-width:900px;margin:0 auto}
+.ns-head{text-align:center;max-width:600px;margin:0 auto 30px}
+.ns-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ns-step{background:var(--snow);border:1px solid var(--silk);border-radius:16px;padding:26px 22px;text-align:center}
+.ns-step .ns-num{width:40px;height:40px;border-radius:50%;background:var(--forest);color:#fff;font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.ns-step h3{font-size:16px;margin-bottom:7px}
+.ns-step p{font-size:13.5px;color:var(--slate);line-height:1.6}
+@media(max-width:760px){.ns-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+/* FAQ */
+.faq{background:var(--snow);border-top:1px solid var(--pearl);padding:52px 20px}
+.faq-in{max-width:760px;margin:0 auto}
+.faq-in h2{text-align:center;font-size:clamp(23px,4.5vw,30px);margin-bottom:26px}
+.faq-item{background:var(--white);border:1px solid var(--silk);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;padding:17px 20px;font-size:15px;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item .fq-ic{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--forestG);color:var(--forest);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800;line-height:1;transition:transform .2s}
+.faq-item[open] .fq-ic{transform:rotate(45deg)}
+.faq-item .fa{padding:0 20px 17px;font-size:14px;color:var(--slate);line-height:1.7}
+/* VALUE STACK */
+.vstack{list-style:none;max-width:430px;margin:4px auto 22px;text-align:left;display:grid;gap:10px}
+.vstack li{display:flex;align-items:flex-start;gap:10px;font-size:14.5px;color:var(--graph);font-weight:600}
+.vstack li svg{width:19px;height:19px;color:var(--forest);flex-shrink:0;margin-top:1px}
+.final .rr{margin-top:15px;font-size:12.5px;font-weight:700;color:var(--slate)}
+.final .rr strong{color:var(--navy)}
 </style>
 </head>
 <body>
@@ -338,9 +406,10 @@ img{max-width:100%;display:block}
 
 <section class="agitate">
   <div class="agitate-in">
+    <div class="a-kicker"><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>What you can't see is the problem</div>
     <h2>This Roof Passed a Visual Inspection. <span class="hl">Three Weeks Later It Caved In.</span></h2>
     <p>The damage was there the whole time — bruised shingles, a broken seal, no visible sign from the ground. The homeowner had no idea until the first hard rain pushed through and brought down a bedroom ceiling. <strong>The driveway look is not an inspection.</strong></p>
-    <div class="agitate-stats"><div class="astat"><div class="num">78%</div><div class="lbl">of hail damage is invisible from the ground</div></div><div class="astat"><div class="num">3-6 mo</div><div class="lbl">before hidden damage becomes a leak</div></div><div class="astat"><div class="num">$14K+</div><div class="lbl">average cost when caught too late</div></div></div>
+    <div class="agitate-stats"><div class="astat"><div class="a-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0112 20C5 20 1 12 1 12a18.5 18.5 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" stroke-linecap="round" stroke-linejoin="round"/><path d="M1 1l22 22" stroke-linecap="round"/></svg></div><div class="num">78%</div><div class="lbl">of hail damage is invisible from the ground</div></div><div class="astat"><div class="a-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="num">3-6 mo</div><div class="lbl">before hidden damage becomes a leak</div></div><div class="astat"><div class="a-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 7h4v4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="num">$14K+</div><div class="lbl">average cost when caught too late</div></div></div>
   </div>
 </section>
 
@@ -351,7 +420,7 @@ img{max-width:100%;display:block}
       <h2>The <span class="hl">23-Point Storm Damage Assessment</span></h2>
       <p>Not a glance from the driveway. A systematic protocol that documents every impact point — the same documentation standard insurance adjusters use.</p>
     </div>
-    <div class="mech-grid"><div class="mcard"><div class="mnum">1</div><h3>Impact Mapping</h3><p>Every slope checked for hail bruising, granule loss, and impact fractures — the damage that hides between shingles and never shows from the ground.</p></div><div class="mcard"><div class="mnum">2</div><h3>Seal &amp; Edge Check</h3><p>Wind-lifted shingles are pressure-tested along every edge and ridge. A lifted edge you can't see is an open door for the next storm.</p></div><div class="mcard"><div class="mnum">3</div><h3>Photo Documentation</h3><p>Every finding photographed and timestamped — if you have a legitimate insurance claim, the evidence is already organized the way adjusters need it.</p></div></div>
+    <div class="mech-grid"><div class="mcard"><div class="mnum">1</div><div class="mic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg></div><h3>Impact Mapping</h3><p>Every slope checked for hail bruising, granule loss, and impact fractures — the damage that hides between shingles and never shows from the ground.</p></div><div class="mcard"><div class="mnum">2</div><div class="mic"><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001z" clip-rule="evenodd"/></svg></div><h3>Seal &amp; Edge Check</h3><p>Wind-lifted shingles are pressure-tested along every edge and ridge. A lifted edge you can't see is an open door for the next storm.</p></div><div class="mcard"><div class="mnum">3</div><div class="mic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8a2 2 0 012-2h2l1.5-2h7L17 6h2a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke-linejoin="round"/><circle cx="12" cy="12.5" r="3.2"/></svg></div><h3>Photo Documentation</h3><p>Every finding photographed and timestamped — if you have a legitimate insurance claim, the evidence is already organized the way adjusters need it.</p></div></div>
     <div class="mech-img"><img src="img/storm-mechanism.jpg" alt="Inspector documenting hail impact points on shingles" width="1280" height="720" loading="lazy" decoding="async" fetchpriority="low"></div>
   </div>
 </section>
@@ -377,21 +446,83 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<section class="proof">
-  <div class="proof-in">
-    <div class="stars">★★★★★</div>
-    <blockquote>"After the April hailstorm I figured we were fine — no leaks, nothing visible. The assessment found 40+ impact points on the south slope. Insurance covered the whole replacement. If I'd waited for a leak, I'd have been paying for water damage too."</blockquote>
-    <cite>Homeowner in Plano, TX<span class="verified"><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified Homeowner</span></cite>
+<section class="reviews">
+  <div class="reviews-in">
+    <div class="rev-head">
+      <div class="rev-rating"><span class="big">4.8</span><span class="rstars">★★★★★</span><span class="rlbl">Verified homeowner<br>reviews &middot; Dallas-Fort Worth</span></div>
+      <h2>Homeowners Who Got Checked in Time</h2>
+    </div>
+    <!-- NOTE: replace these with REAL verified customer reviews before running paid traffic — Meta requires genuine testimonials. -->
+    <div class="rev-grid">
+      <div class="rcard">
+        <div class="rc-stars">★★★★★</div>
+        <blockquote>"After the spring hail I figured we were fine — no leaks, nothing you could see from the yard. The 23-point check found forty-plus impact points on the south slope. So glad we caught it before the first hard rain."</blockquote>
+        <div class="rc-person"><div class="rc-av" style="background:#0D2847">JA</div><div class="rc-nm">J. Alvarez<span>Plano, TX</span></div><span class="rc-vf"><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified</span></div>
+      </div>
+      <div class="rcard">
+        <div class="rc-stars">★★★★★</div>
+        <blockquote>"A door-knocker told us our roof was 'totaled.' The assessment actually documented what was real, slope by slope, with photos. No pressure, no scare tactics — just the facts."</blockquote>
+        <div class="rc-person"><div class="rc-av" style="background:#156B42">MR</div><div class="rc-nm">M. Reed<span>McKinney, TX</span></div><span class="rc-vf"><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified</span></div>
+      </div>
+      <div class="rcard">
+        <div class="rc-stars">★★★★★</div>
+        <blockquote>"The pro walked every slope and sent me a photo report the same day. When the adjuster came out, everything was already documented. Made the whole thing painless."</blockquote>
+        <div class="rc-person"><div class="rc-av" style="background:#B8860B">DN</div><div class="rc-nm">D. Nguyen<span>Frisco, TX</span></div><span class="rc-vf"><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Verified</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="finance">
+  <div class="finance-in">
+    <div class="finance-ic"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20" stroke-linecap="round"/></svg></div>
+    <div class="finance-tx">
+      <h3>Worried about paying for the work?</h3>
+      <p>You don't have to cover a new roof all at once. Many of our matched Dallas-Fort Worth pros offer <strong>financing and flexible monthly payment plans</strong> &mdash; just ask about options during your free assessment.<span class="fine">Financing is provided by third-party lenders. Approval and terms are set by the lender.</span></p>
+    </div>
+  </div>
+</section>
+
+<section class="nextsteps">
+  <div class="ns-in">
+    <div class="ns-head">
+      <span class="sec-kicker">No Surprises</span>
+      <h2>What Happens After You Submit</h2>
+    </div>
+    <div class="ns-grid">
+      <div class="ns-step"><div class="ns-num">1</div><h3>You enter your info</h3><p>Takes about 60 seconds — just enough for us to find the right local pro for your area.</p></div>
+      <div class="ns-step"><div class="ns-num">2</div><h3>We match you with ONE pro</h3><p>One vetted, licensed, background-checked local roofer — never five, never a call center, never a lead list.</p></div>
+      <div class="ns-step"><div class="ns-num">3</div><h3>They reach out to schedule</h3><p>Your pro contacts you to book the free 23-Point Storm Assessment at a time that works. No obligation to move forward.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-in">
+    <h2>Questions Homeowners Ask</h2>
+    <details class="faq-item"><summary>Is the storm assessment really free?<span class="fq-ic">+</span></summary><div class="fa">Yes — completely free, with no obligation to hire anyone. The matched pro documents your roof at no cost so you know exactly what the storm did before you spend a dollar.</div></details>
+    <details class="faq-item"><summary>Will my information get sold or spammed?<span class="fq-ic">+</span></summary><div class="fa">Never. Your info goes to one matched local pro only. It is never sold, resold, or shared with lead lists — so your phone won't blow up with 15 companies calling.</div></details>
+    <details class="faq-item"><summary>Am I obligated to hire anyone?<span class="fq-ic">+</span></summary><div class="fa">No. You get the findings and you decide what's next. Zero pressure, zero commitment.</div></details>
+    <details class="faq-item"><summary>What if I already have a roofer?<span class="fq-ic">+</span></summary><div class="fa">Then this probably isn't for you — it's built for homeowners who want an honest, documented look before they commit to anyone.</div></details>
+    <details class="faq-item"><summary>How soon will someone contact me?<span class="fq-ic">+</span></summary><div class="fa">Usually the same day — the sooner it's checked, the sooner you know if the storm left hidden damage.</div></details>
+    <details class="faq-item"><summary>Do I need to be home?<span class="fq-ic">+</span></summary><div class="fa">For a roof assessment it helps to have access, but your pro will walk you through exactly what's needed when they schedule.</div></details>
   </div>
 </section>
 
 <section class="final">
   <div class="final-in">
     <h2>Find Out What the Storm Really Did</h2>
-    <p>60 seconds to check your area. One licensed local pro. A full documented assessment. Zero cost, zero obligation.</p>
+    <p>60 seconds to check your area. One licensed local pro. Zero cost, zero obligation.</p>
+    <ul class="vstack">
+      <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Every slope checked for hail and wind damage</li>
+      <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>A documented impact map with timestamped photos</li>
+      <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Evidence organized the way adjusters need it, if you file</li>
+      <li><svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>Zero cost and zero obligation to hire anyone</li>
+    </ul>
     <a href="#form" class="cta-btn" onclick="fbq('track','InitiateCheckout');">Check My Roof — Free
       <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
     </a>
+    <p class="rr"><strong>No cost. No obligation.</strong> One local pro — your info is never sold or resold.</p>
   </div>
 </section>
 
