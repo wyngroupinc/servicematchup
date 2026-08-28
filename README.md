@@ -62,6 +62,10 @@ the funnel already owns the full question set. Consequences:
   Lead Prosper → GHL is LeadCapture's job now.
 - The quiz answers are no longer collected by this page, so `?angle=` still swaps the
   headline/subhead but no longer pre-highlights a step-1 option (there is no step 1 here).
+- **The One-Pro, Never-Sold Guarantee card appears twice**, per the brief: as its own section
+  directly below the "Trusted by Over 11,000+ Homeowners" bar, and again directly under the
+  form. The second one is the reference's in-form placement, adapted to sit under the embed
+  (the native form it lived inside no longer exists).
 
 ⚠️ **BEFORE RUNNING TRAFFIC**
 1. **Verify the embed renders on the live domain and that a test lead reaches Lead Prosper → GHL.**

@@ -175,6 +175,13 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   .promisecard .pg{display:grid;gap:11px;margin-top:16px}
   .promisecard .pg div{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#2f4356;line-height:1.45}
   .promisecard .pg .ck{color:var(--green);font-weight:800;flex:0 0 auto}
+  .gcard{background:#fff;border:2px solid var(--green);border-radius:14px;padding:18px 16px 16px;margin:14px auto 0;max-width:520px;box-shadow:0 10px 26px rgba(46,130,89,.18);position:relative}
+  .gtag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:11px;font-weight:800;letter-spacing:.8px;padding:4px 14px;border-radius:99px;white-space:nowrap}
+  .gcard .grow{display:flex;gap:13px;align-items:flex-start;margin-top:4px}
+  .gcard .seal{font-size:30px;flex:0 0 auto;line-height:1}
+  .gcard .gh{display:block;font-family:var(--serif);font-size:17px;color:var(--navy);font-weight:800;margin-bottom:4px;letter-spacing:-.2px}
+  .gcard .gt{font-size:13px;color:#33475b;line-height:1.5}
+  .gcard .gt b{color:var(--navy)}
 
   .revs{display:grid;gap:14px;margin-top:26px}
   .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow-sm)}
@@ -231,6 +238,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   .form-body::before{content:'Loading secure form\2026';position:absolute;inset:0;display:flex;
     align-items:center;justify-content:center;font-size:14px;color:var(--muted);pointer-events:none}
   .form-body>*{position:relative;z-index:1}
+  .underform{padding:0 0 4px}
 
   @media(min-width:560px){ h1{font-size:38px} h2{font-size:29px} .qtitle{font-size:25px} }
 </style>
@@ -273,6 +281,11 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
       <div class="form-body" id="formbody">
         <script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script>
       </div>
+      <div class="underform">
+        <div class="microtrust"><span class="lock">🔒</span> Your info goes to <b>one</b> local pro — never sold to a dozen companies.</div>
+        <div class="microtrust" style="margin-top:6px"><span style="color:var(--green);font-weight:800">✓</span> Not ready to hire anyone? Good — this is just a free look.</div>
+        <div class="gcard"><span class="gtag">✓ OUR GUARANTEE</span><div class="grow"><span class="seal">🛡️</span><div><b class="gh">The One-Pro, Never-Sold Guarantee</b><span class="gt">We'll only ever match you with <b>one</b> local pro. Your info is <b>never</b> sold or shared with a dozen companies. Ever. That's the whole promise this is built on.</span></div></div></div>
+      </div>
     </div>
   </div>
 
@@ -292,6 +305,11 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   <span class="m"><span class="c">✓</span> Free Inspection</span>
   <span class="m"><span class="c">✓</span> No Obligation</span>
 </div></div>
+
+<!-- GUARANTEE CARD (visible on scroll) -->
+<section style="padding:30px 0 6px"><div class="wrap">
+  <div class="gcard"><span class="gtag">✓ OUR GUARANTEE</span><div class="grow"><span class="seal">🛡️</span><div><b class="gh">The One-Pro, Never-Sold Guarantee</b><span class="gt">We'll only ever match you with <b>one</b> local pro. Your info is <b>never</b> sold or shared with a dozen companies. Ever. That's the whole promise this is built on.</span></div></div></div>
+</div></section>
 
 <!-- HOW IT WORKS -->
 <section><div class="wrap">
@@ -353,16 +371,14 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   <p class="lead">★★★★★ 4.9 average from local homeowners we've matched.</p>
   <!-- REAL homeowner reviews supplied by the owner. Quotes are VERBATIM — do not edit.
        Attribution is anonymous ("Verified homeowner") because no reviewer names or cities
-       were supplied; never invent them. When names + cities arrive, add
-       <div class="loc">Name, City</div> back into each .top block (.rev .loc CSS is still here). -->
+       were supplied; never invent them. -->
   <div class="revs">
     <div class="rev"><div class="top"><div class="av">✓</div><div><div class="who">Verified homeowner</div></div><div class="st">★★★★★</div></div><p>"I was expecting to fill out the form and immediately get bombarded with calls. That didn't happen. Service Matchup connected me with a local vetted roofer, and I was able to get a free quote without dealing with 15 different companies calling me."</p></div>
     <div class="rev"><div class="top"><div class="av">✓</div><div><div class="who">Verified homeowner</div></div><div class="st">★★★★★</div></div><p>"After a bad storm, I knew I needed someone to look at my roof but didn't know who to trust. Service Matchup connected me with a local roofing professional and the quote was completely free."</p></div>
     <div class="rev"><div class="top"><div class="av">✓</div><div><div class="who">Verified homeowner</div></div><div class="st">★★★★★</div></div><p>"I had a leak and needed someone quickly. Service Matchup saved me a lot of time trying to figure out which roofing companies were legitimate. The roofer I was matched with was professional and gave me a free quote."</p></div>
     <div class="rev"><div class="top"><div class="av">✓</div><div><div class="who">Verified homeowner</div></div><div class="st">★★★★★</div></div><p>"I wanted to make sure I wasn't overpaying for my roof. Service Matchup helped me find a local vetted roofer and get a free quote without having to spend hours searching online."</p></div>
   </div>
-  <!-- The other 8 real reviews, parked here so none are lost. Swap any of them in
-       for one above whenever you want to rotate the set.
+  <!-- The other 8 real reviews, parked so none are lost. Rotate any in as needed.
   <div class="rev"><div class="top"><div class="av">✓</div><div><div class="who">Verified homeowner</div></div><div class="st">★★★★★</div></div><p>"Super easy process. I needed a roofing quote but didn't want my phone ringing all day. Service Matchup helped match me with a local roofer who came out, checked the roof, and gave me a free estimate."</p></div>
   <div class="rev"><div class="top"><div class="av">✓</div><div><div class="who">Verified homeowner</div></div><div class="st">★★★★★</div></div><p>"I loved that I didn't have to call around to a bunch of roofing companies myself. Service Matchup made it easy to get connected with a vetted local roofer and compare my options without all the hassle."</p></div>
   <div class="rev"><div class="top"><div class="av">✓</div><div><div class="who">Verified homeowner</div></div><div class="st">★★★★★</div></div><p>"The best part was not getting spammed. I've used other quote websites before and got nonstop calls afterward. With Service Matchup, the process felt much simpler and more personal."</p></div>
