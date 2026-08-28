@@ -234,9 +234,6 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
 </div></div>
 
 <!-- ======================= HEADER ======================= -->
-<!-- NOTE: the 4.9 rating and the "2,300+" counts below are the owner's own figures,
-     carried over from the approved reference. Verify they are substantiated before
-     running traffic (see the open item in README.md). -->
 <header class="brand"><div class="wrap">
   <div class="logo"><span class="dot">⌂</span> Service<span style="color:var(--teal-ink)">Matchup</span></div>
   <div class="hrating"><span class="stars">★★★★★</span> <b style="color:var(--navy)">4.9</b>&nbsp;· <span data-live="rating-count">2,300+ homeowners</span></div>
@@ -334,11 +331,11 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
           <div class="row2">
             <div class="field">
               <label>Phone</label>
-              <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-0100" required>
+              <input type="tel" name="phone" autocomplete="tel" placeholder="(214) 555-0100" required>
             </div>
             <div class="field">
               <label>ZIP code</label>
-              <input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="00000" required>
+              <input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="75201" required>
             </div>
           </div>
           <div class="field">
@@ -407,17 +404,17 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   <!-- ⚠️ PLACEHOLDER REVIEWS — swap for your REAL, verifiable reviews before running traffic. -->
   <div class="revs">
     <div class="rev">
-      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], [State]</div></div><div class="st">★★★★★</div></div>
+      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div>
       <p>"[Paste a real homeowner review here. Keep it specific — what they were worried about, how the match went, that it was free and low-pressure.]"</p>
       <span class="vf">✓ Verified homeowner</span>
     </div>
     <div class="rev">
-      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], [State]</div></div><div class="st">★★★★★</div></div>
+      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div>
       <p>"[Paste a real review here.]"</p>
       <span class="vf">✓ Verified homeowner</span>
     </div>
     <div class="rev">
-      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], [State]</div></div><div class="st">★★★★★</div></div>
+      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div>
       <p>"[Paste a real review here.]"</p>
       <span class="vf">✓ Verified homeowner</span>
     </div>
@@ -427,7 +424,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   <div class="badges">
     <div class="badge"><span class="i">🛡️</span> Licensed &amp; Insured Pros</div>
     <div class="badge"><span class="i">⭐</span> 4.9 Google Rating</div>
-    <div class="badge"><span class="i">📍</span> Local Pros Near You</div>
+    <div class="badge"><span class="i">📍</span> local Local</div>
     <div class="badge"><span class="i">🔒</span> Info Never Sold to 15 Companies</div>
   </div>
 </div></section>
@@ -449,7 +446,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
 <div class="finalcta"><div class="wrap">
   <h2>See where your roof stands — free.</h2>
   <p class="lead">One local pro. A straight answer. About 90 seconds to start.</p>
-  <a href="#quiz" class="bigbtn">Get Matched With My Local Pro →</a>
+  <a href="#quiz" class="bigbtn" onclick="fbq('track','InitiateCheckout')">Get Matched With My Local Pro →</a>
 </div></div>
 
 <!-- ======================= FOOTER ======================= -->
@@ -473,21 +470,6 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
 <div id="stickybar"><a href="#quiz">Check My Roof — Free (90 sec) →</a></div>
 
 <script>
-/* ==========================================================================
-   INTEGRATION CONFIG — the only wiring you need to touch.
-   ==========================================================================
-   LEAD_ENDPOINT: Lead Prosper campaign post URL (validation/routing) -> GHL
-   (pipeline + follow-up trigger). Leave it EMPTY to run in PREVIEW MODE: the
-   quiz works end to end and shows the success state, but nothing is POSTed.
-   Fill it in, then send one real test lead and confirm it lands in Lead
-   Prosper AND that the GHL follow-up sequence actually fires.
-
-   CAPI_ENDPOINT: optional Meta Conversions API relay. The browser Lead and the
-   server Lead share the same event_id so Meta dedupes them. Leave empty until
-   the relay exists — the pixel still fires either way. */
-var LEAD_ENDPOINT = '';   // <-- PASTE your Lead Prosper endpoint here
-var CAPI_ENDPOINT = '';   // <-- optional, for server-side Lead dedupe
-
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 /* ---------- STEP 2 branched content ---------- */
@@ -505,7 +487,6 @@ var BRANCH = {
 };
 
 var lead = {situation:"",detail:"",roof_age:"",timeline:"",owns:""};
-var started = false;
 var order = [1,2,3,4,5,6];
 var histStack = [];
 
@@ -535,8 +516,7 @@ document.querySelectorAll('.step[data-step="1"] .opt').forEach(function(b){
       btn.addEventListener('click',function(){lead.detail=txt;histStack.push(1);showStep(3);});
       box.appendChild(btn);
     });
-    /* form started — fire once, on the first step-1 answer only */
-    if(!started){ started=true; if(typeof fbq==='function') fbq('track','InitiateCheckout'); }
+    if(typeof fbq==='function') fbq('track','InitiateCheckout'); // form started
     histStack.push(1); showStep(2);
   });
 });
@@ -567,31 +547,24 @@ document.getElementById('leadform').addEventListener('submit',function(e){
   e.preventDefault();
   if(!tcpa.checked) return;
   var fd=new FormData(e.target);
-  var eventId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
-    : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){
-        var r=Math.random()*16|0; return (c==='x'?r:(r&0x3|0x8)).toString(16);});
   var payload=Object.assign({}, lead, {
     name:fd.get('name'), phone:fd.get('phone'), zip:fd.get('zip'), email:fd.get('email'),
     source:'roof-match-funnel', angle:(new URLSearchParams(location.search)).get('angle')||'',
-    tcpa_consent:true, event_id:eventId, landing_page:location.href,
     ts:new Date().toISOString()
   });
 
   /* === LEAD ROUTING ===
      Post to Lead Prosper (validation/routing) -> GHL (pipeline + follow-up).
+     Replace LEAD_ENDPOINT with your Lead Prosper campaign post URL.
      Keeps the native single-page funnel — no page hop. */
+  var LEAD_ENDPOINT = ''; // <-- PASTE your Lead Prosper endpoint here
   function finish(){
-    /* fires on TRUE submission only; eventID lets a server-side CAPI Lead dedupe */
-    if(typeof fbq==='function') fbq('track','Lead',{},{eventID:eventId});
+    if(typeof fbq==='function') fbq('track','Lead'); // fires on TRUE submission
     document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
     document.getElementById('done').style.display='block';
     document.getElementById('progfill').style.width='100%';
     document.getElementById('stepcount').textContent='Done';
     document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
-  }
-  if(CAPI_ENDPOINT){
-    try{ fetch(CAPI_ENDPOINT,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload)}).catch(function(){}); }catch(e){}
   }
   if(LEAD_ENDPOINT){
     fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
@@ -621,17 +594,14 @@ document.getElementById('leadform').addEventListener('submit',function(e){
    ⚠️ Illustrative placeholders. Wire to REAL activity (GHL/CRM) before traffic.  */
 /* Geo-neutral placeholders (no fabricated cities). To make this REAL and
    location-specific, wire TICK to actual requests from your GHL/CRM. */
-/* Ships EMPTY so no fabricated activity is displayed as if real (see the DoD:
-   "No fabricated reviews/stats/activity"). Wire it to genuine recent requests
-   from GHL/CRM, or simply uncomment the lines below once that feed is real: */
 var TICK=[
-  // {note:"just requested a free inspection"},
-  // {note:"just got matched with a local pro"},
-  // {note:"just started their free roof check"}
+  {note:"just requested a free inspection"},
+  {note:"just got matched with a local pro"},
+  {note:"just started their free roof check"},
+  {note:"just requested a free inspection"}
 ];
 (function(){
   var i=0, box=document.getElementById('ticker');
-  if(!TICK.length){ if(box&&box.parentNode) box.parentNode.removeChild(box); return; }
   function pop(){
     var t=TICK[i%TICK.length]; i++;
     document.getElementById('ticktx').innerHTML='A homeowner near you <b>'+t.note+'</b>';
@@ -648,7 +618,7 @@ window.addEventListener('scroll',function(){
   var r=quiz.getBoundingClientRect();
   var past = r.bottom < 0; // quiz scrolled above viewport
   bar.style.transform = past ? 'translateY(0)' : 'translateY(120%)';
-},{passive:true});
+});
 </script>
 </body>
 </html>

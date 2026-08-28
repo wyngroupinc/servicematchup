@@ -10,38 +10,36 @@ Everything below is a **drop-in replacement** (same filenames as your live site)
 ### `roof-match.html` — **ROOF-MATCHING QUIZ FUNNEL (single page, no redirect)**
 Route: **`/roof-match`** (Cloudflare Pages serves the `.html` at the clean URL).
 Collapses the old `roofing-lander → get-started` two-page hop — that hop leaks
-conversions, so the multi-step quiz now lives **on the page, above the fold**, and
-persuasion content sits below it.
+conversions, so the multi-step quiz lives **on the page, above the fold**.
 
-- **6-step quiz, contact LAST.** Step 1 (situation) is one zero-commitment tap and
-  branches step 2 into the visitor's own story (leak / storm / old / insurance / check).
-  Back button on every step after the first; progress bar; five easy yeses before
-  any contact field.
-- **TCPA consent gates the submit button** (disabled until checked). Consent text
-  covers phone/text/email, automated technology, "not a condition of purchase,"
-  msg & data rates, and links Privacy + Terms.
-- **Tracking:** Meta Pixel `1605200247372902` — `PageView` on load,
-  `InitiateCheckout` on form start, `Lead` on **true submission only** (with an
-  `event_id` for CAPI dedupe). Clarity `x1ji8qoqun`. Retired pixel appears nowhere.
-- **`?angle=leak|storm|old|insurance`** swaps eyebrow + H1 + subhead + `<title>` and
-  pre-highlights the matching step-1 option, so each ad's promise matches its first screen.
-- **Geo-neutral** — no city hardcoded anywhere; location comes from the ZIP entered.
-- Compliance: "free inspection" (never "free roof"), "you may qualify" (never
-  guaranteed), no deductible-waiver language, no dollar-figure headlines, no fake
-  urgency, no instant-price claim, matching-service/not-a-contractor disclaimer.
+**This is a faithful PORT of `reference/roof-match-funnel.html`, not a redesign.**
+That reference file is the source of truth for all copy, layout, sections, colors,
+and behavior. Above the fold it renders **pixel-identical** to the reference at
+390px (verified by screenshot hash). If you change this page, change the reference
+too — or the next port will silently undo you.
 
-⚠️ **THREE THINGS TO SET BEFORE RUNNING TRAFFIC** — all in the config block at the
-bottom of the file:
-1. `LEAD_ENDPOINT` — the Lead Prosper posting URL. **It ships empty = preview mode**:
-   the quiz runs and shows the success state but posts nothing, so the page is safe to
-   deploy before the endpoint exists. Fill it in, then send one real test lead and
-   confirm Lead Prosper → GHL → the follow-up sequence actually fires.
-2. `PROOF` + `REVIEWS` — ship as `null` / obvious placeholders **on purpose**. No star
-   count, roof counter, review total, or testimonial renders until you paste in real,
-   verifiable ones. Do not invent them (this closes the open item below).
-3. `TICKER_EVENTS` — ships empty. Populate only from real recent activity (GHL/CRM);
-   the popup stays out of the DOM while it's empty.
+The only deliberate deviations from the reference, all of them required:
 
+| Change | Why |
+|---|---|
+| `LEAD_ENDPOINT` / `CAPI_ENDPOINT` hoisted to a config block at the top of the script | allowed integration wiring |
+| Lead payload gains `event_id`, `tcpa_consent`, `landing_page`; `Lead` fires with that `eventID` | lets a server-side CAPI Lead dedupe against the pixel |
+| Final-CTA `onclick="fbq('track','InitiateCheckout')"` removed; `InitiateCheckout` now fires once, on the first step-1 answer | the reference double-fired it; spec says "on form start" |
+| Review placeholders say `[City], [State]`, not `[City], TX`; phone/ZIP placeholders no longer Dallas-specific | geo-neutral is a hard rule |
+| Trust badge read `local Local` → `Local Pros Near You` | find/replace artifact in the reference |
+| `TICK` ticker array ships **empty** (reference strings preserved, commented) | "No fabricated reviews/stats/activity" — the reference's own comment says the same; the popup removes itself until real data is wired |
+
+⚠️ **BEFORE RUNNING TRAFFIC**
+1. `LEAD_ENDPOINT` — the Lead Prosper posting URL. **Ships empty = preview mode**: the
+   quiz runs and shows the success state but posts nothing, so the page is safe to
+   deploy now. Fill it in, then send one real test lead and confirm Lead Prosper → GHL
+   → the follow-up sequence actually fires. (Still untested end to end.)
+2. **Reviews are the reference's placeholders** — no real ones have been supplied and
+   GHL holds none (checked). Paste 3 real, verifiable reviews into the `.rev` blocks.
+3. **Verify the `4.9` rating and the `2,300+` counts** in the header, proof band, and
+   reviews lead — they're carried over from the reference and are still on the
+   "verify your stats" open item below.
+4. `TICK` — uncomment/wire to real recent requests from GHL/CRM if you want the ticker.
 
 ### `servicematchup-roofing-lander.html` — PRIMARY landing page (Variant A)
 - Headline: **"Your Roof Looks Fine. That's Exactly the Problem."**
