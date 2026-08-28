@@ -6,6 +6,9 @@
 <title>Get Matched With a Trusted Local Roofer | Service Matchup</title>
 <meta name="description" content="Tell us about your roof and get matched with ONE vetted local roofer for a free inspection and honest quote. No obligation. Financing available.">
 
+<link rel="preconnect" href="https://my.leadcapture.io">
+<link rel="dns-prefetch" href="https://my.leadcapture.io">
+<link rel="preload" as="script" href="https://my.leadcapture.io/embed.min.js">
 <!-- Fonts (load on your live site; falls back to Georgia/system if blocked) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,6 +91,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   .progfill{height:100%;width:16%;background:linear-gradient(90deg,var(--green),#3aa06c);border-radius:99px;transition:width .35s ease}
   .progmeta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:.3px}
   .progmeta .step{color:var(--gold)}
+  .progmeta .lcm{color:var(--gold)}
   .card-body{padding:12px 20px 22px}
   .qtitle{font-family:var(--serif);font-size:23px;font-weight:800;margin:12px 0 4px;letter-spacing:-.4px;color:var(--navy);line-height:1.22}
   .qsub{font-size:13.5px;color:var(--muted);margin-bottom:15px}
@@ -222,6 +226,12 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
     box-shadow:0 -6px 20px rgba(22,50,78,.10);padding:10px 14px;transform:translateY(120%);transition:transform .3s ease}
   #stickybar a{display:block;text-align:center;background:var(--green);color:#fff;font-weight:700;font-size:16px;padding:14px;border-radius:11px;text-decoration:none}
 
+  /* LeadCapture.io embed container — funnel 6oeHZT9ts5 owns the questions */
+  .form-body{padding:14px 18px 10px;min-height:430px;position:relative}
+  .form-body::before{content:'Loading secure form\2026';position:absolute;inset:0;display:flex;
+    align-items:center;justify-content:center;font-size:14px;color:var(--muted);pointer-events:none}
+  .form-body>*{position:relative;z-index:1}
+
   @media(min-width:560px){ h1{font-size:38px} h2{font-size:29px} .qtitle{font-size:25px} }
 </style>
 </head>
@@ -253,82 +263,15 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   <!-- QUIZ -->
   <div class="card" id="quiz">
     <div class="card-head">
-      <div class="progline"><div class="progfill" id="progfill"></div></div>
-      <div class="progmeta"><span class="step" id="stepcount">Step 1 of 6</span><span>⏱ ~90 seconds</span></div>
+      <div class="progmeta"><span class="lcm">Free 23-point roof report</span><span>⏱ ~90 seconds</span></div>
     </div>
     <div class="card-body">
-      <div class="step active" data-step="1">
-        <div class="qtitle">What's going on with <span class="ac">your roof?</span></div>
-        <div class="qsub">Pick the one that sounds most like you.</div>
-        <div class="opts">
-          <button class="opt" data-branch="leak"><span class="emo">💧</span> I've got a leak or water coming in <span class="chev">›</span></button>
-          <button class="opt" data-branch="storm"><span class="emo">⛈️</span> A storm may have hit my roof <span class="chev">›</span></button>
-          <button class="opt" data-branch="old"><span class="emo">🏚️</span> My roof's old — may need replacing <span class="chev">›</span></button>
-          <button class="opt" data-branch="insurance"><span class="emo">📋</span> I want help with an insurance claim <span class="chev">›</span></button>
-          <button class="opt" data-branch="check"><span class="emo">👀</span> I just want a pro to check it <span class="chev">›</span></button>
-        </div>
-      </div>
-      <div class="step" data-step="2">
-        <div class="qtitle" id="q2title"></div>
-        <div class="qsub" id="q2sub"></div>
-        <div class="opts" id="q2opts"></div>
-        <button class="backbtn" data-back>← Back</button>
-      </div>
-      <div class="step" data-step="3">
-        <div class="qtitle">About how old is <span class="ac">your roof?</span></div>
-        <div class="qsub">Not sure? <b>No problem</b> — just a best guess. Most roofs start hiding wear after about 10 years.</div>
-        <div class="opts grid2">
-          <button class="opt" data-v="0–5 years">0–5 years</button>
-          <button class="opt" data-v="6–10 years">6–10 years</button>
-          <button class="opt" data-v="11–15 years">11–15 years</button>
-          <button class="opt" data-v="16–20 years">16–20 years</button>
-          <button class="opt" data-v="20+ years">20+ years</button>
-          <button class="opt" data-v="Not sure">Not sure</button>
-        </div>
-        <button class="backbtn" data-back>← Back</button>
-      </div>
-      <div class="step" data-step="4">
-        <div class="qtitle">If you need work done, how <span class="ac">soon?</span></div>
-        <div class="qsub">No commitment — this just helps us match the right pro.</div>
-        <div class="opts">
-          <button class="opt" data-v="ASAP"><span class="emo">🚨</span> As soon as possible <span class="chev">›</span></button>
-          <button class="opt" data-v="Few weeks"><span class="emo">📅</span> In the next few weeks <span class="chev">›</span></button>
-          <button class="opt" data-v="Planning ahead"><span class="emo">🗓️</span> Just planning ahead <span class="chev">›</span></button>
-          <button class="opt" data-v="Depends on cost"><span class="emo">💵</span> Depends what it costs <span class="chev">›</span></button>
-        </div>
-        <button class="backbtn" data-back>← Back</button>
-      </div>
-      <div class="step" data-step="5">
-        <div class="qtitle">Do you <span class="ac">own the home?</span></div>
-        <div class="qsub">Inspections are for homeowners — quick check.</div>
-        <div class="opts grid2">
-          <button class="opt" data-v="Owner">✅ Yes, I own it</button>
-          <button class="opt" data-v="Renter">🔑 No / I rent</button>
-        </div>
-        <button class="backbtn" data-back>← Back</button>
-      </div>
-      <div class="step" data-step="6">
-        <div class="qtitle">Where should your local pro <span class="ac">send the details?</span></div>
-        <div class="qsub">One vetted local pro will reach out to set up your <b>free inspection</b>. That's it.</div>
-        <form id="leadform" novalidate>
-          <div class="field"><label>Full name</label><input type="text" name="name" autocomplete="name" placeholder="First and last name" required></div>
-          <div class="row2">
-            <div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel" placeholder="(214) 555-0100" required></div>
-            <div class="field"><label>ZIP code</label><input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="75201" required></div>
-          </div>
-          <div class="field"><label>Email</label><input type="email" name="email" autocomplete="email" placeholder="you@email.com" required></div>
-          <label class="consent"><input type="checkbox" id="tcpa" required>
-            <span>By checking this box, I agree to be contacted by Service Matchup and a matched roofing professional by phone, text, and email about my roof — including via automated technology. Consent isn't a condition of purchase. Msg &amp; data rates may apply. See our <a href="/privacy" style="color:var(--green-ink)">Privacy Policy</a> &amp; <a href="/terms" style="color:var(--green-ink)">Terms</a>.</span></label>
-          <button type="submit" class="cta" id="submitbtn">Get Matched With My Local Pro →</button>
-          <div class="microtrust"><span class="lock">🔒</span> Your info goes to <b>one</b> local pro — never sold to a dozen companies.</div>
-          <div class="microtrust" style="margin-top:6px"><span style="color:var(--green);font-weight:800">✓</span> Not ready to hire anyone? Good — this is just a free look.</div>
-        </form>
-        <button class="backbtn" data-back>← Back</button>
-      </div>
-      <div id="done">
-        <div class="big">✓</div>
-        <div class="qtitle" style="text-align:center">You're <span class="ac">matched!</span> 🎉</div>
-        <p style="color:var(--muted);font-size:14.5px;margin-top:6px">One licensed &amp; insured local roofer will reach out shortly to set up your free 23-point inspection. Keep your phone handy.</p>
+      <!-- LEADCAPTURE.IO FORM EMBED — the question set lives in funnel 6oeHZT9ts5,
+           NOT in this file. LeadCapture posts to Lead Prosper -> GHL and fires its
+           own Meta `Lead` event, so this page must NOT fire Lead (see commit
+           db71ba7 "Remove duplicate Lead event - LeadCapture owns Lead firing"). -->
+      <div class="form-body" id="formbody">
+        <script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script>
       </div>
     </div>
   </div>
@@ -478,86 +421,35 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
 <div id="stickybar"><a href="#quiz">Check My Roof — Free (90 sec) →</a></div>
 
 <script>
-/* ==========================================================================
-   INTEGRATION CONFIG — the only wiring you need to touch.
-   ==========================================================================
-   LEAD_ENDPOINT: Lead Prosper campaign post URL (validation/routing) -> GHL
-   (pipeline + follow-up trigger). Leave EMPTY to run in PREVIEW MODE: the quiz
-   works end to end and shows the success state, but nothing is POSTed. Fill it
-   in, then send one real test lead and confirm it lands in Lead Prosper AND
-   that the GHL follow-up sequence fires.
-
-   CAPI_ENDPOINT: optional Meta Conversions API relay. Browser Lead and server
-   Lead share one event_id so Meta dedupes them. Empty until the relay exists. */
-var LEAD_ENDPOINT='';   // <-- PASTE your Lead Prosper endpoint here
-var CAPI_ENDPOINT='';   // <-- optional, for server-side Lead dedupe
-
 document.getElementById('yr').textContent=new Date().getFullYear();
-var BRANCH={
-  leak:{title:"Where's the water showing up?",sub:"This tells your pro where to trace the leak from.",opts:["Ceiling","A wall","Around a window","More than one spot","Not sure yet"]},
-  storm:{title:"When did the storm hit?",sub:"The worst hail damage often can't be seen from the ground.",opts:["This past week","This month","A few months ago","Not sure"]},
-  old:{title:"What's got you looking now?",sub:"Just helps your pro understand where you're at.",opts:["Seeing wear or curling shingles","Planning ahead / budgeting","Neighbors replaced theirs","Just want peace of mind"]},
-  insurance:{title:"Have you filed a claim yet?",sub:"Documentation before you file is what gets claims approved.",opts:["Not yet","Filed — waiting on the adjuster","Was denied or underpaid","Not sure how to start"]},
-  check:{title:"Anything specific prompting the check?",sub:"Pick whatever's closest.",opts:["A possible leak","A recent storm","The age of the roof","Just being proactive"]}
-};
-var lead={situation:"",detail:"",roof_age:"",timeline:"",owns:""};
+
+/* ---- Meta events ----------------------------------------------------------
+   PageView fires in <head>. InitiateCheckout = form started, fired once on the
+   first interaction with the embed (or on a CTA that jumps to it).
+   `Lead` is deliberately NOT fired here: the LeadCapture funnel owns it, and
+   firing it from the page too would double-count every conversion. ---------- */
 var started=false;
-var order=[1,2,3,4,5,6], histStack=[];
-function showStep(n){
-  document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
-  document.getElementById('done').style.display='none';
-  var el=document.querySelector('.step[data-step="'+n+'"]'); if(el)el.classList.add('active');
-  var idx=order.indexOf(n);
-  document.getElementById('progfill').style.width=((idx+1)/order.length*100)+'%';
-  document.getElementById('stepcount').textContent='Step '+(idx+1)+' of '+order.length;
-  document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
+function formStarted(){
+  if(started)return; started=true;
+  if(typeof fbq==='function')fbq('track','InitiateCheckout');
 }
-document.querySelectorAll('.step[data-step="1"] .opt').forEach(function(b){
-  b.addEventListener('click',function(){
-    lead.situation=b.textContent.trim();
-    var cfg=BRANCH[b.getAttribute('data-branch')];
-    document.getElementById('q2title').textContent=cfg.title;
-    document.getElementById('q2sub').textContent=cfg.sub;
-    var box=document.getElementById('q2opts');box.innerHTML='';
-    cfg.opts.forEach(function(txt){
-      var btn=document.createElement('button');btn.className='opt';
-      btn.innerHTML='<span>'+txt+'</span><span class="chev">›</span>';
-      btn.addEventListener('click',function(){lead.detail=txt;histStack.push(1);showStep(3);});
-      box.appendChild(btn);
-    });
-    /* form started — fire once, on the first step-1 answer only */
-    if(!started){started=true;if(typeof fbq==='function')fbq('track','InitiateCheckout');}
-    histStack.push(1);showStep(2);
+(function(){
+  var fb=document.getElementById('formbody');
+  if(!fb)return;
+  ['pointerdown','keydown','focusin'].forEach(function(ev){
+    fb.addEventListener(ev,formStarted,{once:true,passive:true});
   });
+  /* the embed renders in an iframe, so a same-page click may never reach us —
+     treat the window losing focus to that iframe as a form start too */
+  window.addEventListener('blur',function(){
+    if(document.activeElement&&document.activeElement.tagName==='IFRAME'&&fb.contains(document.activeElement))formStarted();
+  });
+})();
+[].forEach.call(document.querySelectorAll('a[href="#quiz"]'),function(a){
+  a.addEventListener('click',formStarted);
 });
-document.querySelectorAll('.step[data-step="3"] .opt').forEach(function(b){b.addEventListener('click',function(){lead.roof_age=b.getAttribute('data-v');histStack.push(3);showStep(4);});});
-document.querySelectorAll('.step[data-step="4"] .opt').forEach(function(b){b.addEventListener('click',function(){lead.timeline=b.getAttribute('data-v');histStack.push(4);showStep(5);});});
-document.querySelectorAll('.step[data-step="5"] .opt').forEach(function(b){b.addEventListener('click',function(){lead.owns=b.getAttribute('data-v');histStack.push(5);showStep(6);});});
-document.querySelectorAll('[data-back]').forEach(function(b){b.addEventListener('click',function(){var p=histStack.pop()||1;showStep(p);});});
-var tcpa=document.getElementById('tcpa'),submitbtn=document.getElementById('submitbtn');
-function syncBtn(){submitbtn.disabled=!tcpa.checked;}tcpa.addEventListener('change',syncBtn);syncBtn();
-document.getElementById('leadform').addEventListener('submit',function(e){
-  e.preventDefault(); if(!tcpa.checked)return;
-  var fd=new FormData(e.target);
-  var eventId=(window.crypto&&crypto.randomUUID)?crypto.randomUUID()
-    :'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){
-       var r=Math.random()*16|0;return (c==='x'?r:(r&0x3|0x8)).toString(16);});
-  var payload=Object.assign({},lead,{name:fd.get('name'),phone:fd.get('phone'),zip:fd.get('zip'),email:fd.get('email'),
-    source:'roof-match-funnel',angle:(new URLSearchParams(location.search)).get('angle')||'',
-    tcpa_consent:true,event_id:eventId,landing_page:location.href,ts:new Date().toISOString()});
-  function finish(){
-    /* fires on TRUE submission only; eventID lets a server-side CAPI Lead dedupe */
-    if(typeof fbq==='function')fbq('track','Lead',{},{eventID:eventId});
-    document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
-    document.getElementById('done').style.display='block';
-    document.getElementById('progfill').style.width='100%';
-    document.getElementById('stepcount').textContent='Done';
-    document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
-  }
-  if(CAPI_ENDPOINT){try{fetch(CAPI_ENDPOINT,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)}).catch(function(){});}catch(e){}}
-  if(LEAD_ENDPOINT){fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(finish).catch(finish);}else{finish();}
-});
+
+/* ---- URL ?angle= dynamic message match ---- */
 (function(){
   var a=(new URLSearchParams(location.search)).get('angle');
   var MAP={
@@ -570,10 +462,9 @@ document.getElementById('leadform').addEventListener('submit',function(e){
     document.getElementById('eyebrow').innerHTML=MAP[a].eye;
     document.getElementById('headline').innerHTML=MAP[a].h;
     document.getElementById('subhead').innerHTML=MAP[a].s;
-    var pre=document.querySelector('.step[data-step="1"] .opt[data-branch="'+a+'"]');
-    if(pre){pre.style.borderColor='var(--green)';pre.style.background='var(--green-soft)';}
   }
 })();
+
 /* Live social proof — REAL DFW cities. For true "live" proof, wire TICK to actual
    requests from your GHL/CRM (use each real lead's real city). The list below is the
    DFW-city fallback shown until it's wired to live data. */

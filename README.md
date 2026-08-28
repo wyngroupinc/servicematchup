@@ -47,10 +47,27 @@ Say the word and either is a one-line change:**
    browser chrome takes ~90px more). Previous version had 4 of 5 visible. Trimming the hero
    would fix it but would break pixel-fidelity with the reference, so it is your call.
 
+**LEAD CAPTURE = LEADCAPTURE.IO EMBED (funnel `6oeHZT9ts5`)** — same as every other lander.
+The native 6-step quiz was **removed** and replaced by the embed inside the hero card, because
+the funnel already owns the full question set. Consequences:
+- The page fires `PageView` + `InitiateCheckout` only. It must **NOT** fire `Lead` — LeadCapture
+  owns that (see commit `db71ba7`, and note every other embed lander has `Lead:0`). Firing it
+  here too would double-count every conversion.
+- `InitiateCheckout` = "form started", fired **once**, on first interaction with the embed or on
+  a CTA that jumps to it. Same convention as `aging-roof.html` / `storm-damage.html`.
+- The progress bar was removed from the card head: it cannot reflect LeadCapture's internal
+  step state, and a bar frozen at 16% reads as broken. This also retires the hidden-step-counter
+  bug noted below.
+- `LEAD_ENDPOINT` / `CAPI_ENDPOINT` and the native submit handler are **gone** — routing to
+  Lead Prosper → GHL is LeadCapture's job now.
+- The quiz answers are no longer collected by this page, so `?angle=` still swaps the
+  headline/subhead but no longer pre-highlights a step-1 option (there is no step 1 here).
+
 ⚠️ **BEFORE RUNNING TRAFFIC**
-1. `LEAD_ENDPOINT` — **ships empty = preview mode**: the quiz runs and shows the success state
-   but posts nothing. The page is live but **not capturing leads**. Paste the Lead Prosper URL,
-   then send one real test lead and confirm Lead Prosper → GHL → follow-up fires. Still untested.
+1. **Verify the embed renders on the live domain and that a test lead reaches Lead Prosper → GHL.**
+   It could not be verified from the build session: that sandbox blocks outbound hosts, so
+   `my.leadcapture.io` was stubbed in testing. The script tag, its container and the event
+   wiring are confirmed correct; the funnel itself is unverified.
 2. **Reviews are real** (12, verbatim) but **anonymous** — no names/cities were supplied, and
    inventing them would be fabrication. Add `<div class="loc">Name, City</div>` back into each
    `.top` block when you have them; the `.rev .loc` CSS is still present.
