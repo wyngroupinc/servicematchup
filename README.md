@@ -73,11 +73,12 @@ the funnel already owns the full question set. Consequences:
   Lead Prosper → GHL is LeadCapture's job now.
 - The quiz answers are no longer collected by this page, so `?angle=` still swaps the
   headline/subhead but no longer pre-highlights a step-1 option (there is no step 1 here).
-- **The One-Pro, Never-Sold Guarantee card appears ONCE**, under the form. The reference has
-  it twice, but on the live page the two landed about 500px apart and read as a duplicate,
-  so the standalone section below the trust bar was removed on the owner's call. Because the
-  form is an embed, the surviving card is still reachable on scroll without completing
-  anything — which is what the second placement was for.
+- **The One-Pro, Never-Sold Guarantee card appears ONCE**, as its own section directly below
+  the "Trusted by Over 11,000+ Homeowners" bar. The reference has it twice, but on a real
+  phone the two landed ~500px apart and read as a duplicate. The under-form copy was dropped
+  on the owner's call — it was cramped there, and out of the card it now renders full width
+  (350px vs 308px) with the heading on one line. The two `.microtrust` lines stay under the
+  form. Do not re-add the second card when porting a future reference.
 - **`.microtrust` was fixed.** `display:flex` made every text fragment and the `<b>one</b>` a
   separate flex item, so "Your info goes to / one / local pro…" rendered as broken columns on
   a phone. Each line's text is now wrapped in a single span. This bug is still in the
