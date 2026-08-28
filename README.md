@@ -68,7 +68,7 @@ the funnel already owns the full question set. Consequences:
    It could not be verified from the build session: that sandbox blocks outbound hosts, so
    `my.leadcapture.io` was stubbed in testing. The script tag, its container and the event
    wiring are confirmed correct; the funnel itself is unverified.
-2. **Reviews are real** (12, verbatim) but **anonymous** — no names/cities were supplied, and
+2. **Reviews are real** (4 shown, verbatim; the other 8 are parked in an HTML comment beside them) but **anonymous** — no names/cities were supplied, and
    inventing them would be fabrication. Add `<div class="loc">Name, City</div>` back into each
    `.top` block when you have them; the `.rev .loc` CSS is still present.
 3. `4.9`, `11,000+`, and "Thousands of roofs checked" are the owner's own figures, confirmed.
