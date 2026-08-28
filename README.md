@@ -8,7 +8,18 @@ Everything below is a **drop-in replacement** (same filenames as your live site)
 ## 🌐 LANDING / FUNNEL PAGES (changed)
 
 ### `roof-match.html` — **ROOF-MATCHING QUIZ FUNNEL (single page, no redirect)**
-Route: **`/roof-match`** (Cloudflare Pages serves the `.html` at the clean URL). Live on `main`.
+**LIVE: https://servicematchup.com/roof-match** (Cloudflare Pages serves the root `.html`
+at the clean URL; deploys from `main`).
+
+Ad links — point each ad at its matching angle so the promise and the first screen line up:
+
+| Angle | URL |
+|---|---|
+| generic | `https://servicematchup.com/roof-match` |
+| leak | `https://servicematchup.com/roof-match?angle=leak` |
+| storm | `https://servicematchup.com/roof-match?angle=storm` |
+| aging roof | `https://servicematchup.com/roof-match?angle=old` |
+| insurance claim | `https://servicematchup.com/roof-match?angle=insurance` |
 
 **Faithful PORT of `reference/roof-match-funnel.html` — emotion-led version.** That file is
 the source of truth for all copy, layout, sections, colors, and behavior. Above the fold the
@@ -62,10 +73,17 @@ the funnel already owns the full question set. Consequences:
   Lead Prosper → GHL is LeadCapture's job now.
 - The quiz answers are no longer collected by this page, so `?angle=` still swaps the
   headline/subhead but no longer pre-highlights a step-1 option (there is no step 1 here).
-- **The One-Pro, Never-Sold Guarantee card appears twice**, per the brief: as its own section
-  directly below the "Trusted by Over 11,000+ Homeowners" bar, and again directly under the
-  form. The second one is the reference's in-form placement, adapted to sit under the embed
-  (the native form it lived inside no longer exists).
+- **The One-Pro, Never-Sold Guarantee card appears ONCE**, under the form. The reference has
+  it twice, but on the live page the two landed about 500px apart and read as a duplicate,
+  so the standalone section below the trust bar was removed on the owner's call. Because the
+  form is an embed, the surviving card is still reachable on scroll without completing
+  anything — which is what the second placement was for.
+- **`.microtrust` was fixed.** `display:flex` made every text fragment and the `<b>one</b>` a
+  separate flex item, so "Your info goes to / one / local pro…" rendered as broken columns on
+  a phone. Each line's text is now wrapped in a single span. This bug is still in the
+  reference — do not port it back in.
+- The guarantee card is tightened under 430px, and the activity ticker sits at `bottom:84px`
+  on phones so it clears the sticky CTA bar.
 
 ⚠️ **BEFORE RUNNING TRAFFIC**
 1. **Verify the embed renders on the live domain and that a test lead reaches Lead Prosper → GHL.**

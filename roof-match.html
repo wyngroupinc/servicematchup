@@ -118,7 +118,9 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   .cta:hover{background:var(--green-ink)}
   .cta[disabled]{opacity:.5;cursor:not-allowed}
   .backbtn{background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;padding:10px 2px 0;font-family:var(--sans)}
-  .microtrust{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;color:var(--muted);margin-top:12px}
+  .microtrust{display:flex;align-items:flex-start;justify-content:center;gap:7px;font-size:12px;
+    color:var(--muted);margin-top:12px;text-align:left;line-height:1.45}
+  .microtrust>span:first-child{flex:0 0 auto;line-height:1.45}
   .lock{color:var(--green);font-weight:800}
   .step{display:none}.step.active{display:block;animation:fade .25s ease}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -182,6 +184,14 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   .gcard .gh{display:block;font-family:var(--serif);font-size:17px;color:var(--navy);font-weight:800;margin-bottom:4px;letter-spacing:-.2px}
   .gcard .gt{font-size:13px;color:#33475b;line-height:1.5}
   .gcard .gt b{color:var(--navy)}
+  @media(max-width:430px){
+    .gcard{padding:16px 13px 14px;border-radius:12px}
+    .gcard .grow{gap:10px}
+    .gcard .seal{font-size:25px}
+    .gcard .gh{font-size:15.5px;margin-bottom:3px}
+    .gcard .gt{font-size:12.5px;line-height:1.45}
+    .gtag{font-size:10px;padding:3px 12px;top:-11px}
+  }
 
   .revs{display:grid;gap:14px;margin-top:26px}
   .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow-sm)}
@@ -220,7 +230,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   footer p{margin-bottom:10px;line-height:1.6}
   footer a{color:#b9cee0;text-decoration:underline}
 
-  #ticker{position:fixed;left:16px;bottom:16px;z-index:60;max-width:300px;background:#fff;border:1px solid var(--line);
+  #ticker{position:fixed;left:16px;bottom:84px;z-index:60;max-width:300px;background:#fff;border:1px solid var(--line);
     border-left:4px solid var(--green);border-radius:12px;box-shadow:0 14px 34px rgba(22,50,78,.16);
     padding:12px 14px;display:none;align-items:center;gap:11px}
   #ticker .pic{width:34px;height:34px;border-radius:9px;background:var(--green-soft);color:var(--green-ink);display:grid;place-items:center;font-size:18px;flex:0 0 auto}
@@ -240,6 +250,7 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   .form-body>*{position:relative;z-index:1}
   .underform{padding:0 0 4px}
 
+  @media(min-width:900px){ #ticker{bottom:16px} }
   @media(min-width:560px){ h1{font-size:38px} h2{font-size:29px} .qtitle{font-size:25px} }
 </style>
 </head>
@@ -282,8 +293,8 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
         <script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script>
       </div>
       <div class="underform">
-        <div class="microtrust"><span class="lock">🔒</span> Your info goes to <b>one</b> local pro — never sold to a dozen companies.</div>
-        <div class="microtrust" style="margin-top:6px"><span style="color:var(--green);font-weight:800">✓</span> Not ready to hire anyone? Good — this is just a free look.</div>
+        <div class="microtrust"><span class="lock">🔒</span><span>Your info goes to <b>one</b> local pro — never sold to a dozen companies.</span></div>
+        <div class="microtrust" style="margin-top:6px"><span style="color:var(--green);font-weight:800">✓</span><span>Not ready to hire anyone? Good — this is just a free look.</span></div>
         <div class="gcard"><span class="gtag">✓ OUR GUARANTEE</span><div class="grow"><span class="seal">🛡️</span><div><b class="gh">The One-Pro, Never-Sold Guarantee</b><span class="gt">We'll only ever match you with <b>one</b> local pro. Your info is <b>never</b> sold or shared with a dozen companies. Ever. That's the whole promise this is built on.</span></div></div></div>
       </div>
     </div>
@@ -306,10 +317,6 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   <span class="m"><span class="c">✓</span> No Obligation</span>
 </div></div>
 
-<!-- GUARANTEE CARD (visible on scroll) -->
-<section style="padding:30px 0 6px"><div class="wrap">
-  <div class="gcard"><span class="gtag">✓ OUR GUARANTEE</span><div class="grow"><span class="seal">🛡️</span><div><b class="gh">The One-Pro, Never-Sold Guarantee</b><span class="gt">We'll only ever match you with <b>one</b> local pro. Your info is <b>never</b> sold or shared with a dozen companies. Ever. That's the whole promise this is built on.</span></div></div></div>
-</div></section>
 
 <!-- HOW IT WORKS -->
 <section><div class="wrap">
