@@ -28,14 +28,20 @@ The only deliberate deviations from the reference, all of them required:
 | Review placeholders say `[City], [State]`, not `[City], TX`; phone/ZIP placeholders no longer Dallas-specific | geo-neutral is a hard rule |
 | Trust badge read `local Local` → `Local Pros Near You` | find/replace artifact in the reference |
 | `TICK` ticker array ships **empty** (reference strings preserved, commented) | "No fabricated reviews/stats/activity" — the reference's own comment says the same; the popup removes itself until real data is wired |
+| 3 placeholder review cards → 12 real owner-supplied reviews, anonymous attribution | the reference's placeholders were explicitly marked "REPLACE WITH REAL" |
 
 ⚠️ **BEFORE RUNNING TRAFFIC**
 1. `LEAD_ENDPOINT` — the Lead Prosper posting URL. **Ships empty = preview mode**: the
    quiz runs and shows the success state but posts nothing, so the page is safe to
    deploy now. Fill it in, then send one real test lead and confirm Lead Prosper → GHL
    → the follow-up sequence actually fires. (Still untested end to end.)
-2. **Reviews are the reference's placeholders** — no real ones have been supplied and
-   GHL holds none (checked). Paste 3 real, verifiable reviews into the `.rev` blocks.
+2. **Reviews are REAL** — 12 owner-supplied homeowner reviews, quotes verbatim, replacing
+   the reference's 3 placeholders. Attribution is deliberately anonymous
+   ("Verified homeowner") because no reviewer **names or cities** were supplied, and
+   inventing them would be fabrication. If you have names/cities, add
+   `<div class="loc">Name, City</div>` back into each `.top` block — the `.rev .loc`
+   CSS rule is still there, so it's a pure markup edit. Named reviews convert better
+   than anonymous ones, so this is worth doing.
 3. **Verify the `4.9` rating and the `2,300+` counts** in the header, proof band, and
    reviews lead — they're carried over from the reference and are still on the
    "verify your stats" open item below.
