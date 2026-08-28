@@ -42,9 +42,11 @@ The only deliberate deviations from the reference, all of them required:
    `<div class="loc">Name, City</div>` back into each `.top` block — the `.rev .loc`
    CSS rule is still there, so it's a pure markup edit. Named reviews convert better
    than anonymous ones, so this is worth doing.
-3. **Verify the `4.9` rating and the `2,300+` counts** in the header, proof band, and
-   reviews lead — they're carried over from the reference and are still on the
-   "verify your stats" open item below.
+3. **`4.9` and `2,300+` are confirmed by the owner** and are intentional. They appear in
+   the header chip, the under-card proof band, the reviews lead line, and the
+   "4.9 Google Rating" trust badge. Leave them in place. (Substantiation for any
+   advertised figure is the advertiser's responsibility — keep whatever backs these
+   on file.)
 4. `TICK` — uncomment/wire to real recent requests from GHL/CRM if you want the ticker.
 
 ### `servicematchup-roofing-lander.html` — PRIMARY landing page (Variant A)
