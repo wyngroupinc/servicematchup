@@ -8,46 +8,53 @@ Everything below is a **drop-in replacement** (same filenames as your live site)
 ## 🌐 LANDING / FUNNEL PAGES (changed)
 
 ### `roof-match.html` — **ROOF-MATCHING QUIZ FUNNEL (single page, no redirect)**
-Route: **`/roof-match`** (Cloudflare Pages serves the `.html` at the clean URL).
-Collapses the old `roofing-lander → get-started` two-page hop — that hop leaks
-conversions, so the multi-step quiz lives **on the page, above the fold**.
+Route: **`/roof-match`** (Cloudflare Pages serves the `.html` at the clean URL). Live on `main`.
 
-**This is a faithful PORT of `reference/roof-match-funnel.html`, not a redesign.**
-That reference file is the source of truth for all copy, layout, sections, colors,
-and behavior. Above the fold it renders **pixel-identical** to the reference at
-390px (verified by screenshot hash). If you change this page, change the reference
-too — or the next port will silently undo you.
+**Faithful PORT of `reference/roof-match-funnel.html` — emotion-led version.** That file is
+the source of truth for all copy, layout, sections, colors, and behavior. Above the fold the
+port renders **pixel-identical** to the reference at 390px (screenshot hashes match). If you
+change this page, change the reference too, or the next port silently undoes you.
 
-The only deliberate deviations from the reference, all of them required:
+This version: emotion/desire-led H1 ("Get the truth about your roof…"), objections moved into
+the subhead, the "why now" line, the named mechanisms (**The One-Match Method**, the
+**4-Point Pro Check**, the **23-Point Roof Report**), the value-stack checklist, the
+**No-Runaround Promise** risk-reversal block, the "just a free look" objection-buster under
+the form, and the DFW-city live-activity ticker.
+Palette navy `#16324E` / green `#2E8259` / gold `#C4972F`; Plus Jakarta Sans + Inter.
+
+Deliberate deviations from the reference, all of them required:
 
 | Change | Why |
 |---|---|
 | `LEAD_ENDPOINT` / `CAPI_ENDPOINT` hoisted to a config block at the top of the script | allowed integration wiring |
 | Lead payload gains `event_id`, `tcpa_consent`, `landing_page`; `Lead` fires with that `eventID` | lets a server-side CAPI Lead dedupe against the pixel |
-| Final-CTA `onclick="fbq('track','InitiateCheckout')"` removed; `InitiateCheckout` now fires once, on the first step-1 answer | the reference double-fired it; spec says "on form start" |
-| Review placeholders say `[City], [State]`, not `[City], TX`; phone/ZIP placeholders no longer Dallas-specific | geo-neutral is a hard rule |
-| Trust badge read `local Local` → `Local Pros Near You` | find/replace artifact in the reference |
-| `TICK` ticker array ships **empty** (reference strings preserved, commented) | "No fabricated reviews/stats/activity" — the reference's own comment says the same; the popup removes itself until real data is wired |
-| 3 placeholder review cards → 12 real owner-supplied reviews, anonymous attribution | the reference's placeholders were explicitly marked "REPLACE WITH REAL" |
+| Final-CTA `onclick` InitiateCheckout removed; it now fires **once**, on the first step-1 answer | the reference fired it on every step-1 tap *and* on the CTA; spec says "on form start" |
+| "The One-Match Method™" → "The One-Match Method" (no ™) | per the brief: no ™ unless the marks are actually filed. **If they are filed, put it back.** |
+| 3 placeholder review cards → 12 real owner-supplied reviews, anonymous attribution | the reference's placeholders were marked "REPLACE WITH REAL" |
+
+**The DFW-city ticker is kept exactly as the reference has it** (Plano, Frisco, Arlington,
+McKinney, Fort Worth, Denton, Allen, Rockwall, Garland, Mansfield) per the brief. Wire `TICK`
+to real GHL/CRM activity when you can — the format already matches.
+
+⚠️ **KNOWN ISSUES CARRIED OVER FROM THE REFERENCE — not fixed, so the port stays faithful.
+Say the word and either is a one-line change:**
+1. **"Step 1 of 6" never renders.** `.step{display:none}` (which hides quiz steps) also catches
+   `<span class="step" id="stepcount">`. The author's own `.progmeta .step{color:var(--gold)}`
+   shows it was meant to be visible in gold. Fix: rename that span's class (e.g. `stepno`) and
+   update `.progmeta .step` to match.
+2. **No answer options are above the fold at 390px.** The taller hero puts the first option at
+   y=831–899 against an 844px viewport — the question shows, the options do not (and real
+   browser chrome takes ~90px more). Previous version had 4 of 5 visible. Trimming the hero
+   would fix it but would break pixel-fidelity with the reference, so it is your call.
 
 ⚠️ **BEFORE RUNNING TRAFFIC**
-1. `LEAD_ENDPOINT` — the Lead Prosper posting URL. **Ships empty = preview mode**: the
-   quiz runs and shows the success state but posts nothing, so the page is safe to
-   deploy now. Fill it in, then send one real test lead and confirm Lead Prosper → GHL
-   → the follow-up sequence actually fires. (Still untested end to end.)
-2. **Reviews are REAL** — 12 owner-supplied homeowner reviews, quotes verbatim, replacing
-   the reference's 3 placeholders. Attribution is deliberately anonymous
-   ("Verified homeowner") because no reviewer **names or cities** were supplied, and
-   inventing them would be fabrication. If you have names/cities, add
-   `<div class="loc">Name, City</div>` back into each `.top` block — the `.rev .loc`
-   CSS rule is still there, so it's a pure markup edit. Named reviews convert better
-   than anonymous ones, so this is worth doing.
-3. **`4.9` and `2,300+` are confirmed by the owner** and are intentional. They appear in
-   the header chip, the under-card proof band, the reviews lead line, and the
-   "4.9 Google Rating" trust badge. Leave them in place. (Substantiation for any
-   advertised figure is the advertiser's responsibility — keep whatever backs these
-   on file.)
-4. `TICK` — uncomment/wire to real recent requests from GHL/CRM if you want the ticker.
+1. `LEAD_ENDPOINT` — **ships empty = preview mode**: the quiz runs and shows the success state
+   but posts nothing. The page is live but **not capturing leads**. Paste the Lead Prosper URL,
+   then send one real test lead and confirm Lead Prosper → GHL → follow-up fires. Still untested.
+2. **Reviews are real** (12, verbatim) but **anonymous** — no names/cities were supplied, and
+   inventing them would be fabrication. Add `<div class="loc">Name, City</div>` back into each
+   `.top` block when you have them; the `.rev .loc` CSS is still present.
+3. `4.9`, `11,000+`, and "Thousands of roofs checked" are the owner's own figures, confirmed.
 
 ### `servicematchup-roofing-lander.html` — PRIMARY landing page (Variant A)
 - Headline: **"Your Roof Looks Fine. That's Exactly the Problem."**

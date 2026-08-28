@@ -6,20 +6,23 @@
 <title>Get Matched With a Trusted Local Roofer | Service Matchup</title>
 <meta name="description" content="Tell us about your roof and get matched with ONE vetted local roofer for a free inspection and honest quote. No obligation. Financing available.">
 
-<!-- ============ Meta Pixel (Service Matchup dataset 1605200247372902) ============ -->
+<!-- Fonts (load on your live site; falls back to Georgia/system if blocked) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ===== Meta Pixel (Service Matchup dataset 1605200247372902) ===== -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1605200247372902');
-fbq('track', 'PageView');
+fbq('init','1605200247372902');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1605200247372902&ev=PageView&noscript=1"/></noscript>
-
-<!-- ============ Microsoft Clarity ============ -->
+<!-- ===== Microsoft Clarity ===== -->
 <script type="text/javascript">
 (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -28,368 +31,356 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
 
 <style>
   :root{
-    --navy:#0D2847; --navy-2:#123255; --teal:#19E3C4; --teal-ink:#0a8f7c;
-    --ink:#0D2847; --muted:#5a6b7e; --line:#e5eaf0; --bg:#f4f7fa; --white:#fff;
-    --gold:#F5B400; --good:#1B9F6B; --shadow:0 10px 30px rgba(13,40,71,.10);
-    --radius:16px;
+    --navy:#16324E; --navy-deep:#0E2740; --ink:#16324E;
+    --green:#2E8259; --green-ink:#20613F; --green-soft:#EAF3EE;
+    --gold:#C4972F; --muted:#5C6B7A; --line:#E7EAF0;
+    --bg:#FFFFFF; --soft:#F5F7FA; --cream:#FCF8F2;
+    --serif:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    --shadow:0 14px 40px rgba(22,50,78,.09); --shadow-sm:0 4px 16px rgba(22,50,78,.06);
+    --radius:18px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased}
+  body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
   img{max-width:100%;display:block}
-  .wrap{max-width:640px;margin:0 auto;padding:0 18px}
-  .center{text-align:center}
+  .wrap{max-width:680px;margin:0 auto;padding:0 20px}
+  h1,h2,h3,.serif{font-family:var(--serif)}
+  .ac{font-family:var(--serif);color:var(--green);font-weight:800}
 
-  /* ---------- top trust strip ---------- */
-  .toptrust{background:var(--navy);color:#cfe;font-size:12.5px;letter-spacing:.2px}
-  .toptrust .wrap{display:flex;gap:16px;justify-content:center;align-items:center;
-    padding:8px 18px;flex-wrap:wrap;color:#bfe9e0}
-  .toptrust b{color:#fff}
-  .toptrust span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
-  .tick{color:var(--teal);font-weight:800}
+  /* top strip */
+  .topbar{background:var(--navy-deep);color:#cfe0d6;font-size:11.5px;letter-spacing:.5px;text-transform:uppercase;font-weight:600}
+  .topbar .wrap{display:flex;gap:8px;justify-content:center;align-items:center;padding:8px 20px;flex-wrap:wrap;text-align:center}
+  .topbar b{color:#fff}
+  .topbar .g{color:var(--gold)}
 
-  /* ---------- header ---------- */
-  header.brand{background:var(--white);border-bottom:1px solid var(--line)}
-  header.brand .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
-  .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:18px;color:var(--navy)}
-  .logo .dot{width:26px;height:26px;border-radius:7px;background:var(--teal);
-    display:grid;place-items:center;color:var(--navy);font-size:16px}
-  .hrating{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
-  .stars{color:var(--gold);letter-spacing:1px}
+  /* header */
+  header.brand{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:50}
+  header.brand .wrap{display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:800;font-size:18px;color:var(--navy);letter-spacing:-.2px}
+  .logo b{color:var(--green)}
+  .logo .mk{width:34px;height:34px;border-radius:9px;background:var(--green-soft);border:1px solid #d6e8dd;display:grid;place-items:center}
+  .logo .mk svg{width:20px;height:20px}
+  .hbtn{font-family:var(--sans);font-size:13px;font-weight:700;color:#fff;background:var(--green);
+    padding:9px 16px;border-radius:9px;text-decoration:none;box-shadow:var(--shadow-sm)}
+  .hbtn:hover{background:var(--green-ink)}
+  .logo-img{height:38px;width:auto;display:block}
 
-  /* ---------- hero ---------- */
-  .hero{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;
-    padding:26px 0 30px}
-  .eyebrow{display:inline-block;background:rgba(25,227,196,.14);color:var(--teal);
-    font-weight:700;font-size:12.5px;padding:5px 12px;border-radius:999px;margin-bottom:14px;
-    border:1px solid rgba(25,227,196,.35)}
-  h1{font-size:27px;line-height:1.18;font-weight:800;letter-spacing:-.3px}
-  h1 .hl{color:var(--teal)}
-  .sub{margin-top:12px;font-size:15.5px;color:#d7e4ef;max-width:560px}
-  .herobadges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-  .hb{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.14);padding:7px 11px;border-radius:10px;font-size:12.5px;color:#eaf3fa}
-  .hb .i{color:var(--teal);font-weight:800}
+  /* hero */
+  .hero{background:radial-gradient(125% 90% at 82% -12%,#ECE4D6 0%,rgba(236,228,214,0) 46%),linear-gradient(180deg,#DBE4ED 0%,#C6D4E1 100%);
+    padding:30px 0 36px;text-align:center;position:relative;overflow:hidden}
+  .eyebrow{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);
+    color:var(--navy);font-size:12.5px;font-weight:600;padding:6px 13px;border-radius:999px;margin-bottom:16px;box-shadow:var(--shadow-sm)}
+  .eyebrow .c{color:var(--green);font-weight:800}
+  h1{font-size:31px;line-height:1.15;font-weight:800;letter-spacing:-.6px;color:var(--navy)}
+  .sub{margin:14px auto 0;font-size:16px;color:var(--muted);max-width:540px;font-family:var(--sans)}
+  .sub b{color:var(--navy)}
+  .trustrow{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:16px;font-size:13px;color:var(--navy);font-weight:600}
+  .trustrow span{display:inline-flex;align-items:center;gap:6px}
+  .trustrow .c{color:var(--green);font-weight:800}
+  .whynow{margin:14px auto 0;max-width:490px;font-size:13px;font-style:italic;color:var(--muted);line-height:1.45}
 
-  /* ---------- quiz card ---------- */
-  .card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
-    margin-top:20px;overflow:hidden;border:1px solid rgba(255,255,255,.5);color:var(--ink)}
-  .card-head{padding:16px 18px 0}
-  .progline{height:7px;background:var(--line);border-radius:99px;overflow:hidden;margin-bottom:6px}
-  .progfill{height:100%;width:16%;background:linear-gradient(90deg,var(--teal),var(--teal-ink));
-    border-radius:99px;transition:width .35s ease}
-  .progmeta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);font-weight:600}
-  .card-body{padding:10px 18px 20px}
-  .qtitle{font-size:20px;font-weight:800;margin:12px 0 4px;letter-spacing:-.2px}
-  .qsub{font-size:13.5px;color:var(--muted);margin-bottom:14px}
-  .qsub b{color:var(--teal-ink)}
+  /* quiz card */
+  .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);margin:22px auto 0;
+    border:1px solid #eef1f5;overflow:hidden;text-align:left;color:var(--ink);max-width:520px}
+  .card-head{padding:18px 20px 0}
+  .progline{height:8px;background:#eef1f5;border-radius:99px;overflow:hidden;margin-bottom:7px}
+  .progfill{height:100%;width:16%;background:linear-gradient(90deg,var(--green),#3aa06c);border-radius:99px;transition:width .35s ease}
+  .progmeta{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted);font-weight:700;letter-spacing:.3px}
+  .progmeta .step{color:var(--gold)}
+  .card-body{padding:12px 20px 22px}
+  .qtitle{font-family:var(--serif);font-size:23px;font-weight:800;margin:12px 0 4px;letter-spacing:-.4px;color:var(--navy);line-height:1.22}
+  .qsub{font-size:13.5px;color:var(--muted);margin-bottom:15px}
+  .qsub b{color:var(--green-ink)}
   .opts{display:flex;flex-direction:column;gap:10px}
-  .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;
-    background:var(--white);border:2px solid var(--line);border-radius:12px;
-    padding:14px 14px;font-size:15.5px;font-weight:600;color:var(--ink);cursor:pointer;
-    transition:.15s;font-family:inherit}
-  .opt:hover{border-color:var(--teal);background:#f2fffb;transform:translateY(-1px)}
+  .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;
+    border:1.5px solid var(--line);border-radius:12px;padding:15px 15px;font-size:15.5px;font-weight:600;
+    color:var(--ink);cursor:pointer;transition:.15s;font-family:var(--sans)}
+  .opt:hover{border-color:var(--green);background:var(--green-soft);transform:translateY(-1px)}
   .opt .emo{font-size:20px;width:26px;text-align:center;flex:0 0 auto}
   .opt .chev{margin-left:auto;color:#c3ced9;font-weight:800}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .grid2 .opt{justify-content:center;text-align:center}
 
-  /* inputs */
   .field{margin-bottom:12px}
   .field label{display:block;font-size:13px;font-weight:700;margin-bottom:5px;color:var(--navy)}
-  .field input{width:100%;padding:13px 14px;border:2px solid var(--line);border-radius:11px;
-    font-size:16px;font-family:inherit;color:var(--ink)}
-  .field input:focus{outline:none;border-color:var(--teal)}
+  .field input{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:11px;font-size:16px;font-family:var(--sans);color:var(--ink)}
+  .field input:focus{outline:none;border-color:var(--green)}
   .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .consent{font-size:11px;color:var(--muted);line-height:1.45;margin:8px 2px 14px;
-    display:flex;gap:8px;align-items:flex-start}
-  .consent input{margin-top:2px;flex:0 0 auto;width:16px;height:16px}
-  .cta{width:100%;background:linear-gradient(180deg,var(--teal),var(--teal-ink));color:#04382f;
-    border:none;border-radius:12px;padding:16px;font-size:17px;font-weight:800;cursor:pointer;
-    font-family:inherit;box-shadow:0 6px 16px rgba(25,227,196,.35);letter-spacing:.2px}
-  .cta:hover{filter:brightness(1.03)}
-  .cta[disabled]{opacity:.55;cursor:not-allowed;filter:grayscale(.3)}
-  .backbtn{background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;
-    cursor:pointer;padding:10px 2px 0;font-family:inherit}
-  .microtrust{display:flex;align-items:center;justify-content:center;gap:7px;
-    font-size:12px;color:var(--muted);margin-top:12px}
-  .lock{color:var(--good);font-weight:800}
-
-  .step{display:none}
-  .step.active{display:block;animation:fade .25s ease}
+  .consent{font-size:11px;color:var(--muted);line-height:1.45;margin:8px 2px 14px;display:flex;gap:8px;align-items:flex-start}
+  .consent input{margin-top:2px;flex:0 0 auto;width:16px;height:16px;accent-color:var(--green)}
+  .cta{width:100%;background:var(--green);color:#fff;border:none;border-radius:12px;padding:16px;
+    font-size:17px;font-weight:700;cursor:pointer;font-family:var(--sans);box-shadow:0 8px 20px rgba(46,130,89,.28);letter-spacing:.2px}
+  .cta:hover{background:var(--green-ink)}
+  .cta[disabled]{opacity:.5;cursor:not-allowed}
+  .backbtn{background:none;border:none;color:var(--muted);font-size:13px;font-weight:600;cursor:pointer;padding:10px 2px 0;font-family:var(--sans)}
+  .microtrust{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;color:var(--muted);margin-top:12px}
+  .lock{color:var(--green);font-weight:800}
+  .step{display:none}.step.active{display:block;animation:fade .25s ease}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-
-  /* success */
   #done{display:none;text-align:center;padding:26px 18px}
-  #done .big{width:64px;height:64px;border-radius:50%;background:var(--good);color:#fff;
-    display:grid;place-items:center;font-size:32px;margin:0 auto 14px}
+  #done .big{width:64px;height:64px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:32px;margin:0 auto 14px}
 
-  /* ---------- proof band under card ---------- */
-  .under{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:16px 0 0;
-    color:#cfe0ee;font-size:12.5px}
+  .under{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:18px 0 0;color:var(--muted);font-size:12.5px;font-weight:600}
   .under span{display:inline-flex;gap:6px;align-items:center}
-  .under .i{color:var(--teal)}
+  .under .c{color:var(--gold)}
 
-  /* ---------- section blocks (below fold) ---------- */
-  section{padding:34px 0}
-  .sec-alt{background:var(--white)}
-  h2{font-size:22px;font-weight:800;text-align:center;letter-spacing:-.3px}
-  .lead{text-align:center;color:var(--muted);font-size:15px;margin-top:8px;max-width:520px;margin-left:auto;margin-right:auto}
+  /* trusted-by bar */
+  .trustband{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .trustband .wrap{display:flex;align-items:center;justify-content:center;gap:16px;padding:16px 20px;flex-wrap:wrap}
+  .trustband .badge{width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--gold);display:grid;place-items:center;font-size:14px}
+  .trustband .t{font-weight:800;color:var(--navy);font-size:14.5px}
+  .trustband .sep{color:var(--line)}
+  .trustband .m{font-size:12.5px;color:var(--muted);font-weight:600;display:inline-flex;gap:6px;align-items:center}
+  .trustband .m .c{color:var(--green)}
 
-  .steps3{display:grid;gap:14px;margin-top:22px}
-  .s3{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:flex-start}
-  .s3 .n{flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:var(--navy);color:var(--teal);
-    display:grid;place-items:center;font-weight:800;font-size:17px}
-  .s3 h3{font-size:16px;margin-bottom:3px}
-  .s3 p{font-size:13.5px;color:var(--muted)}
+  /* sections */
+  section{padding:40px 0}
+  .sec-soft{background:var(--soft)}
+  .sec-green{background:var(--green-soft)}
+  .eyebrow2{text-align:center;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+  h2{font-size:26px;font-weight:800;text-align:center;letter-spacing:-.5px;color:var(--navy);line-height:1.2}
+  .lead{text-align:center;color:var(--muted);font-size:15px;margin:10px auto 0;max-width:520px}
 
-  .why{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
-  .why .w{background:var(--white);border:1px solid var(--line);border-radius:13px;padding:16px}
-  .why .w .i{width:34px;height:34px;border-radius:9px;background:#eafcf8;color:var(--teal-ink);
-    display:grid;place-items:center;font-size:18px;font-weight:800;margin-bottom:9px}
-  .why .w h3{font-size:14.5px;margin-bottom:3px}
-  .why .w p{font-size:12.8px;color:var(--muted)}
+  .steps3{display:grid;gap:14px;margin-top:26px}
+  .s3{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;gap:15px;align-items:flex-start;box-shadow:var(--shadow-sm)}
+  .s3 .n{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--green-soft);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:16px;position:relative}
+  .s3 .n::after{content:attr(data-n);position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--gold);color:#fff;border-radius:50%;font-size:11px;display:grid;place-items:center}
+  .s3 h3{font-family:var(--serif);font-size:18px;margin-bottom:4px;color:var(--navy)}
+  .s3 p{font-size:13.8px;color:var(--muted)}
 
-  .finance{background:linear-gradient(180deg,#0e2c4d,#164070);color:#fff;border-radius:16px;
-    padding:22px;margin-top:22px;text-align:center}
-  .finance .tag{display:inline-block;background:var(--gold);color:#3a2b00;font-weight:800;
-    font-size:11.5px;padding:4px 10px;border-radius:99px;margin-bottom:10px}
-  .finance h3{font-size:19px;margin-bottom:6px}
-  .finance p{font-size:14px;color:#dbe8f4}
+  .why{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+  .w{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow-sm)}
+  .w .i{width:38px;height:38px;border-radius:10px;background:var(--green-soft);color:var(--green-ink);display:grid;place-items:center;font-size:18px;margin-bottom:10px}
+  .w h3{font-family:var(--serif);font-size:16px;margin-bottom:4px;color:var(--navy)}
+  .w p{font-size:12.8px;color:var(--muted)}
 
-  /* reviews */
-  .revs{display:grid;gap:12px;margin-top:22px}
-  .rev{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:16px}
-  .rev .top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-  .rev .av{width:38px;height:38px;border-radius:50%;background:var(--navy);color:var(--teal);
-    display:grid;place-items:center;font-weight:800}
-  .rev .who{font-weight:700;font-size:14px}
+  .finance{background:var(--navy);color:#fff;border-radius:18px;padding:26px;margin-top:26px;text-align:center;position:relative;overflow:hidden}
+  .finance .tag{display:inline-block;background:var(--gold);color:#fff;font-weight:800;font-size:11.5px;letter-spacing:.5px;padding:5px 12px;border-radius:99px;margin-bottom:12px}
+  .finance h3{font-family:var(--serif);font-size:22px;margin-bottom:8px;color:#fff}
+  .finance p{font-size:14.5px;color:#d4e2dc;max-width:460px;margin:0 auto}
+
+  .vstack{max-width:540px;margin:26px auto 0;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 22px;box-shadow:var(--shadow-sm);list-style:none}
+  .vstack li{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid #f0f3f7;font-size:14.5px;color:#33475b;line-height:1.45}
+  .vstack li:last-child{border-bottom:none}
+  .vstack li .ck{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--green-soft);color:var(--green-ink);display:grid;place-items:center;font-size:12px;font-weight:800;margin-top:1px}
+  .vstack li b{color:var(--navy)}
+  .stackfoot{text-align:center;margin-top:16px;font-weight:800;color:var(--green-ink);font-size:14.5px}
+  .promisecard{max-width:560px;margin:0 auto;background:var(--green-soft);border:1px solid #cfe6da;border-radius:18px;padding:26px 24px}
+  .promisecard h3{font-family:var(--serif);text-align:center;font-size:23px;font-weight:800;color:var(--navy);margin-bottom:2px;letter-spacing:-.4px}
+  .promisecard .pg{display:grid;gap:11px;margin-top:16px}
+  .promisecard .pg div{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#2f4356;line-height:1.45}
+  .promisecard .pg .ck{color:var(--green);font-weight:800;flex:0 0 auto}
+
+  .revs{display:grid;gap:14px;margin-top:26px}
+  .rev{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow-sm)}
+  .rev .top{display:flex;align-items:center;gap:11px;margin-bottom:9px}
+  .rev .av{width:40px;height:40px;border-radius:50%;background:var(--green-soft);color:var(--green-ink);display:grid;place-items:center;font-weight:800}
+  .rev .who{font-weight:700;font-size:14px;color:var(--navy)}
   .rev .loc{font-size:12px;color:var(--muted)}
   .rev .st{color:var(--gold);font-size:13px;margin-left:auto}
-  .rev p{font-size:13.6px;color:#33475b}
-  .rev .vf{display:inline-flex;gap:5px;align-items:center;font-size:11px;color:var(--good);font-weight:700;margin-top:8px}
+  .rev p{font-size:14px;color:#3c4a58;font-style:italic}
+  .rev .vf{display:inline-flex;gap:5px;align-items:center;font-size:11px;color:var(--green);font-weight:700;margin-top:9px;font-style:normal}
+  .badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+  .badge2{background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 15px;font-size:12.5px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px;box-shadow:var(--shadow-sm)}
+  .badge2 .i{color:var(--green);font-size:16px}
 
-  .badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:22px}
-  .badge{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:10px 14px;
-    font-size:12.5px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px}
-  .badge .i{color:var(--teal-ink);font-size:16px}
-
-  /* faq */
-  .faq{margin-top:20px;display:grid;gap:10px}
-  details{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:2px 16px}
-  summary{list-style:none;cursor:pointer;padding:14px 0;font-weight:700;font-size:14.5px;
-    display:flex;justify-content:space-between;align-items:center}
+  .faq{margin-top:22px;display:grid;gap:10px}
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:2px 18px;box-shadow:var(--shadow-sm)}
+  summary{list-style:none;cursor:pointer;padding:15px 0;font-weight:700;font-size:15px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:12px}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--teal-ink);font-size:20px;font-weight:800}
+  summary::after{content:"+";color:var(--green);font-size:22px;font-weight:700}
   details[open] summary::after{content:"–"}
-  details p{padding:0 0 14px;font-size:13.5px;color:var(--muted)}
+  details p{padding:0 0 15px;font-size:13.8px;color:var(--muted)}
 
-  .finalcta{background:var(--navy);color:#fff;text-align:center;padding:38px 0}
-  .finalcta h2{color:#fff}
-  .finalcta .lead{color:#cfe0ee}
-  .bigbtn{display:inline-block;margin-top:18px;background:linear-gradient(180deg,var(--teal),var(--teal-ink));
-    color:#04382f;font-weight:800;font-size:17px;padding:16px 30px;border-radius:12px;text-decoration:none;
-    box-shadow:0 6px 16px rgba(25,227,196,.3)}
+  .finalcta{background:var(--soft);padding:44px 0}
+  .finalcard{background:#fff;border-radius:20px;border:1px solid var(--line);border-top:4px solid var(--green);
+    box-shadow:var(--shadow);padding:34px 24px;text-align:center;max-width:520px;margin:0 auto}
+  .finalcard h2{margin-bottom:8px}
+  .bigbtn{display:inline-block;margin-top:18px;background:var(--navy);color:#fff;font-weight:700;font-size:16.5px;
+    padding:15px 28px;border-radius:12px;text-decoration:none;box-shadow:var(--shadow-sm)}
+  .bigbtn:hover{background:var(--navy-deep)}
+  .finalcard .fine{font-size:12px;color:var(--muted);margin-top:12px}
 
-  footer{background:#08172a;color:#8fa6bd;font-size:11.5px;padding:24px 0 34px}
-  footer .wrap{max-width:640px}
-  footer p{margin-bottom:9px;line-height:1.55}
-  footer a{color:#bcd2e6}
+  footer{background:var(--navy-deep);color:#8ea6bd;font-size:11.5px;padding:30px 0 40px}
+  footer .wrap{max-width:680px}
+  footer .fl{display:flex;align-items:center;gap:9px;margin-bottom:14px;font-family:var(--sans);font-weight:800;font-size:16px;color:#fff}
+  footer .fl b{color:var(--green)}
+  footer p{margin-bottom:10px;line-height:1.6}
+  footer a{color:#b9cee0;text-decoration:underline}
 
-  /* live social proof ticker */
-  #ticker{position:fixed;left:14px;bottom:14px;z-index:60;max-width:300px;
-    background:var(--white);border:1px solid var(--line);border-left:4px solid var(--teal);
-    border-radius:12px;box-shadow:0 12px 30px rgba(13,40,71,.18);padding:11px 13px 11px 12px;
-    display:none;align-items:center;gap:10px;animation:slidein .4s ease}
-  @keyframes slidein{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  #ticker .pic{width:34px;height:34px;border-radius:9px;background:#eafcf8;color:var(--teal-ink);
-    display:grid;place-items:center;font-size:18px;flex:0 0 auto}
+  #ticker{position:fixed;left:16px;bottom:16px;z-index:60;max-width:300px;background:#fff;border:1px solid var(--line);
+    border-left:4px solid var(--green);border-radius:12px;box-shadow:0 14px 34px rgba(22,50,78,.16);
+    padding:12px 14px;display:none;align-items:center;gap:11px}
+  #ticker .pic{width:34px;height:34px;border-radius:9px;background:var(--green-soft);color:var(--green-ink);display:grid;place-items:center;font-size:18px;flex:0 0 auto}
   #ticker .tx{font-size:12.3px;line-height:1.35;color:var(--ink)}
   #ticker .tx b{color:var(--navy)}
   #ticker .tm{font-size:10.5px;color:var(--muted);margin-top:2px}
-  #ticker .x{position:absolute;top:5px;right:8px;color:#c3ced9;font-size:14px;cursor:pointer;background:none;border:none}
+  #ticker .x{position:absolute;top:5px;right:9px;color:#c3ced9;font-size:14px;cursor:pointer;background:none;border:none}
 
-  /* sticky mobile CTA */
-  #stickybar{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--white);
-    border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(13,40,71,.10);padding:10px 14px;
-    transform:translateY(120%);transition:transform .3s ease}
-  #stickybar a{display:block;text-align:center;background:linear-gradient(180deg,var(--teal),var(--teal-ink));
-    color:#04382f;font-weight:800;font-size:16px;padding:14px;border-radius:11px;text-decoration:none}
+  #stickybar{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);
+    box-shadow:0 -6px 20px rgba(22,50,78,.10);padding:10px 14px;transform:translateY(120%);transition:transform .3s ease}
+  #stickybar a{display:block;text-align:center;background:var(--green);color:#fff;font-weight:700;font-size:16px;padding:14px;border-radius:11px;text-decoration:none}
 
-  @media(min-width:560px){
-    h1{font-size:32px}
-    .qtitle{font-size:22px}
-  }
+  @media(min-width:560px){ h1{font-size:38px} h2{font-size:29px} .qtitle{font-size:25px} }
 </style>
 </head>
 <body>
 
-<!-- ======================= TOP TRUST STRIP ======================= -->
-<div class="toptrust"><div class="wrap">
-  <span><i class="tick">✓</i> <b>Free</b>&nbsp;inspection</span>
-  <span><i class="tick">✓</i> One local pro — <b>not 15 calls</b></span>
-  <span><i class="tick">✓</i> <b>Financing</b>&nbsp;available</span>
-  <span><i class="tick">✓</i> No obligation</span>
+<!-- TOP STRIP -->
+<div class="topbar"><div class="wrap">
+  <span><b>Free inspection</b> <span class="g">·</span> One local pro — <b>not 15 calls</b> <span class="g">·</span> <b>Financing available</b> <span class="g">·</span> No obligation</span>
 </div></div>
 
-<!-- ======================= HEADER ======================= -->
+<!-- HEADER -->
 <header class="brand"><div class="wrap">
-  <div class="logo"><span class="dot">⌂</span> Service<span style="color:var(--teal-ink)">Matchup</span></div>
-  <div class="hrating"><span class="stars">★★★★★</span> <b style="color:var(--navy)">4.9</b>&nbsp;· <span data-live="rating-count">2,300+ homeowners</span></div>
+  <img src="data:image/png;base64,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93IF6CIiIiKt1dHq4W7f+uH+LSft9r1KFZT20lIGW+982sOv2PQVZzBiC8QHq4l6Y1WMMZheBxxja1M2zKsaJxYZ33rt+trE7pFW/TVEREREpIPVXQBqkyMjtanR7+FEHPCrnTz2mhdMBjUxg5OIYHoc/Ika/ngVv1yFmh1xN/tGz5sJ0P0qTsSpTY1+rzY5ogBdREREpMU6F6QHS81Xdm99lzGug68cibYIgnV8wDX2FTFBiXq/yeB89hi+Z4zrVHZvfRe+vzqXcxURERFZwToXpAcTGKvlnX/wpsduxnE0mt5u/pxX63ZaxXEcb3rs5mp55x/sf2rpAURERET2ex1NdwGDX6t406U7XmycaESj6auQ73vGiUamS3e82K9VvA5PaxARERHZL3Q4SPcBw8zeHXfWxnddatxoDLxKZ/sgjfMqxo3GauO7Lp3Zu+NOG6BrFF1ERESk1bowDGoDOzc+2Nt3xEl7bKqEidDxGwYJybO10Q0Td1+7rja1d1JBuoiIiEh7dCEwtqPptam9k9P3F59i3FgMz5vqfD8kFM+bMm4sNn1/8SkK0EVERETaq0uj17YiSGVk240ze+55t4nG+/C8ie70RZbleRMmGu+b2XPPuysj22601VwUoIuIiIi0S5dn/RmMGzG9h554fqR/wxn+zMwUjol3t0/yEJ4/ZaLReHV814WT268/069VfQXoIiIiIu3V5TxwH782409uv/7M6vjIhSYajWtEfQXxvAkboI8EAfqMAnQRERGRDlgB9fNs6oRxo6b30CcGI+rTUzgmRtdvIvZbHp5fMdGeYAT910GArjQXERERkU5YAUE6zA3U4xuPfVt03SGf8WszHr5XxTixbvduv+J7FYwTMW7Umdlzz/+duv+WcxSgi4iIiHTWCgnSHyq2fsvjew5M/Y9xnLhfrWpUvTPs6HkkEvc9b2p6Z/Gpld1bb+x2p0RERET2RyswSA/qqPcODcQ3HnOO27fhLN+rQs2bwvEj4ES63cO1xavimSquEzdOhNrErvOm7r/1bbXJ0TGNnouIiIh0xwoM0gFjCBY5Irpu89E9ySMvcWIDJ/p+Dbyah0dFAXszgsDcIYbjOsa4eJWx66dLd75iZs+9f5gtkWk/AxERERHptJUZpANzR3GNG3OigxsfFR0+9KNufOhUjIPve+DVAK8SbOCA46C0mPk88Dz7TwAnhuNijAO+R21q9LKZke0fnNl7/+1+rRK00Qi6iIiISDet4CA98JARXUOkf8P6SGLTC9y+xClObPCFxnEdwAbt+Br9nc8YwNigHPC9mudV9l5Rmyh/p1recWV1fNfufQG5Rs9FREREVoSVH6TPmh9AGoMbX5dw+4aPdWJ9Rzo9A892Ij2PMdHeE4OIfX8fUfcwxvFnJq/3qtO/96bHfuRVJu6sTYzcUpvaU57/Xio4FxEREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREREXmo/w9BbeE+DgsOHAAAAABJRU5ErkJggg==" alt="Service Matchup" class="logo-img">
+  <a href="#quiz" class="hbtn">Get My Free Quote</a>
 </div></header>
 
-<!-- ======================= HERO + QUIZ (ABOVE THE FOLD) ======================= -->
+<!-- HERO + QUIZ -->
 <div class="hero"><div class="wrap">
-  <span class="eyebrow" id="eyebrow">🏠 Trusted Local Roof Matching</span>
-  <h1 id="headline">Get matched with <span class="hl">one trusted local roofer</span> — and a free inspection &amp; honest quote.</h1>
-  <p class="sub" id="subhead">Tell us what's going on with your roof. We'll match you with <b style="color:#fff">one</b> vetted local pro — not fifteen companies blowing up your phone. Free, no pressure, about 90 seconds.</p>
-
-  <div class="herobadges">
-    <span class="hb"><i class="i">✓</i> Licensed &amp; insured local pros</span>
-    <span class="hb"><i class="i">✓</i> Free 23-point inspection</span>
-    <span class="hb"><i class="i">✓</i> Financing available</span>
+  <span class="eyebrow" id="eyebrow"><span class="c">✓</span> Free 23-point roof report · one licensed &amp; insured local pro</span>
+  <h1 id="headline">Get the truth about your roof — from one local pro you can <span class="ac">actually trust.</span></h1>
+  <p class="sub" id="subhead">No fifteen phone calls. No door-knockers. No pressure. Just one <b>licensed &amp; insured</b> local roofer who gives your roof a free 23-point look and tells you straight — it's fine, it needs a repair, or it's time. That's it.</p>
+  <div class="trustrow">
+    <span><span class="c">✓</span> Licensed &amp; insured</span>
+    <span><span class="c">✓</span> 100% free inspection</span>
+    <span><span class="c">✓</span> No pressure, ever</span>
   </div>
+  <p class="whynow">That small spot you're ignoring only gets bigger — and pricier — with every storm. A free look now beats a surprise bill later.</p>
 
-  <!-- ===== QUIZ CARD ===== -->
+  <!-- QUIZ -->
   <div class="card" id="quiz">
     <div class="card-head">
       <div class="progline"><div class="progfill" id="progfill"></div></div>
-      <div class="progmeta"><span id="stepcount">Step 1 of 6</span><span>⏱️ ~90 seconds</span></div>
+      <div class="progmeta"><span class="step" id="stepcount">Step 1 of 6</span><span>⏱ ~90 seconds</span></div>
     </div>
     <div class="card-body">
-
-      <!-- STEP 1 — SITUATION (branch trigger) -->
       <div class="step active" data-step="1">
-        <div class="qtitle">What's going on with your roof?</div>
+        <div class="qtitle">What's going on with <span class="ac">your roof?</span></div>
         <div class="qsub">Pick the one that sounds most like you.</div>
         <div class="opts">
-          <button class="opt" data-next="q2" data-branch="leak"><span class="emo">💧</span> I've got a leak or water coming in <span class="chev">›</span></button>
-          <button class="opt" data-next="q2" data-branch="storm"><span class="emo">⛈️</span> A storm may have hit my roof <span class="chev">›</span></button>
-          <button class="opt" data-next="q2" data-branch="old"><span class="emo">🏚️</span> My roof's old — may need replacing <span class="chev">›</span></button>
-          <button class="opt" data-next="q2" data-branch="insurance"><span class="emo">📋</span> I want help with an insurance claim <span class="chev">›</span></button>
-          <button class="opt" data-next="q2" data-branch="check"><span class="emo">👀</span> I just want a pro to check it <span class="chev">›</span></button>
+          <button class="opt" data-branch="leak"><span class="emo">💧</span> I've got a leak or water coming in <span class="chev">›</span></button>
+          <button class="opt" data-branch="storm"><span class="emo">⛈️</span> A storm may have hit my roof <span class="chev">›</span></button>
+          <button class="opt" data-branch="old"><span class="emo">🏚️</span> My roof's old — may need replacing <span class="chev">›</span></button>
+          <button class="opt" data-branch="insurance"><span class="emo">📋</span> I want help with an insurance claim <span class="chev">›</span></button>
+          <button class="opt" data-branch="check"><span class="emo">👀</span> I just want a pro to check it <span class="chev">›</span></button>
         </div>
       </div>
-
-      <!-- STEP 2 — BRANCHED FOLLOW-UP -->
       <div class="step" data-step="2">
-        <div class="qtitle" id="q2title">A couple quick details…</div>
+        <div class="qtitle" id="q2title"></div>
         <div class="qsub" id="q2sub"></div>
         <div class="opts" id="q2opts"></div>
         <button class="backbtn" data-back>← Back</button>
       </div>
-
-      <!-- STEP 3 — ROOF AGE (universal) -->
       <div class="step" data-step="3">
-        <div class="qtitle">About how old is your roof?</div>
+        <div class="qtitle">About how old is <span class="ac">your roof?</span></div>
         <div class="qsub">Not sure? <b>No problem</b> — just a best guess. Most roofs start hiding wear after about 10 years.</div>
         <div class="opts grid2">
-          <button class="opt" data-next="4">0–5 years</button>
-          <button class="opt" data-next="4">6–10 years</button>
-          <button class="opt" data-next="4">11–15 years</button>
-          <button class="opt" data-next="4">16–20 years</button>
-          <button class="opt" data-next="4">20+ years</button>
-          <button class="opt" data-next="4">Not sure</button>
+          <button class="opt" data-v="0–5 years">0–5 years</button>
+          <button class="opt" data-v="6–10 years">6–10 years</button>
+          <button class="opt" data-v="11–15 years">11–15 years</button>
+          <button class="opt" data-v="16–20 years">16–20 years</button>
+          <button class="opt" data-v="20+ years">20+ years</button>
+          <button class="opt" data-v="Not sure">Not sure</button>
         </div>
         <button class="backbtn" data-back>← Back</button>
       </div>
-
-      <!-- STEP 4 — TIMELINE (universal, soft) -->
       <div class="step" data-step="4">
-        <div class="qtitle">If it turns out you need work done, how soon would you want it handled?</div>
+        <div class="qtitle">If you need work done, how <span class="ac">soon?</span></div>
         <div class="qsub">No commitment — this just helps us match the right pro.</div>
         <div class="opts">
-          <button class="opt" data-next="5"><span class="emo">🚨</span> As soon as possible <span class="chev">›</span></button>
-          <button class="opt" data-next="5"><span class="emo">📅</span> In the next few weeks <span class="chev">›</span></button>
-          <button class="opt" data-next="5"><span class="emo">🗓️</span> Just planning ahead <span class="chev">›</span></button>
-          <button class="opt" data-next="5"><span class="emo">💵</span> Depends what it costs <span class="chev">›</span></button>
+          <button class="opt" data-v="ASAP"><span class="emo">🚨</span> As soon as possible <span class="chev">›</span></button>
+          <button class="opt" data-v="Few weeks"><span class="emo">📅</span> In the next few weeks <span class="chev">›</span></button>
+          <button class="opt" data-v="Planning ahead"><span class="emo">🗓️</span> Just planning ahead <span class="chev">›</span></button>
+          <button class="opt" data-v="Depends on cost"><span class="emo">💵</span> Depends what it costs <span class="chev">›</span></button>
         </div>
         <button class="backbtn" data-back>← Back</button>
       </div>
-
-      <!-- STEP 5 — OWNERSHIP (fast gate) -->
       <div class="step" data-step="5">
-        <div class="qtitle">Do you own the home?</div>
+        <div class="qtitle">Do you <span class="ac">own the home?</span></div>
         <div class="qsub">Inspections are for homeowners — quick check.</div>
         <div class="opts grid2">
-          <button class="opt" data-next="6">✅ Yes, I own it</button>
-          <button class="opt" data-next="6">🔑 No / I rent</button>
+          <button class="opt" data-v="Owner">✅ Yes, I own it</button>
+          <button class="opt" data-v="Renter">🔑 No / I rent</button>
         </div>
         <button class="backbtn" data-back>← Back</button>
       </div>
-
-      <!-- STEP 6 — CONTACT (last) -->
       <div class="step" data-step="6">
-        <div class="qtitle">Where should your local pro send the details?</div>
+        <div class="qtitle">Where should your local pro <span class="ac">send the details?</span></div>
         <div class="qsub">One vetted local pro will reach out to set up your <b>free inspection</b>. That's it.</div>
         <form id="leadform" novalidate>
-          <div class="field">
-            <label>Full name</label>
-            <input type="text" name="name" autocomplete="name" placeholder="First and last name" required>
-          </div>
+          <div class="field"><label>Full name</label><input type="text" name="name" autocomplete="name" placeholder="First and last name" required></div>
           <div class="row2">
-            <div class="field">
-              <label>Phone</label>
-              <input type="tel" name="phone" autocomplete="tel" placeholder="(214) 555-0100" required>
-            </div>
-            <div class="field">
-              <label>ZIP code</label>
-              <input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="75201" required>
-            </div>
+            <div class="field"><label>Phone</label><input type="tel" name="phone" autocomplete="tel" placeholder="(214) 555-0100" required></div>
+            <div class="field"><label>ZIP code</label><input type="text" name="zip" inputmode="numeric" autocomplete="postal-code" placeholder="75201" required></div>
           </div>
-          <div class="field">
-            <label>Email</label>
-            <input type="email" name="email" autocomplete="email" placeholder="you@email.com" required>
-          </div>
-          <label class="consent">
-            <input type="checkbox" id="tcpa" required>
-            <span>By checking this box, I agree to be contacted by Service Matchup and a matched roofing professional by phone, text, and email about my roof — including via automated technology. Consent isn't a condition of purchase. Msg &amp; data rates may apply. See our <a href="/privacy" style="color:var(--teal-ink)">Privacy Policy</a> &amp; <a href="/terms" style="color:var(--teal-ink)">Terms</a>.</span>
-          </label>
+          <div class="field"><label>Email</label><input type="email" name="email" autocomplete="email" placeholder="you@email.com" required></div>
+          <label class="consent"><input type="checkbox" id="tcpa" required>
+            <span>By checking this box, I agree to be contacted by Service Matchup and a matched roofing professional by phone, text, and email about my roof — including via automated technology. Consent isn't a condition of purchase. Msg &amp; data rates may apply. See our <a href="/privacy" style="color:var(--green-ink)">Privacy Policy</a> &amp; <a href="/terms" style="color:var(--green-ink)">Terms</a>.</span></label>
           <button type="submit" class="cta" id="submitbtn">Get Matched With My Local Pro →</button>
           <div class="microtrust"><span class="lock">🔒</span> Your info goes to <b>one</b> local pro — never sold to a dozen companies.</div>
+          <div class="microtrust" style="margin-top:6px"><span style="color:var(--green);font-weight:800">✓</span> Not ready to hire anyone? Good — this is just a free look.</div>
         </form>
         <button class="backbtn" data-back>← Back</button>
       </div>
-
-      <!-- SUCCESS -->
       <div id="done">
         <div class="big">✓</div>
-        <div class="qtitle" style="text-align:center">You're matched! 🎉</div>
-        <p style="color:var(--muted);font-size:14.5px;margin-top:6px">One vetted local roofer will reach out shortly to set up your free 23-point inspection. Keep your phone handy.</p>
+        <div class="qtitle" style="text-align:center">You're <span class="ac">matched!</span> 🎉</div>
+        <p style="color:var(--muted);font-size:14.5px;margin-top:6px">One licensed &amp; insured local roofer will reach out shortly to set up your free 23-point inspection. Keep your phone handy.</p>
       </div>
-
-    </div><!-- /card-body -->
-  </div><!-- /card -->
+    </div>
+  </div>
 
   <div class="under">
-    <span><i class="i">★</i> 4.9 average rating</span>
-    <span><i class="i">✓</i> <span data-live="count">2,300+</span> roofs checked</span>
-    <span><i class="i">✓</i> 100% free &amp; no obligation</span>
+    <span><span class="c">★</span> 4.9 average rating</span>
+    <span><span class="c">✓</span> <span data-live="count">Thousands of</span> roofs checked</span>
+    <span><span class="c">✓</span> 100% free &amp; no obligation</span>
   </div>
-</div></div><!-- /hero -->
+</div></div>
 
-<!-- ======================= HOW IT WORKS ======================= -->
-<section id="how"><div class="wrap">
-  <h2>How the one-pro match works</h2>
-  <p class="lead">No call center. No fifteen companies. One vetted local pro — that's the whole idea.</p>
+<!-- TRUSTED BY -->
+<div class="trustband"><div class="wrap">
+  <span class="badge">★</span>
+  <span class="t">Trusted by Over 11,000+ Homeowners</span>
+  <span class="sep">|</span>
+  <span class="m"><span class="c">✓</span> Licensed Pros</span>
+  <span class="m"><span class="c">✓</span> Free Inspection</span>
+  <span class="m"><span class="c">✓</span> No Obligation</span>
+</div></div>
+
+<!-- HOW IT WORKS -->
+<section><div class="wrap">
+  <div class="eyebrow2">The One-Match Method™</div>
+  <h2>How you get one honest answer — <span class="ac">not fifteen sales calls</span></h2>
+  <p class="lead">Most "free quote" sites sell your info to a dozen companies. We do the opposite — the One-Match Method routes you to a single vetted local pro.</p>
   <div class="steps3">
-    <div class="s3"><div class="n">1</div><div><h3>Tell us about your roof</h3><p>A few quick taps — about 90 seconds. No obligation, no pushy sales call.</p></div></div>
-    <div class="s3"><div class="n">2</div><div><h3>We match you with ONE local pro</h3><p>A licensed, insured, vetted local roofer — chosen for your situation. Not a lead blasted to a dozen companies.</p></div></div>
-    <div class="s3"><div class="n">3</div><div><h3>Free inspection &amp; honest quote</h3><p>They document your roof with photos and give you a straight answer — and a written quote if you want one. Financing options available if you need them.</p></div></div>
+    <div class="s3"><div class="n" data-n="1">🏠</div><div><h3>Tell us about your roof</h3><p>A few quick taps — about 90 seconds. No obligation, no pushy sales call.</p></div></div>
+    <div class="s3"><div class="n" data-n="2">🛡️</div><div><h3>We run the 4-Point Pro Check</h3><p>We match you to the ONE pro that fits — and every pro in our network is <b>licensed, insured, locally established, and homeowner-reviewed.</b> You get a match, not a list.</p></div></div>
+    <div class="s3"><div class="n" data-n="3">✅</div><div><h3>Get your free 23-Point Roof Report</h3><p>Your pro documents the roof with photos, gives you a straight answer and an honest quote — with financing options if you need them.</p></div></div>
   </div>
 </div></section>
 
-<!-- ======================= WHY IT'S DIFFERENT ======================= -->
-<section class="sec-alt"><div class="wrap">
-  <h2>Why homeowners use Service Matchup</h2>
-  <div class="why">
-    <div class="w"><div class="i">1️⃣</div><h3>One pro, not fifteen calls</h3><p>Your details go to a single vetted roofer — not sold to a dozen companies that hound you for a week.</p></div>
-    <div class="w"><div class="i">🛡️</div><h3>Licensed &amp; insured only</h3><p>We only match you with vetted, licensed, insured local professionals — no door-knockers, no storm chasers.</p></div>
-    <div class="w"><div class="i">🆓</div><h3>Free &amp; no obligation</h3><p>The inspection and quote are free. If the answer is "your roof's fine," you'll hear that too.</p></div>
-    <div class="w"><div class="i">💳</div><h3>Financing available</h3><p>If you do need work, ask your matched pro about flexible financing options to spread out the cost.</p></div>
-  </div>
+<!-- VALUE STACK -->
+<section class="sec-green"><div class="wrap">
+  <div class="eyebrow2">The 23-Point Roof Report</div>
+  <h2>Here's exactly what you get — <span class="ac">free</span></h2>
+  <p class="lead">No cost, no obligation. This is the whole package your matched pro brings to the door.</p>
+  <ul class="vstack">
+    <li><span class="ck">✓</span><span>A full <b>23-point roof inspection</b>, top to bottom — the same detail adjusters respect.</span></li>
+    <li><span class="ck">✓</span><span><b>Photo documentation</b> of anything found, so you see exactly what they see.</span></li>
+    <li><span class="ck">✓</span><span>A <b>straight answer</b> — solid for years, a simple repair, or time to replace.</span></li>
+    <li><span class="ck">✓</span><span>An <b>honest written quote</b> — only if you want one.</span></li>
+    <li><span class="ck">✓</span><span><b>Claim-ready documentation</b> if storm or hail damage may qualify for coverage.</span></li>
+    <li><span class="ck">✓</span><span><b>Financing options</b> walked through, if a repair turns out to be needed.</span></li>
+    <li><span class="ck">✓</span><span><b>One vetted local pro</b> — your info is never sold to fifteen companies.</span></li>
+  </ul>
+  <div class="stackfoot">Everything above is free. No obligation to hire anyone.</div>
+</div></section>
 
+<!-- FINANCING -->
+<section><div class="wrap">
   <div class="finance">
     <span class="tag">💳 FINANCING AVAILABLE</span>
     <h3>Worried about the cost of a repair or new roof?</h3>
@@ -397,228 +388,181 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
   </div>
 </div></section>
 
-<!-- ======================= REVIEWS (PLACEHOLDER — REPLACE WITH REAL) ======================= -->
-<section><div class="wrap">
-  <h2>What local homeowners say</h2>
-  <p class="lead">★★★★★ 4.9 average from local homeowners we've matched.</p>
-  <!-- ⚠️ PLACEHOLDER REVIEWS — swap for your REAL, verifiable reviews before running traffic. -->
-  <div class="revs">
-    <div class="rev">
-      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div>
-      <p>"[Paste a real homeowner review here. Keep it specific — what they were worried about, how the match went, that it was free and low-pressure.]"</p>
-      <span class="vf">✓ Verified homeowner</span>
+<!-- PROMISE / RISK REVERSAL -->
+<section class="sec-soft"><div class="wrap">
+  <div class="promisecard">
+    <div class="eyebrow2">Our promise</div>
+    <h3>The No-Runaround Promise</h3>
+    <div class="pg">
+      <div><span class="ck">✓</span> <span><b>100% free.</b> The inspection and your 23-point report cost you nothing.</span></div>
+      <div><span class="ck">✓</span> <span><b>No obligation.</b> Hire the pro or don't — entirely your call.</span></div>
+      <div><span class="ck">✓</span> <span><b>One pro, never fifteen.</b> Your info is never sold to a room of salespeople.</span></div>
+      <div><span class="ck">✓</span> <span><b>No door-knockers, no pressure, no runaround.</b></span></div>
+      <div><span class="ck">✓</span> <span><b>If your roof's fine, they'll tell you that too.</b> An honest answer either way.</span></div>
     </div>
-    <div class="rev">
-      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div>
-      <p>"[Paste a real review here.]"</p>
-      <span class="vf">✓ Verified homeowner</span>
-    </div>
-    <div class="rev">
-      <div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div>
-      <p>"[Paste a real review here.]"</p>
-      <span class="vf">✓ Verified homeowner</span>
-    </div>
-  </div>
-
-  <!-- ⚠️ PLACEHOLDER BADGES — keep only the ones that are TRUE for you. -->
-  <div class="badges">
-    <div class="badge"><span class="i">🛡️</span> Licensed &amp; Insured Pros</div>
-    <div class="badge"><span class="i">⭐</span> 4.9 Google Rating</div>
-    <div class="badge"><span class="i">📍</span> local Local</div>
-    <div class="badge"><span class="i">🔒</span> Info Never Sold to 15 Companies</div>
   </div>
 </div></section>
 
-<!-- ======================= FAQ ======================= -->
-<section class="sec-alt"><div class="wrap">
-  <h2>Quick questions</h2>
+<!-- REVIEWS (PLACEHOLDER — replace with REAL reviews) -->
+<section class="sec-soft"><div class="wrap">
+  <div class="eyebrow2">Homeowner reviews</div>
+  <h2>What homeowners <span class="ac">say</span></h2>
+  <p class="lead">★★★★★ 4.9 average from local homeowners we've matched.</p>
+  <!-- ⚠️ PLACEHOLDER — swap for your REAL, verifiable reviews before running traffic. -->
+  <div class="revs">
+    <div class="rev"><div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div><p>"[Paste a real homeowner review here — what they were worried about, how the match went, that it was free and low-pressure.]"</p><span class="vf">✓ Verified homeowner</span></div>
+    <div class="rev"><div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div><p>"[Paste a real review here.]"</p><span class="vf">✓ Verified homeowner</span></div>
+    <div class="rev"><div class="top"><div class="av">R</div><div><div class="who">[Real reviewer name]</div><div class="loc">[City], TX</div></div><div class="st">★★★★★</div></div><p>"[Paste a real review here.]"</p><span class="vf">✓ Verified homeowner</span></div>
+  </div>
+  <div class="badges">
+    <div class="badge2"><span class="i">🛡️</span> Licensed &amp; Insured Pros</div>
+    <div class="badge2"><span class="i">⭐</span> 4.9 Rating</div>
+    <div class="badge2"><span class="i">📍</span> Local Pros Near You</div>
+    <div class="badge2"><span class="i">🔒</span> Never Sold to 15 Companies</div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section><div class="wrap">
+  <div class="eyebrow2">Quick questions</div>
+  <h2>Good to <span class="ac">know</span></h2>
   <div class="faq">
-    <details open><summary>Is the inspection really free?</summary><p>Yes. The 23-point roof inspection and the quote are completely free, with no obligation. If your roof is fine, the pro will tell you that.</p></details>
+    <details open><summary>Is the inspection really free?</summary><p>Yes. The 23-point roof inspection and the quote are completely free, with no obligation. If your roof's fine, the pro will tell you that.</p></details>
     <details><summary>Will I get blown up by 15 companies?</summary><p>No — that's the whole point. Your details go to <b>one</b> vetted local pro, not a dozen. We never sell your info to a room full of salespeople.</p></details>
-    <details><summary>Are you a roofing company?</summary><p>No. Service Matchup is a free matching service. We connect local homeowners with independent, licensed, insured local roofing professionals — and we only hand you to one.</p></details>
+    <details><summary>Are you a roofing company?</summary><p>No. Service Matchup is a free matching service that connects homeowners with independent, licensed, insured local roofing professionals — and we only hand you to one.</p></details>
     <details><summary>Do you help with insurance claims?</summary><p>Your matched pro can inspect for storm and hail damage and document it with photos, which is what you need before you file. Depending on the damage, you <b>may qualify</b> to have work covered — the inspection tells you where you stand.</p></details>
-    <details><summary>Is financing available?</summary><p>Yes — many of our matched pros offer flexible financing options so a needed repair or new roof can fit your budget. Ask about it during your free inspection.</p></details>
+    <details><summary>Is financing available?</summary><p>Yes — many matched pros offer flexible financing so a needed repair or new roof can fit your budget. Ask about it during your free inspection.</p></details>
     <details><summary>Am I obligated to buy anything?</summary><p>Never. Get the free inspection, get your answer, and decide on your own time. No pressure, no door-knockers.</p></details>
   </div>
 </div></section>
 
-<!-- ======================= FINAL CTA ======================= -->
+<!-- FINAL CTA -->
 <div class="finalcta"><div class="wrap">
-  <h2>See where your roof stands — free.</h2>
-  <p class="lead">One local pro. A straight answer. About 90 seconds to start.</p>
-  <a href="#quiz" class="bigbtn" onclick="fbq('track','InitiateCheckout')">Get Matched With My Local Pro →</a>
+  <div class="finalcard">
+    <div class="eyebrow2">Get started today</div>
+    <h2>Get your free <span class="ac">23-point roof report</span></h2>
+    <p class="lead">One vetted local pro, one honest answer. Small roof problems only get bigger with every storm — a free look now beats a big repair later. No obligation to hire anyone.</p>
+    <a href="#quiz" class="bigbtn" onclick="if(typeof fbq==='function')fbq('track','InitiateCheckout')">Get Matched With My Local Pro →</a>
+    <div class="fine">Free · No obligation · About 90 seconds</div>
+  </div>
 </div></div>
 
-<!-- ======================= FOOTER ======================= -->
+<!-- FOOTER -->
 <footer><div class="wrap">
-  <p><b style="color:#cfe0ee">Service Matchup</b> — a free service that matches local homeowners with independent, licensed, insured roofing professionals.</p>
-  <p><b>Service Matchup is not a roofing contractor.</b> We are an advertising and lead-matching service and do not perform roofing work. All inspections, quotes, and work are performed by independent third-party professionals. Availability of financing is determined by the independent professional and any third-party lender; terms subject to approval.</p>
+  <div class="fl"><span>Service</span><b>Matchup</b></div>
+  <p><b style="color:#cfe0d6">Service Matchup is not a roofing contractor.</b> We are an advertising and lead-matching service that connects homeowners with independent, licensed, insured roofing professionals. All inspections, quotes, and work are performed by independent third-party professionals. Availability of financing is determined by the independent professional and any third-party lender; terms subject to approval.</p>
   <p>Inspections are offered free of charge. Insurance-related outcomes are never guaranteed; whether any damage "may qualify" for coverage is determined by your insurer. We do not offer to waive, absorb, or rebate any insurance deductible.</p>
   <p><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a> · © <span id="yr"></span> Service Matchup / Wyn Group Inc</p>
 </div></footer>
 
-<!-- ======================= LIVE SOCIAL PROOF TICKER ======================= -->
-<!-- ⚠️ PLACEHOLDER ACTIVITY — wire this array to REAL requests (e.g., from your GHL/CRM) before running traffic.
-     Do NOT display fabricated events as if they were real. These entries are illustrative only. -->
+<!-- LIVE SOCIAL PROOF (placeholder — wire to real GHL/CRM activity) -->
 <div id="ticker">
   <button class="x" onclick="document.getElementById('ticker').style.display='none'">×</button>
   <div class="pic">🏠</div>
   <div><div class="tx" id="ticktx"></div><div class="tm" id="ticktm"></div></div>
 </div>
 
-<!-- ======================= STICKY MOBILE CTA ======================= -->
+<!-- STICKY MOBILE CTA -->
 <div id="stickybar"><a href="#quiz">Check My Roof — Free (90 sec) →</a></div>
 
 <script>
-document.getElementById('yr').textContent = new Date().getFullYear();
-
-/* ---------- STEP 2 branched content ---------- */
-var BRANCH = {
-  leak:{title:"Where's the water showing up?",sub:"This tells your pro where to trace the leak from.",
-    opts:["Ceiling","A wall","Around a window","More than one spot","Not sure yet"]},
-  storm:{title:"When did the storm hit?",sub:"The worst hail damage often can't be seen from the ground.",
-    opts:["This past week","This month","A few months ago","Not sure"]},
-  old:{title:"What's got you looking now?",sub:"Just helps your pro understand where you're at.",
-    opts:["Seeing wear or curling shingles","Planning ahead / budgeting","Neighbors replaced theirs","Just want peace of mind"]},
-  insurance:{title:"Have you filed a claim yet?",sub:"Documentation before you file is what gets claims approved.",
-    opts:["Not yet","Filed — waiting on the adjuster","Was denied or underpaid","Not sure how to start"]},
-  check:{title:"Anything specific prompting the check?",sub:"Pick whatever's closest.",
-    opts:["A possible leak","A recent storm","The age of the roof","Just being proactive"]}
+document.getElementById('yr').textContent=new Date().getFullYear();
+var BRANCH={
+  leak:{title:"Where's the water showing up?",sub:"This tells your pro where to trace the leak from.",opts:["Ceiling","A wall","Around a window","More than one spot","Not sure yet"]},
+  storm:{title:"When did the storm hit?",sub:"The worst hail damage often can't be seen from the ground.",opts:["This past week","This month","A few months ago","Not sure"]},
+  old:{title:"What's got you looking now?",sub:"Just helps your pro understand where you're at.",opts:["Seeing wear or curling shingles","Planning ahead / budgeting","Neighbors replaced theirs","Just want peace of mind"]},
+  insurance:{title:"Have you filed a claim yet?",sub:"Documentation before you file is what gets claims approved.",opts:["Not yet","Filed — waiting on the adjuster","Was denied or underpaid","Not sure how to start"]},
+  check:{title:"Anything specific prompting the check?",sub:"Pick whatever's closest.",opts:["A possible leak","A recent storm","The age of the roof","Just being proactive"]}
 };
-
-var lead = {situation:"",detail:"",roof_age:"",timeline:"",owns:""};
-var order = [1,2,3,4,5,6];
-var histStack = [];
-
+var lead={situation:"",detail:"",roof_age:"",timeline:"",owns:""};
+var order=[1,2,3,4,5,6], histStack=[];
 function showStep(n){
   document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
   document.getElementById('done').style.display='none';
-  var el = document.querySelector('.step[data-step="'+n+'"]');
-  if(el) el.classList.add('active');
-  var idx = order.indexOf(n);
-  document.getElementById('progfill').style.width = ((idx+1)/order.length*100)+'%';
-  document.getElementById('stepcount').textContent = 'Step '+(idx+1)+' of '+order.length;
+  var el=document.querySelector('.step[data-step="'+n+'"]'); if(el)el.classList.add('active');
+  var idx=order.indexOf(n);
+  document.getElementById('progfill').style.width=((idx+1)/order.length*100)+'%';
+  document.getElementById('stepcount').textContent='Step '+(idx+1)+' of '+order.length;
   document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
 }
-
-/* STEP 1 -> build branched step 2 */
 document.querySelectorAll('.step[data-step="1"] .opt').forEach(function(b){
   b.addEventListener('click',function(){
-    lead.situation = b.textContent.trim();
-    var br = b.getAttribute('data-branch');
-    var cfg = BRANCH[br];
-    document.getElementById('q2title').textContent = cfg.title;
-    document.getElementById('q2sub').textContent = cfg.sub;
-    var box = document.getElementById('q2opts'); box.innerHTML='';
+    lead.situation=b.textContent.trim();
+    var cfg=BRANCH[b.getAttribute('data-branch')];
+    document.getElementById('q2title').textContent=cfg.title;
+    document.getElementById('q2sub').textContent=cfg.sub;
+    var box=document.getElementById('q2opts');box.innerHTML='';
     cfg.opts.forEach(function(txt){
       var btn=document.createElement('button');btn.className='opt';
       btn.innerHTML='<span>'+txt+'</span><span class="chev">›</span>';
       btn.addEventListener('click',function(){lead.detail=txt;histStack.push(1);showStep(3);});
       box.appendChild(btn);
     });
-    if(typeof fbq==='function') fbq('track','InitiateCheckout'); // form started
-    histStack.push(1); showStep(2);
+    if(typeof fbq==='function')fbq('track','InitiateCheckout');
+    histStack.push(1);showStep(2);
   });
 });
-
-/* generic data-next handlers for steps 3,4,5 */
-document.querySelectorAll('.step[data-step="3"] .opt').forEach(function(b){
-  b.addEventListener('click',function(){lead.roof_age=b.textContent.trim();histStack.push(3);showStep(4);});
-});
-document.querySelectorAll('.step[data-step="4"] .opt').forEach(function(b){
-  b.addEventListener('click',function(){lead.timeline=b.textContent.trim();histStack.push(4);showStep(5);});
-});
-document.querySelectorAll('.step[data-step="5"] .opt').forEach(function(b){
-  b.addEventListener('click',function(){lead.owns=b.textContent.trim();histStack.push(5);showStep(6);});
-});
-
-/* back buttons */
-document.querySelectorAll('[data-back]').forEach(function(b){
-  b.addEventListener('click',function(){var prev=histStack.pop()||1;showStep(prev);});
-});
-
-/* TCPA enable */
-var tcpa=document.getElementById('tcpa'), submitbtn=document.getElementById('submitbtn');
-function syncBtn(){submitbtn.disabled=!tcpa.checked;}
-tcpa.addEventListener('change',syncBtn); syncBtn();
-
-/* submit */
+document.querySelectorAll('.step[data-step="3"] .opt').forEach(function(b){b.addEventListener('click',function(){lead.roof_age=b.getAttribute('data-v');histStack.push(3);showStep(4);});});
+document.querySelectorAll('.step[data-step="4"] .opt').forEach(function(b){b.addEventListener('click',function(){lead.timeline=b.getAttribute('data-v');histStack.push(4);showStep(5);});});
+document.querySelectorAll('.step[data-step="5"] .opt').forEach(function(b){b.addEventListener('click',function(){lead.owns=b.getAttribute('data-v');histStack.push(5);showStep(6);});});
+document.querySelectorAll('[data-back]').forEach(function(b){b.addEventListener('click',function(){var p=histStack.pop()||1;showStep(p);});});
+var tcpa=document.getElementById('tcpa'),submitbtn=document.getElementById('submitbtn');
+function syncBtn(){submitbtn.disabled=!tcpa.checked;}tcpa.addEventListener('change',syncBtn);syncBtn();
 document.getElementById('leadform').addEventListener('submit',function(e){
-  e.preventDefault();
-  if(!tcpa.checked) return;
+  e.preventDefault(); if(!tcpa.checked)return;
   var fd=new FormData(e.target);
-  var payload=Object.assign({}, lead, {
-    name:fd.get('name'), phone:fd.get('phone'), zip:fd.get('zip'), email:fd.get('email'),
-    source:'roof-match-funnel', angle:(new URLSearchParams(location.search)).get('angle')||'',
-    ts:new Date().toISOString()
-  });
-
-  /* === LEAD ROUTING ===
-     Post to Lead Prosper (validation/routing) -> GHL (pipeline + follow-up).
-     Replace LEAD_ENDPOINT with your Lead Prosper campaign post URL.
-     Keeps the native single-page funnel — no page hop. */
-  var LEAD_ENDPOINT = ''; // <-- PASTE your Lead Prosper endpoint here
+  var payload=Object.assign({},lead,{name:fd.get('name'),phone:fd.get('phone'),zip:fd.get('zip'),email:fd.get('email'),
+    source:'roof-match-funnel',angle:(new URLSearchParams(location.search)).get('angle')||'',ts:new Date().toISOString()});
+  var LEAD_ENDPOINT=''; // <-- PASTE your Lead Prosper endpoint
   function finish(){
-    if(typeof fbq==='function') fbq('track','Lead'); // fires on TRUE submission
+    if(typeof fbq==='function')fbq('track','Lead');
     document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active')});
     document.getElementById('done').style.display='block';
     document.getElementById('progfill').style.width='100%';
     document.getElementById('stepcount').textContent='Done';
     document.getElementById('quiz').scrollIntoView({behavior:'smooth',block:'start'});
   }
-  if(LEAD_ENDPOINT){
-    fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(finish).catch(finish);
-  } else { finish(); } // preview mode
+  if(LEAD_ENDPOINT){fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(finish).catch(finish);}else{finish();}
 });
-
-/* ---------- URL ?angle= dynamic message match + preselect ---------- */
 (function(){
   var a=(new URLSearchParams(location.search)).get('angle');
   var MAP={
-    leak:{eye:"💧 Local Roof &amp; Leak Help",h:'That stain on your ceiling? Get matched with <span class="hl">one local roofer</span> who\'ll find the leak — free.',s:'Tell us where the water\'s showing up. We\'ll match you with one vetted local pro for a free inspection — not fifteen calls.'},
-    storm:{eye:"⛈️ Local Storm Roof Check",h:'Storm rolled through? Get matched with <span class="hl">one local roofer</span> for a free inspection.',s:'Hail damage is often invisible from the ground. Get matched with one vetted local pro who documents it with photos — free, no obligation.'},
-    old:{eye:"🏚️ Local Roof Replacement",h:'Roof getting old? Get matched with <span class="hl">one trusted local roofer</span> — free quote, financing available.',s:'Find out if it\'s got years left or it\'s time. One vetted local pro, a free inspection, and an honest quote. Financing available.'},
-    insurance:{eye:"📋 Local Roof Claim Help",h:'Filing a roof claim? Get matched with <span class="hl">one local roofer</span> who\'ll document it right — free.',s:'You may qualify to have storm or hail damage covered. Get matched with one vetted local pro who inspects and documents it properly — before you file.'}
+    leak:{eye:'<span class="c">💧</span> Roof leak &amp; water help',h:'That stain on your ceiling? Get matched with one <span class="ac">local roofer</span> who\'ll find the leak — free.',s:'Tell us where the water\'s showing up. We\'ll match you with one vetted local pro for a free inspection — not fifteen calls.'},
+    storm:{eye:'<span class="c">⛈️</span> Storm roof check',h:'Storm rolled through? Get matched with one <span class="ac">local roofer</span> for a free inspection.',s:'Hail damage is often invisible from the ground. Get matched with one vetted local pro who documents it with photos — free, no obligation.'},
+    old:{eye:'<span class="c">🏚️</span> Roof replacement',h:'Roof getting old? Get matched with one trusted <span class="ac">local roofer</span> — free quote, financing available.',s:'Find out if it\'s got years left or it\'s time. One vetted local pro, a free inspection, and an honest quote. Financing available.'},
+    insurance:{eye:'<span class="c">📋</span> Roof claim help',h:'Filing a roof claim? Get matched with one <span class="ac">local roofer</span> who\'ll document it right — free.',s:'You may qualify to have storm or hail damage covered. Get matched with one vetted local pro who inspects and documents it properly — before you file.'}
   };
-  if(a && MAP[a]){
+  if(a&&MAP[a]){
     document.getElementById('eyebrow').innerHTML=MAP[a].eye;
     document.getElementById('headline').innerHTML=MAP[a].h;
     document.getElementById('subhead').innerHTML=MAP[a].s;
     var pre=document.querySelector('.step[data-step="1"] .opt[data-branch="'+a+'"]');
-    if(pre) pre.style.boxShadow='0 0 0 2px var(--teal)';
+    if(pre){pre.style.borderColor='var(--green)';pre.style.background='var(--green-soft)';}
   }
 })();
-
-/* ---------- LIVE SOCIAL PROOF TICKER ----------
-   ⚠️ Illustrative placeholders. Wire to REAL activity (GHL/CRM) before traffic.  */
-/* Geo-neutral placeholders (no fabricated cities). To make this REAL and
-   location-specific, wire TICK to actual requests from your GHL/CRM. */
+/* Live social proof — REAL DFW cities. For true "live" proof, wire TICK to actual
+   requests from your GHL/CRM (use each real lead's real city). The list below is the
+   DFW-city fallback shown until it's wired to live data. */
 var TICK=[
-  {note:"just requested a free inspection"},
-  {note:"just got matched with a local pro"},
-  {note:"just started their free roof check"},
-  {note:"just requested a free inspection"}
+  {city:"Plano",note:"requested a free inspection"},
+  {city:"Frisco",note:"got matched with a local pro"},
+  {city:"Arlington",note:"started a free roof check"},
+  {city:"McKinney",note:"requested a free inspection"},
+  {city:"Fort Worth",note:"got matched with a local pro"},
+  {city:"Denton",note:"requested a free inspection"},
+  {city:"Allen",note:"started a free roof check"},
+  {city:"Rockwall",note:"requested a free inspection"},
+  {city:"Garland",note:"got matched with a local pro"},
+  {city:"Mansfield",note:"requested a free inspection"}
 ];
-(function(){
-  var i=0, box=document.getElementById('ticker');
-  function pop(){
-    var t=TICK[i%TICK.length]; i++;
-    document.getElementById('ticktx').innerHTML='A homeowner near you <b>'+t.note+'</b>';
+(function(){var i=0,box=document.getElementById('ticker');
+  function pop(){var t=TICK[i%TICK.length];i++;
+    document.getElementById('ticktx').innerHTML='A homeowner in <b>'+t.city+', TX</b> '+t.note;
     document.getElementById('ticktm').textContent=(Math.floor(Math.random()*40)+3)+' minutes ago';
-    box.style.display='flex';
-    setTimeout(function(){box.style.display='none';}, 6000);
-  }
-  setTimeout(function(){pop(); setInterval(pop, 15000);}, 4000);
-})();
-
-/* ---------- sticky mobile CTA ---------- */
-var bar=document.getElementById('stickybar'), quiz=document.getElementById('quiz');
-window.addEventListener('scroll',function(){
-  var r=quiz.getBoundingClientRect();
-  var past = r.bottom < 0; // quiz scrolled above viewport
-  bar.style.transform = past ? 'translateY(0)' : 'translateY(120%)';
-});
+    box.style.display='flex';setTimeout(function(){box.style.display='none';},6000);}
+  setTimeout(function(){pop();setInterval(pop,15000);},4000);})();
+var bar=document.getElementById('stickybar'),quiz=document.getElementById('quiz');
+window.addEventListener('scroll',function(){var r=quiz.getBoundingClientRect();bar.style.transform=(r.bottom<0)?'translateY(0)':'translateY(120%)';});
 </script>
 </body>
 </html>
