@@ -99,7 +99,9 @@ the funnel already owns the full question set. Consequences:
   Service Matchup is not the lender. There are currently 4 `$99` mentions and all 4 are hedged.
 
 ⚠️ **BEFORE RUNNING TRAFFIC**
-1. **Verify the embed renders on the live domain and that a test lead reaches Lead Prosper → GHL.**
+0. **Auto-advance in the LeadCapture funnel: ON** (confirmed by the owner).
+1. **Verify a test lead reaches Lead Prosper → GHL.** The embed itself is confirmed rendering on
+   the live domain.
    It could not be verified from the build session: that sandbox blocks outbound hosts, so
    `my.leadcapture.io` was stubbed in testing. The script tag, its container and the event
    wiring are confirmed correct; the funnel itself is unverified.
