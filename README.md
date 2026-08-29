@@ -86,6 +86,18 @@ the funnel already owns the full question set. Consequences:
 - The guarantee card is tightened under 430px, and the activity ticker sits at `bottom:84px`
   on phones so it clears the sticky CTA bar.
 
+**COPY RULES — enforce on every future port**
+- Every homeowner-facing mention of the matched professional reads **"one honest local roofer"**
+  (or "local roofer/roofers"). Never reintroduce "local pro", "vetted pro", or bare "pro".
+  Two exceptions stay: the branded mechanism name **4-Point Pro Check**, and the legal footer's
+  "roofing professionals" / "independent professional".
+- The guarantee is **The One-Roofer, Never-Sold Guarantee**.
+- **$99/month is a TILA/Reg Z trigger term.** It must NEVER appear as a flat "$99/month". Every
+  instance carries "as low as", and the financing block carries the disclosure verbatim:
+  *"Payments as low as $99/mo with approved credit. Terms are set by the independent roofer and
+  their lender and are subject to approval — not everyone qualifies."* The footer repeats it.
+  Service Matchup is not the lender. There are currently 4 `$99` mentions and all 4 are hedged.
+
 ⚠️ **BEFORE RUNNING TRAFFIC**
 1. **Verify the embed renders on the live domain and that a test lead reaches Lead Prosper → GHL.**
    It could not be verified from the build session: that sandbox blocks outbound hosts, so
