@@ -251,8 +251,9 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
      2) window.__GEO injected at the edge by the Cloudflare Pages Function (city, region, postalCode, metroCode, lat, lon)
      3) client-side IP lookup fallback (ipapi.co) — reference/demo only; production relies on 2)
      4) "near you" (market-agnostic)
-   A metro's cost range shows ONLY when the visitor resolves inside a configured market. City name personalizes the headline
-   (e.g., "in Plano") only when that city sits inside a configured market — never promise a local roofer where there isn't one. */
+   The headline shows the visitor's own city ANYWHERE in the USA ("in Tulsa, OK"). A metro's COST RANGE shows only when the
+   visitor resolves inside a configured market with a real local figure; everywhere else the sub uses the no-figure sentence.
+   City/state/ZIP always ride into the lead payload so Lead Prosper can route by geography. */
 var MARKETS = {
   dfw:       { name:"Dallas–Fort Worth", range:"$12,000–$15,000", metro:"623", lat:32.80, lon:-97.04, radiusMi:60, phone:"(214) 555-0100", zip:"75201" },
   houston:   { name:"Houston",           range:"", metro:"618", lat:29.76, lon:-95.37, radiusMi:60, phone:"(713) 555-0100", zip:"77002" },   // fill range before use
@@ -273,15 +274,18 @@ function marketFromGeo(g){
 }
 function applyMarket(slug, geo){
   var m = slug && MARKETS[slug] ? MARKETS[slug] : null;
+  // Headline location: the visitor's own city, ANYWHERE in the USA ("in Tulsa, OK"). Non-US or unknown → "near you".
+  var isUS = !geo || !geo.country || String(geo.country).toUpperCase()==='US';
   var place = m ? ('in '+m.name) : 'near you';
-  if(m && geo && geo.city && geo.city.toLowerCase()!==m.name.toLowerCase()) place = 'in '+geo.city;   // "in Plano" — city-level personalization inside a known market
+  if(isUS && geo && geo.city){ place = 'in '+geo.city + (geo.region ? ', '+String(geo.region).toUpperCase().slice(0,2) : ''); }
+  window.__GEO_OUT = geo ? {city:geo.city||'', state:geo.region||'', zip:geo.postalCode||''} : {city:'',state:'',zip:''};
   document.querySelectorAll('[data-m="name"]').forEach(function(e){e.textContent=place;});
   var sub=document.getElementById('sub');
   if(m && m.range){ sub.innerHTML='Most run <b>'+m.range+'</b> in '+m.name+'. Answer a few quick questions, and one honest local roofer <b>comes out, checks your roof free</b>, and gets you <b>your real number</b> — plus whether it qualifies for a plan <b>as low as $99/mo.*</b>'; }
   else { sub.innerHTML='A new roof isn’t cheap. Answer a few quick questions, and one honest local roofer <b>comes out, checks your roof free</b>, and gets you <b>your real number</b> — plus whether it qualifies for a plan <b>as low as $99/mo.*</b>'; }
   document.querySelectorAll('[data-m="phone"]').forEach(function(e){e.placeholder=m?m.phone:'(555) 555-0100';});
   document.querySelectorAll('[data-m="zip"]').forEach(function(e){ e.placeholder=m?m.zip:'ZIP'; if(geo&&geo.postalCode&&/^\d{5}$/.test(geo.postalCode)) e.value=geo.postalCode; });  // prefill ZIP (editable)
-  document.title='What a New Roof Really Costs '+(m?('in '+m.name):'Near You')+' | Service Matchup';
+  document.title='What a New Roof Really Costs '+(place==='near you'?'Near You':place.replace(/^in /,'in '))+' | Service Matchup';
   window.__MARKET = slug || '';
 }
 (function(){
@@ -293,8 +297,8 @@ function applyMarket(slug, geo){
   try{
     var ctl=new AbortController(); setTimeout(function(){ctl.abort();},1500);
     fetch('https://ipapi.co/json/',{signal:ctl.signal}).then(function(r){return r.json();}).then(function(j){
-      var g={city:j.city,region:j.region_code,postalCode:j.postal,latitude:j.latitude,longitude:j.longitude};
-      var slug=marketFromGeo(g); if(slug) applyMarket(slug,g);
+      var g={city:j.city,region:j.region_code,postalCode:j.postal,country:j.country_code,latitude:j.latitude,longitude:j.longitude};
+      applyMarket(marketFromGeo(g),g);
     }).catch(function(){});
   }catch(e){}
 })();
@@ -321,7 +325,7 @@ document.querySelectorAll('[data-back]').forEach(function(b){b.addEventListener(
 document.getElementById('leadform').addEventListener('submit',function(e){
   e.preventDefault();
   var f=e.target; if(!f.name.value||!f.phone.value||!f.zip.value||!f.email.value||!document.getElementById('tcpa').checked){alert('Please fill in every field and check the box.');return;}
-  lead.name=f.name.value; lead.phone=f.phone.value; lead.zip=f.zip.value; lead.email=f.email.value; lead.market=window.__MARKET||'';
+  lead.name=f.name.value; lead.phone=f.phone.value; lead.zip=f.zip.value; lead.email=f.email.value; lead.market=window.__MARKET||''; if(window.__GEO_OUT){lead.geo_city=window.__GEO_OUT.city;lead.geo_state=window.__GEO_OUT.state;lead.geo_zip=window.__GEO_OUT.zip;}
   if(typeof fbq==='function')fbq('track','Lead');           // production: fire ONLY on true LeadCapture submit
   document.querySelectorAll('.step').forEach(function(s){s.classList.remove('active');});
   document.getElementById('done').style.display='block';
