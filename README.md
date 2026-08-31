@@ -7,6 +7,139 @@ Everything below is a **drop-in replacement** (same filenames as your live site)
 
 ## 🌐 LANDING / FUNNEL PAGES (changed)
 
+### `qualify.html` — **/qualify — COST-FIRST, FORM-FIRST FUNNEL (Angi model, multi-market)**
+**LIVE (once this branch is on `main`): https://servicematchup.com/qualify** — Cloudflare Pages
+serves the root `.html` at the clean URL.
+
+**Faithful port of `reference/roof-price-funnel.html`.** That file is the source of truth for all
+copy, layout, colors, and behavior on this route. It **REPLACES** `reference/roof-match-funnel.html`
+for /qualify — do not build this page from the roof-match reference. If you change this page, change
+the reference too, or the next port silently undoes you. `roof-match.html` is untouched and keeps
+its own reference.
+
+**The offer — get this exactly right.** Cost-first: "See what a new roof really runs in {market}."
+The visitor answers the quick form → **one honest local roofer comes out and runs the free
+23-Point Real-Price Check** (a 23-point inspection at the home) → gives them their real number and
+tells them if the roof qualifies for a monthly plan, **as low as $99/mo\*** (with approved credit).
+The online form does **not** return a price or an instant qualification. The visit is where the
+number comes from, and it is stated above the form (subhead + chip), at the contact step, and on the
+button. Never write copy implying an on-screen quote. The button reads **"Set Up My Free Check →"**,
+never "get my number/quote". The mechanism name is fixed: **23-Point Real-Price Check**, capitalized
+exactly. The copy is ~5th-grade reading level on purpose — do not formalize it.
+
+**Page shape (nothing else belongs here):** logo-only header (no nav, no header CTA) · thin progress
+bar under it, 8% filled on load · three-line intro (h1 + one-sentence sub + three trust chips) · the
+form, on screen at load · the 3-step "How the 23-Point Real-Price Check works" block · one financing
+line · footer disclosures. No testimonials, no FAQ, no reviews, no counts.
+
+**Trust appears at the ask only** — the "Only **one** roofer gets your number" line and the
+**One-Roofer Promise** card, plus the three intro chips. Never "never sold or resold."
+
+**FORM = LEADCAPTURE.IO EMBED (funnel `6oeHZT9ts5`)** — same funnel as every other lander, questions
+**unchanged**. The reference's demo quiz ships nowhere; it exists only to show flow and copy.
+
+| Deliberate deviation from the reference | Why |
+|---|---|
+| Demo quiz replaced by the LeadCapture embed | the funnel owns the questions, validation and Lead Prosper → GHL routing |
+| The demo quiz's CSS (`.step`, `.field`, `.opt`, `.cta`, `.consent`, `.row2`, `.backbtn`, `#done`) is stripped | those names are generic enough to collide with whatever LeadCapture renders |
+| Trust line + Promise card sit under the form, not under the submit button | they live inside the embed's step 6 in the reference; we cannot reach that DOM |
+| Card head reads "Free 23-Point Real-Price Check", not "Step 1 of 6" | a step count this page cannot verify would be a false claim; it becomes "Step X of Y" the moment LeadCapture posts real step events |
+| Client-side `ipapi.co` fallback removed | reference/demo only — the edge injection in `functions/qualify.js` replaces it (no third-party call, no cost, no latency) |
+| Pixel events carry an `event_id`; a CAPI relay posts the same id | that is what makes browser/server dedupe work |
+
+⚠️ **SET THESE INSIDE LEADCAPTURE (dashboard, not code) — the embed's own text is not editable from
+this file:**
+1. Contact-step title: **"Last step — where should your roofer reach you?"**
+2. Contact-step intro, verbatim: *"Here's what happens: one honest local roofer calls to set a time,
+   comes out to your home, runs the free 23-Point Real-Price Check, and gives you your real number —
+   and tells you if it qualifies for a monthly plan. That's it."*
+3. Submit button: **"Set Up My Free Check →"**
+4. Auto-advance **ON**; minimum fields (name, phone, ZIP; email optional); TCPA consent at the form.
+5. Hidden field **`market`** mapped from the URL param of the same name (see below).
+6. Thank-you redirect: keep the query string so `?m=` carries through to the thank-you state.
+
+### MULTI-MARKET + DYNAMIC LOCATION (one template, many metros)
+Resolution order, in `qualify.html`:
+1. **`?m=slug`** in the URL — explicit override. Every ad URL should still carry its slug
+   (`/qualify?m=dfw`).
+2. **`window.__GEO`**, injected at the edge by `functions/qualify.js` from `request.cf`
+   (city, region, postalCode, metroCode = Nielsen DMA, latitude, longitude). No third-party lookup,
+   no cost, no toggle.
+3. Otherwise **market-agnostic** copy: headline "near you", **no cost figure**.
+
+Behavior rules — do not change:
+- A visitor resolves to a market by DMA `metroCode` first, else by distance to the market centroid
+  within `radiusMi`.
+- **Inside** a configured market: headline shows the visitor's own city ("in Plano"), the sub shows
+  that market's range ("Most run $12,000–$15,000 in Dallas–Fort Worth"), ZIP is pre-filled
+  (editable) from `postalCode`.
+- **Outside** every configured market: headline says "near you", no figure — never promise a local
+  roofer where there isn't one.
+- A market ships **only** with a real, sourced local cost range. An empty `range` falls back to the
+  no-figure sentence. **Houston / Austin / San Antonio are stubs — leave `range: ""` until Jeano
+  supplies the figures.**
+- `<title>` updates per market.
+
+**How the market reaches the lead payload.** The form is LeadCapture's iframe, so this page cannot
+write a hidden field into it. It writes the resolved slug into the parent URL instead
+(`history.replaceState`, path stays `/qualify`): **`m=<slug>`** (canonical) and **`market=<slug>`**
+(so a hidden field of the same name maps with no dashboard config), plus **`zip=`** when the edge
+already knows it. `window.__MARKET` and the embed's `data-market` attribute carry the same value.
+
+| Ad URL |
+|---|
+| `https://servicematchup.com/qualify` (geo-resolved) |
+| `https://servicematchup.com/qualify?m=dfw` |
+| `https://servicematchup.com/qualify?m=houston` · `?m=austin` · `?m=sanantonio` — **not until their ranges are filled in** |
+
+### CLOUDFLARE PAGES FUNCTIONS (new to this repo)
+- **`functions/qualify.js`** — injects `window.__GEO` into `/qualify` from `request.cf`. Only touches
+  `text/html` responses on that one route.
+- **`functions/api/capi.js`** — Meta Conversions API relay. **Inert until the Pages project has a
+  `META_CAPI_TOKEN` environment variable** (Meta system-user token); without it every request returns
+  204 and the page runs browser-pixel only. Optional: `META_PIXEL_ID`, `META_TEST_EVENT_CODE`.
+  It accepts `PageView` and `InitiateCheckout` only, so a spoofed POST cannot manufacture conversions.
+- These are the first Functions in this repo. They are route-scoped — no `_middleware.js` — so **no
+  other route changes behavior**. Confirm on the first deploy that Pages picked the directory up and
+  that `/roof-match`, `/`, and the service pages still serve normally.
+
+### TRACKING
+- Meta pixel **`1605200247372902`** + CAPI, deduped by `event_id`. The retired pixel
+  `1315531100000095` appears nowhere.
+- `PageView` on load · `InitiateCheckout` **once**, on the first answer inside the embed ·
+  **`Lead` is NOT fired by this page.** LeadCapture owns Lead, on its true submission — never on a
+  button click (commit `db71ba7`; every other embed lander is `Lead:0` for the same reason).
+- Clarity `x1ji8qoqun` present.
+- The path stays **/qualify** so Ads Manager reads its Lead events separately from `/roof-match`.
+- The progress bar follows LeadCapture step events if the embed posts them (origin-checked
+  `postMessage`); otherwise it sits at 8% and goes to 100% on a submit message.
+
+### COMPLIANCE (verbatim — keep intact)
+- Financing is always **"as low as $99/mo" + "with approved credit"**. Never a bare "$99/month" —
+  it is a TILA/Reg Z trigger term. The footer carries the full disclosure: independent roofer/lender
+  terms, not everyone qualifies, Service Matchup is not a lender, no credit pull by us, eligibility
+  determined after the inspection.
+- Cost figures are labeled typical local ranges and "not a quote; your price is set by the roofer
+  after inspecting your roof."
+- Free **inspection/Check**, never "free roof" · "**if it qualifies**", never guaranteed · no
+  insurance-outcome or deductible-waiver language (TX HB 2102) · matching-service disclaimer in the
+  footer · TCPA consent at the form.
+- No reviews, ratings or counts anywhere unless real and permissioned. There are none.
+
+⚠️ **BEFORE RUNNING TRAFFIC — could not be verified from the build session**
+1. **The LeadCapture embed itself.** `my.leadcapture.io` is blocked from the build sandbox (403 at the
+   proxy), so the embed was never rendered here. The script tag, its container and the event wiring
+   are confirmed correct; the funnel is not. Load the page and confirm the first question is visible
+   without scrolling on a 390×844 viewport.
+2. **One test lead end to end:** LeadCapture.io → Lead Prosper → GHL, with `market` on the payload.
+3. **Pixel/CAPI in Meta Pixel Helper:** PageView on load, InitiateCheckout on the first answer,
+   **Lead only on the true submit**, and each browser event deduped against its CAPI twin.
+4. **Edge geo:** load from a DFW IP (or set `window.__GEO` in devtools) — the headline should show the
+   city and the ZIP should pre-fill. Out-of-market should read "near you" with no figure.
+5. Ranges for Houston / Austin / San Antonio before any of those `?m=` URLs runs traffic.
+
+---
+
 ### `roof-match.html` — **ROOF-MATCHING QUIZ FUNNEL (single page, no redirect)**
 **LIVE: https://servicematchup.com/roof-match** (Cloudflare Pages serves the root `.html`
 at the clean URL; deploys from `main`).
