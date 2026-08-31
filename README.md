@@ -63,28 +63,43 @@ Resolution order, in `qualify.html`:
 1. **`?m=slug`** in the URL — explicit override. Every ad URL should still carry its slug
    (`/qualify?m=dfw`).
 2. **`window.__GEO`**, injected at the edge by `functions/qualify.js` from `request.cf`
-   (city, region, postalCode, metroCode = Nielsen DMA, latitude, longitude). No third-party lookup,
-   no cost, no toggle.
+   (country, city, region, postalCode, metroCode = Nielsen DMA, latitude, longitude). No third-party
+   lookup, no cost, no toggle.
 3. Otherwise **market-agnostic** copy: headline "near you", **no cost figure**.
 
+**The headline and the cost figure are two separate decisions.** Getting this backwards is the easy
+mistake:
+
+| | Headline | Cost figure |
+|---|---|---|
+| US visitor, inside a configured market with a range | their own city — "in Plano, TX" | that market's range — "Most run $12,000–$15,000 in Dallas–Fort Worth" |
+| US visitor, anywhere else in the country | their own city — "in Tulsa, OK" | **none** — the no-figure sentence |
+| Non-US, or location unknown | "near you" | **none** |
+
 Behavior rules — do not change:
-- A visitor resolves to a market by DMA `metroCode` first, else by distance to the market centroid
-  within `radiusMi`.
-- **Inside** a configured market: headline shows the visitor's own city ("in Plano"), the sub shows
-  that market's range ("Most run $12,000–$15,000 in Dallas–Fort Worth"), ZIP is pre-filled
-  (editable) from `postalCode`.
-- **Outside** every configured market: headline says "near you", no figure — never promise a local
-  roofer where there isn't one.
+- A visitor resolves to a **market** by DMA `metroCode` first, else by distance to the market centroid
+  within `radiusMi`. That match controls the cost figure only.
+- The **headline** shows the visitor's own city and 2-letter state anywhere in the USA, market or no
+  market. `country` other than `US`, or no city, falls back to "near you".
 - A market ships **only** with a real, sourced local cost range. An empty `range` falls back to the
   no-figure sentence. **Houston / Austin / San Antonio are stubs — leave `range: ""` until Jeano
-  supplies the figures.**
-- `<title>` updates per market.
+  supplies the figures.** Never show a figure for a metro nobody has sourced.
+- ZIP is pre-filled (editable) from `postalCode`.
+- `<title>` follows the resolved place, not the market name.
 
-**How the market reaches the lead payload.** The form is LeadCapture's iframe, so this page cannot
-write a hidden field into it. It writes the resolved slug into the parent URL instead
-(`history.replaceState`, path stays `/qualify`): **`m=<slug>`** (canonical) and **`market=<slug>`**
-(so a hidden field of the same name maps with no dashboard config), plus **`zip=`** when the edge
-already knows it. `window.__MARKET` and the embed's `data-market` attribute carry the same value.
+**How the market and the geo reach the lead payload.** The form is LeadCapture's iframe, so this page
+cannot write hidden fields into it. It writes them into the parent URL instead
+(`history.replaceState`, path stays `/qualify`), named exactly as the payload fields so a hidden field
+of the same name maps with no dashboard config:
+
+| Param | Value |
+|---|---|
+| `m` | resolved market slug — canonical, what the ad URLs carry |
+| `market` | same slug, for the hidden field |
+| `geo_city` · `geo_state` · `geo_zip` | edge geo, on **every** US visitor, so Lead Prosper can route nationally by geography even with no market match |
+| `zip` | the same ZIP again, for LeadCapture's own ZIP prefill |
+
+`window.__MARKET`, `window.__GEO_OUT` and the embed's `data-market` attribute carry the same values.
 
 | Ad URL |
 |---|
@@ -134,8 +149,10 @@ already knows it. `window.__MARKET` and the embed's `data-market` attribute carr
 2. **One test lead end to end:** LeadCapture.io → Lead Prosper → GHL, with `market` on the payload.
 3. **Pixel/CAPI in Meta Pixel Helper:** PageView on load, InitiateCheckout on the first answer,
    **Lead only on the true submit**, and each browser event deduped against its CAPI twin.
-4. **Edge geo:** load from a DFW IP (or set `window.__GEO` in devtools) — the headline should show the
-   city and the ZIP should pre-fill. Out-of-market should read "near you" with no figure.
+4. **Edge geo**, four cases (set `window.__GEO` in devtools to fake them):
+   DFW → "in Plano, TX" **with** the range · another US metro → "in Tulsa, OK" with **no** figure ·
+   non-US → "near you", no figure · ZIP pre-fills in all US cases. Check `geo_city`/`geo_state`/
+   `geo_zip` land on the URL each time.
 5. Ranges for Houston / Austin / San Antonio before any of those `?m=` URLs runs traffic.
 
 ---

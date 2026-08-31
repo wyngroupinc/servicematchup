@@ -7,7 +7,7 @@ export async function onRequest(context) {
   if (!ct.includes('text/html')) return res;
   const cf = context.request.cf || {};
   const geo = {
-    city: cf.city || '', region: cf.regionCode || cf.region || '', postalCode: cf.postalCode || '',
+    country: cf.country || '', city: cf.city || '', region: cf.regionCode || cf.region || '', postalCode: cf.postalCode || '',
     metroCode: cf.metroCode || '', latitude: cf.latitude || '', longitude: cf.longitude || ''
   };
   // `<` is escaped so a stray "</script>" inside any cf field cannot close this tag early.

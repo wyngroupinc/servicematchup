@@ -16,7 +16,7 @@
 
 <!-- ===== Meta Pixel (Service Matchup dataset 1605200247372902) =====
      Browser pixel + server-side CAPI relay share one event_id per event so Meta
-     dedupes the pair. The retired dataset appears nowhere on this page.
+     dedupes the pair. Retired dataset 1315531100000095 appears nowhere on this page.
      PageView here; InitiateCheckout on the first answer; `Lead` is NOT fired by this
      page — the LeadCapture funnel owns Lead, on its true submission (commit db71ba7). -->
 <script>
@@ -186,13 +186,14 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,
 /* ===== MARKET CONFIG — one template, many metros. =====
    Location resolves in this order:
      1) ?m=slug in the URL (explicit override — every ad URL should still carry it)
-     2) window.__GEO injected at the edge by functions/qualify.js (city, region, postalCode, metroCode, lat, lon)
+     2) window.__GEO injected at the edge by functions/qualify.js (country, city, region, postalCode, metroCode, lat, lon)
      3) "near you" (market-agnostic)
    The reference's client-side ipapi.co lookup is deliberately GONE: it was reference/demo only,
    and the edge injection replaces it (no third-party call, no cost, no latency).
-   A metro's cost range shows ONLY when the visitor resolves inside a configured market. City name
-   personalizes the headline (e.g., "in Plano") only when that city sits inside a configured market —
-   never promise a local roofer where there isn't one. */
+   The headline shows the visitor's own city ANYWHERE in the USA ("in Tulsa, OK"). A metro's COST RANGE
+   shows only when the visitor resolves inside a configured market with a real local figure; everywhere
+   else the sub uses the no-figure sentence. City/state/ZIP always ride into the lead payload so Lead
+   Prosper can route by geography. */
 var MARKETS = {
   dfw:       { name:"Dallas–Fort Worth", range:"$12,000–$15,000", metro:"623", lat:32.80, lon:-97.04, radiusMi:60, phone:"(214) 555-0100", zip:"75201" },
   houston:   { name:"Houston",           range:"", metro:"618", lat:29.76, lon:-95.37, radiusMi:60, phone:"(713) 555-0100", zip:"77002" },   // fill range before use
@@ -213,32 +214,34 @@ function marketFromGeo(g){
 }
 function applyMarket(slug, geo){
   var m = slug && MARKETS[slug] ? MARKETS[slug] : null;
+  // Headline location: the visitor's own city, ANYWHERE in the USA ("in Tulsa, OK"). Non-US or unknown → "near you".
+  var isUS = !geo || !geo.country || String(geo.country).toUpperCase()==='US';
   var place = m ? ('in '+m.name) : 'near you';
-  if(m && geo && geo.city && geo.city.toLowerCase()!==m.name.toLowerCase()) place = 'in '+geo.city;   // "in Plano" — city-level personalization inside a known market
+  if(isUS && geo && geo.city){ place = 'in '+geo.city + (geo.region ? ', '+String(geo.region).toUpperCase().slice(0,2) : ''); }
+  window.__GEO_OUT = geo ? {city:geo.city||'', state:geo.region||'', zip:geo.postalCode||''} : {city:'',state:'',zip:''};
   document.querySelectorAll('[data-m="name"]').forEach(function(e){e.textContent=place;});
   var sub=document.getElementById('sub');
   if(m && m.range){ sub.innerHTML='Most run <b>'+m.range+'</b> in '+m.name+'. Answer a few quick questions, and one honest local roofer <b>comes out, checks your roof free</b>, and gets you <b>your real number</b> — plus whether it qualifies for a plan <b>as low as $99/mo.*</b>'; }
   else { sub.innerHTML='A new roof isn’t cheap. Answer a few quick questions, and one honest local roofer <b>comes out, checks your roof free</b>, and gets you <b>your real number</b> — plus whether it qualifies for a plan <b>as low as $99/mo.*</b>'; }
   document.querySelectorAll('[data-m="phone"]').forEach(function(e){e.placeholder=m?m.phone:'(555) 555-0100';});
   document.querySelectorAll('[data-m="zip"]').forEach(function(e){ e.placeholder=m?m.zip:'ZIP'; if(geo&&geo.postalCode&&/^\d{5}$/.test(geo.postalCode)) e.value=geo.postalCode; });  // prefill ZIP (editable)
-  document.title='What a New Roof Really Costs '+(m?('in '+m.name):'Near You')+' | Service Matchup';
+  document.title='What a New Roof Really Costs '+(place==='near you'?'Near You':place.replace(/^in /,'in '))+' | Service Matchup';
   window.__MARKET = slug || '';
-  window.__GEO_ZIP = (geo && /^\d{5}$/.test(geo.postalCode||'')) ? geo.postalCode : '';
 }
-/* The resolved market and the ZIP the edge already knows have to reach the lead payload, and the
-   form is LeadCapture's iframe — we cannot write into its DOM. So we put them where the funnel
-   reads them from: the parent URL. `m` is the canonical slug every ad URL already carries;
-   `market` and `zip` are added so a hidden field of the same name maps with no dashboard config.
-   replaceState keeps the path /qualify (Ads Manager reads its Lead events separately) and keeps
-   every existing param — including `m` — so a thank-you redirect carries them through. */
-function syncUrl(slug, zip){
+/* The resolved market and the visitor's edge geo have to reach the lead payload, and the form is
+   LeadCapture's iframe — we cannot write hidden fields into its DOM. So we put them where the funnel
+   reads them from: the parent URL. `m` is the canonical slug every ad URL already carries; `market`,
+   `geo_city`, `geo_state` and `geo_zip` are named exactly as the payload fields so a hidden field of
+   the same name maps with no dashboard config; `zip` is there for LeadCapture's own ZIP prefill.
+   replaceState keeps the path /qualify (Ads Manager reads its Lead events separately) and keeps every
+   existing param — including `m` — so a thank-you redirect carries them through. */
+function syncUrl(slug){
   try{
-    var u=new URL(location.href), changed=false;
-    if(slug){
-      if(u.searchParams.get('m')!==slug){u.searchParams.set('m',slug);changed=true;}
-      if(u.searchParams.get('market')!==slug){u.searchParams.set('market',slug);changed=true;}
-    }
-    if(zip && !u.searchParams.get('zip')){u.searchParams.set('zip',zip);changed=true;}
+    var g=window.__GEO_OUT||{}, u=new URL(location.href), changed=false;
+    function set(k,v){ if(v && u.searchParams.get(k)!==String(v)){ u.searchParams.set(k,v); changed=true; } }
+    if(slug){ set('m',slug); set('market',slug); }
+    set('geo_city',g.city); set('geo_state',g.state); set('geo_zip',g.zip);
+    if(g.zip && /^\d{5}$/.test(g.zip) && !u.searchParams.get('zip')){ u.searchParams.set('zip',g.zip); changed=true; }
     if(changed) history.replaceState(null,'',u.pathname+u.search+u.hash);
   }catch(e){}
 }
@@ -249,7 +252,7 @@ function syncUrl(slug, zip){
   if(param && MARKETS[param]) slug=param;            // 1) explicit ?m= wins
   else if(geo) slug=marketFromGeo(geo);              // 2) edge geo (DMA first, then centroid distance)
   applyMarket(slug, geo);                            // 3) otherwise market-agnostic "near you"
-  syncUrl(slug, window.__GEO_ZIP);
+  syncUrl(slug);
   var el=document.getElementById('lcembed');
   if(el){ el.setAttribute('data-market', slug||''); }
 })();
