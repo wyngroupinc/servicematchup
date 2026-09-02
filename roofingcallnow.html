@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>We Found Your Roofer — Call Now</title>
+<meta name="robots" content="noindex,nofollow">
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1605200247372902');fbq('track','PageView');
+</script>
+<style>
+:root{
+  --bg:#F8F4EC; --soft:#FFFDF9; --line:#E9E4DA;
+  --navy:#16324E; --green:#2E8259; --green-dk:#246B48;
+  --muted:#5C6B7A; --gold:#D4A853;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--navy);
+  font-family:'Poppins',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.5; padding-bottom:96px;
+}
+.bar{height:6px;background:var(--green)}
+.wrap{max-width:560px;margin:0 auto;padding:0 20px}
+header{padding:18px 0 6px;text-align:center}
+.brand{font-weight:700;font-size:15px;letter-spacing:.2px;color:var(--navy)}
+
+/* confirmation */
+.confirm{
+  display:flex;align-items:center;gap:10px;justify-content:center;
+  background:rgba(46,130,89,.10);border:1px solid rgba(46,130,89,.28);
+  border-radius:999px;padding:9px 16px;margin:14px auto 0;width:fit-content;
+  font-size:14px;font-weight:600;color:var(--green-dk)
+}
+.confirm svg{flex:none}
+
+h1{
+  font-size:27px;line-height:1.2;font-weight:700;margin:16px 0 10px;
+  text-align:center;text-wrap:balance
+}
+h1 .hl{color:var(--green)}
+.sub{
+  font-size:16px;color:var(--muted);text-align:center;margin:0 auto 20px;max-width:460px
+}
+.sub strong{color:var(--navy);font-weight:600}
+
+/* primary call button */
+.callbtn{
+  display:flex;align-items:center;justify-content:center;gap:11px;
+  background:var(--green);color:#fff;text-decoration:none;
+  font-size:21px;font-weight:700;letter-spacing:.2px;
+  padding:20px 18px;border-radius:16px;
+  box-shadow:0 6px 0 var(--green-dk), 0 12px 28px rgba(36,107,72,.28);
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.callbtn:active{transform:translateY(4px);box-shadow:0 2px 0 var(--green-dk),0 6px 16px rgba(36,107,72,.24)}
+.callbtn .num{font-variant-numeric:tabular-nums}
+.micro{
+  text-align:center;font-size:13px;color:var(--muted);margin:11px 0 0;
+}
+.micro b{color:var(--navy);font-weight:600}
+
+/* reasons */
+.reasons{margin:28px 0 0;padding:0;list-style:none}
+.reasons li{
+  display:flex;gap:12px;align-items:flex-start;
+  background:var(--soft);border:1px solid var(--line);border-radius:14px;
+  padding:14px 16px;margin-bottom:10px
+}
+.reasons .ic{
+  flex:none;width:30px;height:30px;border-radius:9px;background:rgba(46,130,89,.12);
+  display:flex;align-items:center;justify-content:center;font-size:15px
+}
+.reasons b{display:block;font-size:15px;margin-bottom:2px}
+.reasons span{font-size:14px;color:var(--muted);line-height:1.45}
+
+h2{
+  font-size:19px;font-weight:700;margin:32px 0 14px;text-align:center
+}
+/* steps */
+.steps{counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{
+  counter-increment:s;position:relative;padding:0 0 20px 46px;font-size:15px
+}
+.steps li:before{
+  content:counter(s);position:absolute;left:0;top:-2px;
+  width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700
+}
+.steps li:after{
+  content:'';position:absolute;left:14.5px;top:30px;bottom:2px;width:2px;background:var(--line)
+}
+.steps li:last-child{padding-bottom:0}
+.steps li:last-child:after{display:none}
+.steps b{display:block;margin-bottom:2px}
+.steps span{color:var(--muted);font-size:14px}
+
+/* promise card */
+.promise{
+  background:var(--soft);border:1px solid var(--line);border-left:4px solid var(--gold);
+  border-radius:12px;padding:16px 18px;margin:26px 0 0
+}
+.promise b{display:block;font-size:15px;margin-bottom:6px}
+.promise p{margin:0;font-size:14px;color:var(--muted);line-height:1.55}
+
+.trust{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:24px 0 0}
+.chip{
+  font-size:12.5px;color:var(--muted);background:var(--soft);
+  border:1px solid var(--line);border-radius:999px;padding:7px 12px
+}
+
+/* secondary */
+.alt{
+  text-align:center;font-size:14px;color:var(--muted);
+  margin:28px 0 0;padding-top:20px;border-top:1px solid var(--line)
+}
+.alt b{color:var(--navy)}
+
+footer{
+  font-size:11.5px;color:#8A97A3;text-align:center;line-height:1.6;
+  margin:26px 0 0;padding:18px 0 24px;border-top:1px solid var(--line)
+}
+footer a{color:#8A97A3}
+
+/* sticky mobile call bar */
+.sticky{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:rgba(248,244,236,.94);backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+}
+.sticky a{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  background:var(--green);color:#fff;text-decoration:none;font-weight:700;font-size:18px;
+  padding:15px;border-radius:13px;box-shadow:0 4px 0 var(--green-dk)
+}
+.sticky a:active{transform:translateY(2px);box-shadow:0 2px 0 var(--green-dk)}
+
+@media(min-width:600px){
+  h1{font-size:33px}
+  body{padding-bottom:28px}
+  .sticky{display:none}
+}
+</style>
+</head>
+<body>
+<div class="bar"></div>
+<div class="wrap">
+
+  <header><div class="brand">Service Matchup</div></header>
+
+  <div class="confirm">
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-9" stroke="#246B48" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Match found — a roofer is available now
+  </div>
+
+  <h1>We found <span class="hl">your roofer.</span><br>He can tell you how many years you've really got left.</h1>
+
+  <p class="sub">
+    <strong>Good news</strong> — there's a licensed local roofer available right now.
+    Give him two minutes on the phone and he'll set up your
+    <strong>free 23-Point Real-Price Check</strong>: how much life your roof has left,
+    what it'd take to replace it, and your actual price — not a national average.
+  </p>
+
+  <a class="callbtn" href="tel:+12142866891" id="callTop">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z" fill="#fff"/></svg>
+    <span class="num">(214) 286-6891</span>
+  </a>
+  <p class="micro"><b>This is the number that connects you · Free · No obligation</b></p>
+
+  <ul class="reasons">
+    <li>
+      <div class="ic">📞</div>
+      <div><b>This is how you reach him</b><span>Calling is what puts your address in front of a roofer — there's no queue to wait in.</span></div>
+    </li>
+    <li>
+      <div class="ic">📅</div>
+      <div><b>Get on this week's schedule</b><span>Visits get booked in the order they come in. A call today usually means a check this week.</span></div>
+    </li>
+    <li>
+      <div class="ic">💬</div>
+      <div><b>Ask what you actually want to know</b><span>Layers, decking, financing, how many days it takes — real answers instead of a form.</span></div>
+    </li>
+  </ul>
+
+  <h2>What happens on the call</h2>
+  <ol class="steps">
+    <li><b>A few quick questions</b><span>Your address, roof age, and what's going on up there. About two minutes.</span></li>
+    <li><b>You pick a time</b><span>He comes out when it works for you — evenings and weekends included.</span></li>
+    <li><b>The free 23-Point Real-Price Check</b><span>Size, pitch, layers, decking, flashing, ventilation — all 23 points, on your actual roof.</span></li>
+    <li><b>You get your real number</b><span>Your actual price, not a range. Plus whether it qualifies for a monthly plan as low as $99/mo.*</span></li>
+  </ol>
+
+  <div class="promise">
+    <b>The One-Roofer Promise</b>
+    <p>Only one roofer ever gets your number. We don't sell it to five companies, and your phone won't blow up. If you decide not to move forward, that's the end of it — no pressure, nothing owed.</p>
+  </div>
+
+  <div class="trust">
+    <span class="chip">✅ Free on-site check</span>
+    <span class="chip">✅ Licensed &amp; insured</span>
+    <span class="chip">✅ Never sold or resold</span>
+    <span class="chip">✅ No obligation</span>
+  </div>
+
+  <p class="alt">
+    Can't talk this second? <b>Save this number and call when you can</b> —<br>
+    (214) 286-6891. It's the line that reaches your roofer.
+  </p>
+
+  <footer>
+    *Financing subject to approved credit. Terms are set by the independent roofer and lender, and not everyone qualifies. Monthly payment examples are illustrative, not an offer of credit.<br><br>
+    The 23-Point Real-Price Check is a free, no-obligation on-site inspection. Service Matchup connects homeowners with independent licensed roofing contractors and is not a roofing contractor or a lender.<br><br>
+    © <span id="yr"></span> Service Matchup · Wyn Group Inc
+  </footer>
+
+</div>
+
+<div class="sticky">
+  <a href="tel:+12142866891" id="callSticky">
+    <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z" fill="#fff"/></svg>
+    Call (214) 286-6891
+  </a>
+</div>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+// fire a Contact event on tap-to-call so call intent shows up in Meta
+function tapped(where){
+  try{ if(typeof fbq==='function') fbq('track','Contact',{content_name:'ppc_call',position:where}); }catch(e){}
+}
+document.getElementById('callTop').addEventListener('click',function(){tapped('top')});
+document.getElementById('callSticky').addEventListener('click',function(){tapped('sticky')});
+</script>
+</body>
+</html>
