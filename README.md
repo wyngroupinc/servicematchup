@@ -157,6 +157,67 @@ of the same name maps with no dashboard config:
 
 ---
 
+### `decide.html` / `decide-rt.html` — **/decide + /decide-rt — DEDUCTIBLE-ANGLE PAGES (cold + retargeting)**
+
+Two pages on the "file, pay, or wait?" angle. Cloudflare Pages serves them at **/decide** and
+**/decide-rt** the same way it serves `qualify.html` at `/qualify`.
+
+| File | Path | Traffic |
+|---|---|---|
+| `decide.html` | `/decide` | Cold prospecting (long form) |
+| `decide-rt.html` | `/decide-rt` | Retargeting (short form) |
+
+**The separate paths are load-bearing** — they are how the two ad audiences stay attributable in
+Ads Manager and how the LPV custom audiences get split later. Do not collapse them into one route
+or serve one as a redirect to the other.
+
+Both are **self-contained**: one inline `<style>` block, inline JS, and the logo as a base64 data
+URI. That is deliberate and matches this repo — there is no shared stylesheet here (the root
+`styles.css` is orphaned; nothing links it) and no layout/partial system. Do not extract the CSS or
+the logo.
+
+**Generated, not hand-edited.** `src/build.py` is the source of truth: both pages share their CSS,
+icons, roof diagram, math block, promise/honesty cards, form card, and footer. Editing one HTML
+file alone drifts them apart.
+
+```bash
+python3 src/build.py          # writes ./decide.html, ./decide-rt.html + src/*.template.html
+```
+
+Python 3, no dependencies. The `src/*.template.html` files are the same markup with `__LOGO__` in
+place of the base64 logo — useful for diffing without 20KB of base64 noise. They live in `src/` so
+they never become routes of their own.
+
+**FORM = LEADCAPTURE.IO EMBED (funnel `6oeHZT9ts5`)** — same funnel and same snippet as every other
+embed lander here. The script is nested **inside** `<div id="lc-embed">` rather than replacing it:
+the embed inserts its `.lc-form-container` as a sibling of the script tag, so nesting keeps the form
+inside the container that carries `min-height:400px` and the border radius. Replacing the div would
+drop the form into `<section id="check">` and let the card collapse before the embed paints.
+
+### TRACKING (/decide, /decide-rt)
+- Meta pixel **`1605200247372902`** (Service Matchup dataset). The retired `1315531100000095`
+  appears nowhere.
+- `PageView` on load, **once per page**. The LeadCapture funnel has `metaPixelSettings.enabled =
+  false`, so the embed loads no second pixel; even if it were enabled, the embed detects an existing
+  `fbevents.js` and skips its own init. Two independent guards against a double PageView.
+- Custom events — **these exact strings are what ad reporting keys off**:
+  `SkipToForm` / `ReachedForm` on `/decide`, `SkipToForm_RT` / `ReachedForm_RT` on `/decide-rt`.
+  The `_RT` suffix keeps cold and warm behavior separable and lets each build its own audience.
+- **`Lead` and `InitiateCheckout` are NOT fired by these pages.** LeadCapture owns both on true
+  submission (commit `db71ba7`); a duplicate would double-count every conversion.
+- Geo: `?m=` param → `window.__GEO` → `ipapi.co` fallback → "Texas". No edge function is wired for
+  these routes (`functions/qualify.js` is scoped to `/qualify` only), so they use the client-side
+  fallback.
+
+### COMPLIANCE (/decide, /decide-rt — verbatim, keep intact)
+Same rules as `/qualify`, plus: the deductible copy is presented as **illustrative Texas
+wind-and-hail structures**, explicitly "not a statement about your policy". Under **Texas HB 2102**
+the homeowner pays the deductible in full, and the pages state that Service Matchup and its partner
+roofers **do not waive, rebate, or absorb deductibles**, do not adjust or file claims, and make no
+representation about coverage. "as low as $99/mo" always carries the `*` and the "subject to
+approved credit" footnote. "Dallas–Fort Worth" is spelled out — never "DFW" in customer-facing copy.
+No testimonials, review counts, or star ratings. Do not edit any of it without review.
+
 ### `roof-match.html` — **ROOF-MATCHING QUIZ FUNNEL (single page, no redirect)**
 **LIVE: https://servicematchup.com/roof-match** (Cloudflare Pages serves the root `.html`
 at the clean URL; deploys from `main`).
