@@ -82,6 +82,7 @@ margin:16px 0 0}
 .math .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;
 border-bottom:1px solid #CFE5D8;font-size:15px}
 .math .row span{flex:1;line-height:1.35}
+.math .row span em{display:block;font-style:normal;font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.4}
 .math .row b{font-size:18px;white-space:nowrap;flex:none}
 .math .row .q{width:40px;height:40px;border-radius:50%;background:#fff;border:2px dashed var(--green);
 color:var(--green);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800}
@@ -218,7 +219,7 @@ def trust():
 def math_box(note):
     return f"""<div class="math">
   <div class="row"><span>What your roof actually costs to replace</span><b class="q">?</b></div>
-  <div class="row"><span>Minus your wind-and-hail deductible</span><span class="known">you know this</span></div>
+  <div class="row"><span>Minus your wind-and-hail deductible<em>1% to 2% of home value on many Texas policies. Often $4,000 to $8,000.</em></span><span class="known">you know this</span></div>
   <div class="row eq"><span>What filing would actually save you</span><b class="q">?</b></div>
   <p class="note">{note}</p>
 </div>"""
@@ -388,7 +389,7 @@ LONG = f"""
 <section class="hero">
   <span class="eyebrow">{ICONS['home']} For Dallas–Fort Worth homeowners</span>
   <h1 id="h1">Deciding whether to <span class="ac">file a claim</span>, pay for the roof yourself, or wait it out?</h1>
-  <p class="sub">You already know one number: your wind-and-hail deductible. On a lot of <span data-m="name2">Dallas–Fort Worth</span> policies that's now 1% to 2% of the home's value, <b>$4,000 to $8,000 out of your pocket</b> before insurance pays a dollar. What nobody's given you is the <b>other</b> number: what your roof actually costs. And you can't make this decision with half the math.</p>
+  <p class="sub">You know one number: your deductible. Nobody has given you the <b>other one</b>, what your roof actually costs. You can't make this call with half the math.</p>
   <a class="btn gold" href="#check" id="jumpTop">Get my real number →</a>
   <p class="note">Free 23-Point Real-Price Check · about 90 seconds · you keep the decision</p>
 </section>
@@ -440,7 +441,7 @@ SHORT = f"""
 <section class="hero">
   <span class="eyebrow">{ICONS['home']} Dallas–Fort Worth homeowners</span>
   <h1 id="h1">Still deciding on the roof? You're missing <span class="ac">one number.</span></h1>
-  <p class="sub">You know your deductible. You don't know what your roof actually costs <span data-m="name">in Dallas–Fort Worth</span>. One free, on-site 23-Point Real-Price Check from one honest local roofer gets you that number, and a straight answer on whether to <b>file, pay, or wait</b>.</p>
+  <p class="sub">You know your deductible. Not what the roof costs. One free on-site check from one local roofer gets you that number, and a straight answer on whether to <b>file, pay, or wait</b>.</p>
   <a class="btn gold" href="#check" id="jumpTop">Get my real number →</a>
   <p class="note">Free · about 90 seconds · no obligation · you keep the decision</p>
 </section>
