@@ -351,6 +351,8 @@ document.getElementById('jumpTop').addEventListener('click',function(){ try{ if(
 })();
 </script>"""
 
+CLARITY_ID = "x1ji8qoqun"   # Microsoft Clarity project, same one qualify.html uses
+
 HEAD = """<!doctype html>
 <html lang="en">
 <head>
@@ -370,6 +372,11 @@ n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init','1605200247372902');fbq('track','PageView');
+</script>
+<script type="text/javascript">
+(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","__CLARITY_ID__");
 </script>
 <style>__CSS__</style>
 </head>
@@ -470,6 +477,7 @@ pages = {
  'decide-rt':      page("Still Deciding on the Roof? | Service Matchup", SHORT, 'SkipToForm_RT','ReachedForm_RT', "Get my real number", "free, 90 sec"),
 }
 for name, html in pages.items():
+    html = html.replace('__CLARITY_ID__', CLARITY_ID)
     open(f'{TPL_OUT}/{name}.template.html','w').write(html)
     open(f'{OUT}/{name}.html','w').write(html.replace('__LOGO__', LOGO))
     txt = re.sub(r'<script.*?</script>|<style.*?</style>|<svg.*?</svg>|<[^>]+>',' ',html,flags=re.S)
