@@ -171,6 +171,19 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
 .sticky .btn{min-height:50px;font-size:16px;box-shadow:0 4px 0 var(--green-dk)}
 .sticky .btn small{font-weight:500;opacity:.85;font-size:12.5px}
 
+/* booking page: one screen — headline, what-you-get card, form. Nothing to scroll past. */
+.mini{max-width:640px;margin:0 auto;padding:40px 0 10px;text-align:center}
+.mini h1{font-size:clamp(29px,5vw,44px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px}
+.mini .sub{font-size:17px;color:var(--muted);line-height:1.55;margin:0 auto 26px;max-width:33em}
+.mini .bfcard{text-align:left}
+.bfcard{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 10px 30px rgba(22,50,78,.07)}
+.bfcard .bfk{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
+.bfnote{font-size:12.5px;color:var(--muted);margin:14px 0 0;text-align:center;line-height:1.5}
+.gets{list-style:none;padding:0 0 18px;margin:0 0 20px;display:grid;gap:12px;border-bottom:1px solid var(--line)}
+.gets li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--navy);line-height:1.5}
+.gets svg{width:19px;height:19px;flex:0 0 auto;color:var(--green);margin-top:2px}
+@media(max-width:860px){.mini{padding:26px 0 6px}}
+
 @media(min-width:640px){
   h1{font-size:36px}h2{font-size:26px}.hero{padding:34px 32px 28px}
   .trust{grid-template-columns:repeat(4,1fr)}
@@ -325,7 +338,8 @@ function applyMarket(slug, geo){
       applyMarket(marketFromGeo(g),g); }).catch(function(){}); }catch(e){}
 })();
 /* tracking: skip vs read, reached form */
-document.getElementById('jumpTop').addEventListener('click',function(){ try{ if(typeof fbq==='function') fbq('trackCustom','SkipToForm_RT'); }catch(e){} });
+(function(){var j=document.getElementById('jumpTop'); if(!j) return;
+  j.addEventListener('click',function(){ try{ if(typeof fbq==='function') fbq('trackCustom','SkipToForm_RT'); }catch(e){} });})();
 (function(){var fired=false;window.addEventListener('scroll',function(){ if(fired) return;
   var el=document.getElementById('check'); if(!el) return;
   if(el.getBoundingClientRect().top < window.innerHeight*1.5){ fired=true; try{ if(typeof fbq==='function') fbq('trackCustom','ReachedForm_RT'); }catch(e){} }
@@ -333,10 +347,12 @@ document.getElementById('jumpTop').addEventListener('click',function(){ try{ if(
 /* sticky CTA: show after hero CTA leaves view, hide while form is on screen */
 (function(){
   var st=document.getElementById('sticky'), hero=document.getElementById('jumpTop'), form=document.getElementById('check');
-  if(!('IntersectionObserver' in window)||!st) return;
-  var heroOut=false, formIn=false;
+  if(!('IntersectionObserver' in window)||!st||!form) return;
+  /* no hero CTA (the booking page opens on the form) => nothing to scroll past, so the
+     sticky is governed by the form alone. */
+  var heroOut=!hero, formIn=false;
   function upd(){ st.classList.toggle('on', heroOut && !formIn); }
-  new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); },{threshold:0}).observe(hero);
+  if(hero) new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); },{threshold:0}).observe(hero);
   new IntersectionObserver(function(es){ formIn=es[0].isIntersecting; upd(); },{threshold:0.15}).observe(form);
 })();
 </script>

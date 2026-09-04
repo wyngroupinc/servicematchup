@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Builds the two deductible-angle pages (long + short) from shared design + copy blocks."""
+"""Builds the deductible-angle pages (long + short) and the bottom-funnel booking page
+from shared design + copy blocks."""
 import os, re
 
 LOGO = open(os.environ.get('LOGO_FILE', './src/logo_uri.txt')).read().strip()
@@ -157,6 +158,19 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
 .sticky .btn{min-height:50px;font-size:16px;box-shadow:0 4px 0 var(--green-dk)}
 .sticky .btn small{font-weight:500;opacity:.85;font-size:12.5px}
 
+/* booking page: one screen — headline, what-you-get card, form. Nothing to scroll past. */
+.mini{max-width:640px;margin:0 auto;padding:40px 0 10px;text-align:center}
+.mini h1{font-size:clamp(29px,5vw,44px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px}
+.mini .sub{font-size:17px;color:var(--muted);line-height:1.55;margin:0 auto 26px;max-width:33em}
+.mini .bfcard{text-align:left}
+.bfcard{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 10px 30px rgba(22,50,78,.07)}
+.bfcard .bfk{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
+.bfnote{font-size:12.5px;color:var(--muted);margin:14px 0 0;text-align:center;line-height:1.5}
+.gets{list-style:none;padding:0 0 18px;margin:0 0 20px;display:grid;gap:12px;border-bottom:1px solid var(--line)}
+.gets li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--navy);line-height:1.5}
+.gets svg{width:19px;height:19px;flex:0 0 auto;color:var(--green);margin-top:2px}
+@media(max-width:860px){.mini{padding:26px 0 6px}}
+
 @media(min-width:640px){
   h1{font-size:36px}h2{font-size:26px}.hero{padding:34px 32px 28px}
   .trust{grid-template-columns:repeat(4,1fr)}
@@ -253,21 +267,30 @@ def honest(short=False):
   <p>He won't "waive" your deductible, "cover" it, or "work it into the estimate." Texas law says the deductible is yours to pay, and any roofer offering otherwise is offering something illegal, usually right before knocking on your neighbor's door.</p>
   <p>He also won't file for you or promise what your insurance company will decide. That's theirs to decide. His job is to give you the real number so <strong>you</strong> can decide.</p></div></div>"""
 
+LC_EMBED = """<!-- LEADCAPTURE.IO FORM EMBED — funnel 6oeHZT9ts5 ("Service Matchup Roofing",
+     3a6436bf-6b28-4dbc-890e-5c8f32a53f34, hosted at my.leadcapture.io/p/yltkxh0_).
+     Identical snippet and identical funnel to every other embed lander in this repo.
+     The funnel owns the question set, validation, and Lead Prosper -> GHL routing, and
+     it fires Meta `Lead` on its true submission — so this page must never fire `Lead`
+     or `InitiateCheckout` (commit db71ba7; a duplicate double-counts every conversion).
+     The script is nested inside #lc-embed rather than replacing it so the container
+     keeps its min-height:400px and cannot collapse before the form paints. -->
+<div id="lc-embed"><script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script></div>"""
+
+def lc_embed(indent="  "):
+    """The LeadCapture funnel embed, indented to sit inside whichever card holds it.
+
+    Shared so the deductible pages and the booking page can never drift onto
+    different funnels or lose the min-height guard independently."""
+    return "\n".join(indent + line for line in LC_EMBED.split("\n"))
+
 def formcard(kick, h2):
     c = ICONS['check']
     return f"""<section id="check"><div class="formcard">
   <p class="kick">{kick}</p>
   <h2>{h2}</h2>
   <p class="fsub">A few quick questions so we can match you with the right local roofer. About 90 seconds.</p>
-  <!-- LEADCAPTURE.IO FORM EMBED — funnel 6oeHZT9ts5 ("Service Matchup Roofing",
-       3a6436bf-6b28-4dbc-890e-5c8f32a53f34, hosted at my.leadcapture.io/p/yltkxh0_).
-       Identical snippet and identical funnel to every other embed lander in this repo.
-       The funnel owns the question set, validation, and Lead Prosper -> GHL routing, and
-       it fires Meta `Lead` on its true submission — so this page must never fire `Lead`
-       or `InitiateCheckout` (commit db71ba7; a duplicate double-counts every conversion).
-       The script is nested inside #lc-embed rather than replacing it so the container
-       keeps its min-height:400px and cannot collapse before the form paints. -->
-  <div id="lc-embed"><script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script></div>
+{lc_embed()}
   <div class="chips">
     <span class="chip">{c}Free on-site 23-Point Check</span>
     <span class="chip">{c}Straight answer: file, pay, or wait</span>
@@ -335,7 +358,8 @@ function applyMarket(slug, geo){
       applyMarket(marketFromGeo(g),g); }).catch(function(){}); }catch(e){}
 })();
 /* tracking: skip vs read, reached form */
-document.getElementById('jumpTop').addEventListener('click',function(){ try{ if(typeof fbq==='function') fbq('trackCustom','__SKIP__'); }catch(e){} });
+(function(){var j=document.getElementById('jumpTop'); if(!j) return;
+  j.addEventListener('click',function(){ try{ if(typeof fbq==='function') fbq('trackCustom','__SKIP__'); }catch(e){} });})();
 (function(){var fired=false;window.addEventListener('scroll',function(){ if(fired) return;
   var el=document.getElementById('check'); if(!el) return;
   if(el.getBoundingClientRect().top < window.innerHeight*1.5){ fired=true; try{ if(typeof fbq==='function') fbq('trackCustom','__REACH__'); }catch(e){} }
@@ -343,10 +367,12 @@ document.getElementById('jumpTop').addEventListener('click',function(){ try{ if(
 /* sticky CTA: show after hero CTA leaves view, hide while form is on screen */
 (function(){
   var st=document.getElementById('sticky'), hero=document.getElementById('jumpTop'), form=document.getElementById('check');
-  if(!('IntersectionObserver' in window)||!st) return;
-  var heroOut=false, formIn=false;
+  if(!('IntersectionObserver' in window)||!st||!form) return;
+  /* no hero CTA (the booking page opens on the form) => nothing to scroll past, so the
+     sticky is governed by the form alone. */
+  var heroOut=!hero, formIn=false;
   function upd(){ st.classList.toggle('on', heroOut && !formIn); }
-  new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); },{threshold:0}).observe(hero);
+  if(hero) new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); },{threshold:0}).observe(hero);
   new IntersectionObserver(function(es){ formIn=es[0].isIntersecting; upd(); },{threshold:0.15}).observe(form);
 })();
 </script>"""
@@ -470,11 +496,37 @@ SHORT = f"""
 {how()}
 """
 
+# ---------------- BOTTOM (most-aware, already ready to book) ----------------
+# One screen: headline, what-you-get card, form. No deductible math, no "how it
+# works", no closing CTA — this traffic has already decided, so the only job is to
+# get it into the funnel. That means there is no hero CTA above the form and so no
+# id="jumpTop": SkipToForm_BF never fires here (nothing to skip), and the sticky CTA
+# falls back to "show whenever the form is off screen". The JS handles both.
+BOTTOM = f"""
+<section class="mini">
+  <h1>Get a <span class="ac">free roof inspection</span> from one local roofer.</h1>
+  <p class="sub">About 45 minutes, on your roof. You get a written number and a straight answer &mdash; whether it&#39;s worth doing now, or worth waiting.</p>
+
+  <div class="bfcard" id="check">
+    <p class="bfk">What you get</p>
+    <ul class="gets">
+      <li>{ICONS['check']}<span>A <b>free on-site inspection</b> from one licensed local roofer &mdash; about 45 minutes, no obligation.</span></li>
+      <li>{ICONS['check']}<span><b>Your real number, in writing.</b> What the roof actually costs, not a range off the internet.</span></li>
+      <li>{ICONS['check']}<span><b>A straight answer:</b> worth doing now, or worth waiting. If it has years left, he&#39;ll tell you that.</span></li>
+      <li>{ICONS['check']}<span><b>One roofer. One call.</b> Nobody knocks on your door, and your info is never listed, sold, or resold.</span></li>
+    </ul>
+{lc_embed("    ")}
+    <p class="bfnote">Free &middot; No obligation &middot; About 90 seconds to start</p>
+  </div>
+</section>
+"""
+
 os.makedirs(OUT, exist_ok=True)
 os.makedirs(TPL_OUT, exist_ok=True)
 pages = {
  'decide': page("File, Pay, or Wait? Get the Number That Decides It | Service Matchup", LONG, 'SkipToForm','ReachedForm', "Get my real number", "free, 90 sec"),
  'decide-rt':      page("Still Deciding on the Roof? | Service Matchup", SHORT, 'SkipToForm_RT','ReachedForm_RT', "Get my real number", "free, 90 sec"),
+ 'book':           page("Free Roof Inspection in Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec"),
 }
 for name, html in pages.items():
     html = html.replace('__CLARITY_ID__', CLARITY_ID)

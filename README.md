@@ -157,31 +157,34 @@ of the same name maps with no dashboard config:
 
 ---
 
-### `decide.html` / `decide-rt.html` — **/decide + /decide-rt — DEDUCTIBLE-ANGLE PAGES (cold + retargeting)**
+### `decide.html` / `decide-rt.html` / `book.html` — **/decide + /decide-rt + /book — BUILT PAGES**
 
-Two pages on the "file, pay, or wait?" angle. Cloudflare Pages serves them at **/decide** and
-**/decide-rt** the same way it serves `qualify.html` at `/qualify`.
+Three pages off one generator. Two run the "file, pay, or wait?" deductible angle for cold and
+retargeting traffic; the third is a one-screen booking page for traffic that has already decided it
+wants an inspection — headline, what-you-get card, form, and nothing to scroll past. Cloudflare
+Pages serves each at its clean URL the same way it serves `qualify.html` at `/qualify`.
 
 | File | Path | Traffic |
 |---|---|---|
-| `decide.html` | `/decide` | Cold prospecting (long form) |
-| `decide-rt.html` | `/decide-rt` | Retargeting (short form) |
+| `decide.html` | `/decide` | Cold prospecting (long form, deductible angle) |
+| `decide-rt.html` | `/decide-rt` | Retargeting (short form, deductible angle) |
+| `book.html` | `/book` | Most-aware / ready to book (one screen, no deductible math) |
 
-**The separate paths are load-bearing** — they are how the two ad audiences stay attributable in
+**The separate paths are load-bearing** — they are how the ad audiences stay attributable in
 Ads Manager and how the LPV custom audiences get split later. Do not collapse them into one route
-or serve one as a redirect to the other.
+or serve one as a redirect to another.
 
-Both are **self-contained**: one inline `<style>` block, inline JS, and the logo as a base64 data
+All three are **self-contained**: one inline `<style>` block, inline JS, and the logo as a base64 data
 URI. That is deliberate and matches this repo — there is no shared stylesheet here (the root
 `styles.css` is orphaned; nothing links it) and no layout/partial system. Do not extract the CSS or
 the logo.
 
-**Generated, not hand-edited.** `src/build.py` is the source of truth: both pages share their CSS,
-icons, roof diagram, math block, promise/honesty cards, form card, and footer. Editing one HTML
-file alone drifts them apart.
+**Generated, not hand-edited.** `src/build.py` is the source of truth: all three pages share their
+CSS, icons, roof diagram, math block, promise/honesty cards, LeadCapture embed, tracking JS, and
+footer. Editing one HTML file alone drifts them apart.
 
 ```bash
-python3 src/build.py          # writes ./decide.html, ./decide-rt.html + src/*.template.html
+python3 src/build.py          # writes ./decide.html, ./decide-rt.html, ./book.html + src/*.template.html
 ```
 
 Python 3, no dependencies. The `src/*.template.html` files are the same markup with `__LOGO__` in
@@ -189,28 +192,42 @@ place of the base64 logo — useful for diffing without 20KB of base64 noise. Th
 they never become routes of their own.
 
 **FORM = LEADCAPTURE.IO EMBED (funnel `6oeHZT9ts5`)** — same funnel and same snippet as every other
-embed lander here. The script is nested **inside** `<div id="lc-embed">` rather than replacing it:
+embed lander here, emitted for all three pages by `lc_embed()` so they cannot drift onto different
+funnels. The script is nested **inside** `<div id="lc-embed">` rather than replacing it:
 the embed inserts its `.lc-form-container` as a sibling of the script tag, so nesting keeps the form
 inside the container that carries `min-height:400px` and the border radius. Replacing the div would
 drop the form into `<section id="check">` and let the card collapse before the embed paints.
 
-### TRACKING (/decide, /decide-rt)
+### TRACKING (/decide, /decide-rt, /book)
 - Meta pixel **`1605200247372902`** (Service Matchup dataset). The retired `1315531100000095`
   appears nowhere.
 - `PageView` on load, **once per page**. The LeadCapture funnel has `metaPixelSettings.enabled =
   false`, so the embed loads no second pixel; even if it were enabled, the embed detects an existing
   `fbevents.js` and skips its own init. Two independent guards against a double PageView.
 - Custom events — **these exact strings are what ad reporting keys off**:
-  `SkipToForm` / `ReachedForm` on `/decide`, `SkipToForm_RT` / `ReachedForm_RT` on `/decide-rt`.
-  The `_RT` suffix keeps cold and warm behavior separable and lets each build its own audience.
-- **`Lead` and `InitiateCheckout` are NOT fired by these pages.** LeadCapture owns both on true
+  `SkipToForm` / `ReachedForm` on `/decide`, `SkipToForm_RT` / `ReachedForm_RT` on `/decide-rt`,
+  `SkipToForm_BF` / `ReachedForm_BF` on `/book`. The suffixes keep cold, warm, and bottom-funnel
+  behavior separable and let each build its own audience.
+- **What the `_BF` pair actually measures is weaker than the other two, because `/book` opens on
+  the form.** `SkipToForm_BF` never fires — it binds to a hero CTA's `id="jumpTop"` and the page has
+  no hero CTA to skip from. `ReachedForm_BF` fires on the first scroll of any length, since the form
+  starts within the trigger distance. Read it as "scrolled at all", not as intent, and lean on
+  `PageView` and the funnel's own `Lead` for that page. Adding a hero CTA with `id="jumpTop"` would
+  make `SkipToForm_BF` live again — the JS binds it when the element exists and skips it when it
+  doesn't.
+- The sticky mobile CTA shows once the hero CTA leaves view and hides while the form is on screen.
+  On `/book` there is no hero CTA, so it is governed by the form alone — and since the form fills
+  most of that page, it stays hidden in practice.
+- **`Lead` and `InitiateCheckout` are NOT fired by any of these pages.** LeadCapture owns both on true
   submission (commit `db71ba7`); a duplicate would double-count every conversion.
 - Geo: `?m=` param → `window.__GEO` → `ipapi.co` fallback → "Texas". No edge function is wired for
-  these routes (`functions/qualify.js` is scoped to `/qualify` only), so they use the client-side
+  any of these routes (`functions/qualify.js` is scoped to `/qualify` only), so they use the client-side
   fallback.
 
-### COMPLIANCE (/decide, /decide-rt — verbatim, keep intact)
-Same rules as `/qualify`, plus: the deductible copy is presented as **illustrative Texas
+### COMPLIANCE (/decide, /decide-rt, /book — verbatim, keep intact)
+Same rules as `/qualify`. `/book` makes no deductible or coverage claim in the body at all — its
+disclosure is carried entirely by the shared footer, which is why the footer is not optional on that
+page. On `/decide` and `/decide-rt` the deductible copy is presented as **illustrative Texas
 wind-and-hail structures**, explicitly "not a statement about your policy". Under **Texas HB 2102**
 the homeowner pays the deductible in full, and the pages state that Service Matchup and its partner
 roofers **do not waive, rebate, or absorb deductibles**, do not adjust or file claims, and make no
