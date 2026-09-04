@@ -158,38 +158,18 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
 .sticky .btn{min-height:50px;font-size:16px;box-shadow:0 4px 0 var(--green-dk)}
 .sticky .btn small{font-weight:500;opacity:.85;font-size:12.5px}
 
-/* bottom-funnel page: two-column hero with the form beside the copy */
-.bf{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start;padding:34px 0 8px}
-.bf h1{font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 12px}
-.bf .sub{font-size:17px;color:var(--muted);line-height:1.55;margin:0 0 18px;max-width:30em}
-.bfpts{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:11px}
-.bfpts li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--navy)}
-.bfpts svg{width:19px;height:19px;flex:0 0 auto;color:var(--green);margin-top:2px}
+/* booking page: one screen — headline, what-you-get card, form. Nothing to scroll past. */
+.mini{max-width:640px;margin:0 auto;padding:40px 0 10px;text-align:center}
+.mini h1{font-size:clamp(29px,5vw,44px);line-height:1.12;letter-spacing:-.02em;margin:0 0 14px}
+.mini .sub{font-size:17px;color:var(--muted);line-height:1.55;margin:0 auto 26px;max-width:33em}
+.mini .bfcard{text-align:left}
 .bfcard{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 10px 30px rgba(22,50,78,.07)}
 .bfcard .bfk{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
-.bfcard h2{font-size:21px;line-height:1.25;margin:0 0 6px}
-.bfcard .fsub{font-size:14px;color:var(--muted);margin:0 0 16px}
 .bfnote{font-size:12.5px;color:var(--muted);margin:14px 0 0;text-align:center;line-height:1.5}
-.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
-.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 11px}
-.badge svg{width:14px;height:14px;flex:0 0 auto;color:var(--green)}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:6px 0 0}
-.step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px 18px}
-.step .n{width:30px;height:30px;border-radius:999px;background:var(--green);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 0 11px}
-.step b{display:block;font-size:16px;margin:0 0 5px}
-.step span{font-size:14.5px;color:var(--muted);line-height:1.55}
-.checks{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;margin:14px 0 0}
-.checks div{display:flex;gap:9px;align-items:flex-start;font-size:15px;color:var(--navy)}
-.checks svg{width:18px;height:18px;flex:0 0 auto;color:var(--green);margin-top:3px}
-.fine{font-size:13px;color:var(--muted);line-height:1.6;margin:18px 0 0;padding:14px 16px;background:var(--soft);border:1px solid var(--line);border-radius:12px}
-.fine svg{width:15px;height:15px;color:var(--muted);vertical-align:-2px;margin-right:5px}
-/* the deductible pages are a 640px single column; the two-column booking hero needs room. */
-@media(min-width:861px){ body.wide .wrap{max-width:1040px} }
-@media(max-width:860px){
-  .bf{grid-template-columns:1fr;gap:22px;padding:22px 0 4px}
-  .steps{grid-template-columns:1fr}
-  .checks{grid-template-columns:1fr}
-}
+.gets{list-style:none;padding:0 0 18px;margin:0 0 20px;display:grid;gap:12px;border-bottom:1px solid var(--line)}
+.gets li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--navy);line-height:1.5}
+.gets svg{width:19px;height:19px;flex:0 0 auto;color:var(--green);margin-top:2px}
+@media(max-width:860px){.mini{padding:26px 0 6px}}
 
 @media(min-width:640px){
   h1{font-size:36px}h2{font-size:26px}.hero{padding:34px 32px 28px}
@@ -378,7 +358,8 @@ function applyMarket(slug, geo){
       applyMarket(marketFromGeo(g),g); }).catch(function(){}); }catch(e){}
 })();
 /* tracking: skip vs read, reached form */
-document.getElementById('jumpTop').addEventListener('click',function(){ try{ if(typeof fbq==='function') fbq('trackCustom','__SKIP__'); }catch(e){} });
+(function(){var j=document.getElementById('jumpTop'); if(!j) return;
+  j.addEventListener('click',function(){ try{ if(typeof fbq==='function') fbq('trackCustom','__SKIP__'); }catch(e){} });})();
 (function(){var fired=false;window.addEventListener('scroll',function(){ if(fired) return;
   var el=document.getElementById('check'); if(!el) return;
   if(el.getBoundingClientRect().top < window.innerHeight*1.5){ fired=true; try{ if(typeof fbq==='function') fbq('trackCustom','__REACH__'); }catch(e){} }
@@ -386,10 +367,12 @@ document.getElementById('jumpTop').addEventListener('click',function(){ try{ if(
 /* sticky CTA: show after hero CTA leaves view, hide while form is on screen */
 (function(){
   var st=document.getElementById('sticky'), hero=document.getElementById('jumpTop'), form=document.getElementById('check');
-  if(!('IntersectionObserver' in window)||!st) return;
-  var heroOut=false, formIn=false;
+  if(!('IntersectionObserver' in window)||!st||!form) return;
+  /* no hero CTA (the booking page opens on the form) => nothing to scroll past, so the
+     sticky is governed by the form alone. */
+  var heroOut=!hero, formIn=false;
   function upd(){ st.classList.toggle('on', heroOut && !formIn); }
-  new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); },{threshold:0}).observe(hero);
+  if(hero) new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); },{threshold:0}).observe(hero);
   new IntersectionObserver(function(es){ formIn=es[0].isIntersecting; upd(); },{threshold:0.15}).observe(form);
 })();
 </script>"""
@@ -423,14 +406,13 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document
 </script>
 <style>__CSS__</style>
 </head>
-<body__BODYCLASS__>
+<body>
 <div class="top"><div class="wrap"><img class="logo" src="__LOGO__" alt="Service Matchup"><span class="loc"><span class="dot"></span>Roofers available in <span data-m="name2">Texas</span></span></div></div>
 <div class="wrap">
 """
 
-def page(title, body, skip, reach, sticky_label, sticky_sub, wide=False):
+def page(title, body, skip, reach, sticky_label, sticky_sub):
     html = HEAD.replace('__TITLE__', title).replace('__CSS__', CSS)
-    html = html.replace('__BODYCLASS__', ' class="wide"' if wide else '')
     html += body + FOOTER + "\n</div>\n" + sticky(sticky_label, sticky_sub)
     html += JS.replace('__SKIP__', skip).replace('__REACH__', reach) + "\n</body>\n</html>\n"
     return html
@@ -515,67 +497,27 @@ SHORT = f"""
 """
 
 # ---------------- BOTTOM (most-aware, already ready to book) ----------------
-# No deductible math here on purpose: this page is for traffic that has already
-# decided it wants an inspection, so the form sits beside the headline instead of
-# after an argument. The hero CTA still carries id="jumpTop" — the shared JS binds
-# SkipToForm/sticky-CTA to it and throws without it.
+# One screen: headline, what-you-get card, form. No deductible math, no "how it
+# works", no closing CTA — this traffic has already decided, so the only job is to
+# get it into the funnel. That means there is no hero CTA above the form and so no
+# id="jumpTop": SkipToForm_BF never fires here (nothing to skip), and the sticky CTA
+# falls back to "show whenever the form is off screen". The JS handles both.
 BOTTOM = f"""
-<section class="bf">
-  <div>
-    <span class="eyebrow">{ICONS['home']} Dallas–Fort Worth</span>
-    <h1 id="h1">Get a <span class="ac">free roof inspection</span> from one local roofer.</h1>
-    <p class="sub">About 45 minutes, on your roof. You get a written number and a straight answer — whether it's worth doing now, or worth waiting.</p>
-    <a class="btn gold" href="#check" id="jumpTop">Get my free inspection →</a>
-    <ul class="bfpts">
-      <li>{ICONS['check']}<span><b>One roofer.</b> Not a call list, not fifteen phones ringing.</span></li>
-      <li>{ICONS['nodoor']}<span><b>Nobody knocks on your door.</b> You pick the time.</span></li>
-      <li>{ICONS['lock']}<span><b>Your information is never listed, sold, or resold.</b></span></li>
-      <li>{ICONS['shield']}<span><b>If your roof has years left, he'll tell you that.</b></span></li>
-    </ul>
-  </div>
+<section class="mini">
+  <h1>Get a <span class="ac">free roof inspection</span> from one local roofer.</h1>
+  <p class="sub">About 45 minutes, on your roof. You get a written number and a straight answer &mdash; whether it&#39;s worth doing now, or worth waiting.</p>
 
   <div class="bfcard" id="check">
-    <p class="bfk">Free · No obligation</p>
-    <h2>Book your free inspection</h2>
-    <p class="fsub">A few quick questions so we can match you with the right local roofer. About 90 seconds.</p>
+    <p class="bfk">What you get</p>
+    <ul class="gets">
+      <li>{ICONS['check']}<span>A <b>free on-site inspection</b> from one licensed local roofer &mdash; about 45 minutes, no obligation.</span></li>
+      <li>{ICONS['check']}<span><b>Your real number, in writing.</b> What the roof actually costs, not a range off the internet.</span></li>
+      <li>{ICONS['check']}<span><b>A straight answer:</b> worth doing now, or worth waiting. If it has years left, he&#39;ll tell you that.</span></li>
+      <li>{ICONS['check']}<span><b>One roofer. One call.</b> Nobody knocks on your door, and your info is never listed, sold, or resold.</span></li>
+    </ul>
 {lc_embed("    ")}
-    <p class="bfnote">No cost. No obligation. You keep the decision.</p>
-    <div class="badges">
-      <span class="badge">{ICONS['check']}Licensed &amp; insured</span>
-      <span class="badge">{ICONS['home']}Serving Dallas–Fort Worth</span>
-      <span class="badge">{ICONS['nodoor']}No door knocking</span>
-      <span class="badge">{ICONS['lock']}Never resold</span>
-    </div>
+    <p class="bfnote">Free &middot; No obligation &middot; About 90 seconds to start</p>
   </div>
-</section>
-
-<section class="s">
-  <p class="kick">How it works</p>
-  <h2>Three steps. Most of it happens without you.</h2>
-  <div class="steps">
-    <div class="step"><div class="n">1</div><b>Tell us about your roof</b><span>About 90 seconds. No phone call to get started.</span></div>
-    <div class="step"><div class="n">2</div><b>One roofer calls to confirm</b><span>A licensed local pro, once, to set a time that works. Not fifteen callbacks.</span></div>
-    <div class="step"><div class="n">3</div><b>He inspects and gives you the number</b><span>On the roof, about 45 minutes, documented — and a straight answer either way.</span></div>
-  </div>
-</section>
-
-<section class="s">
-  <p class="kick">What he checks</p>
-  <h2>The things nobody can see from the ground.</h2>
-  <div class="checks">
-    <div>{ICONS['check']}<span>Shingle condition and granule loss</span></div>
-    <div>{ICONS['check']}<span>Flashing, valleys and penetrations</span></div>
-    <div>{ICONS['check']}<span>The decking underneath</span></div>
-    <div>{ICONS['check']}<span>How much life the roof actually has left</span></div>
-  </div>
-  <p class="fine">{ICONS['alert']} What he won&#39;t do: waive a deductible — Texas law says it&#39;s yours — or tell you what an insurer will decide. That&#39;s theirs. He gives you the number so you can decide.</p>
-</section>
-
-<section class="s" style="text-align:center">
-  <h2>Ready when you are.</h2>
-  <p class="lede" style="margin-left:auto;margin-right:auto">One free inspection. One local roofer. About 45 minutes, and you keep the decision either way.</p>
-  <a class="btn gold" style="max-width:420px;margin-left:auto;margin-right:auto" href="#check">Get my free inspection →</a>
-  <p class="bfnote">Free · No obligation · Nobody knocks on your door</p>
 </section>
 """
 
@@ -584,7 +526,7 @@ os.makedirs(TPL_OUT, exist_ok=True)
 pages = {
  'decide': page("File, Pay, or Wait? Get the Number That Decides It | Service Matchup", LONG, 'SkipToForm','ReachedForm', "Get my real number", "free, 90 sec"),
  'decide-rt':      page("Still Deciding on the Roof? | Service Matchup", SHORT, 'SkipToForm_RT','ReachedForm_RT', "Get my real number", "free, 90 sec"),
- 'book':           page("Free Roof Inspection in Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec", wide=True),
+ 'book':           page("Free Roof Inspection in Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec"),
 }
 for name, html in pages.items():
     html = html.replace('__CLARITY_ID__', CLARITY_ID)
