@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Builds the two deductible-angle pages (long + short) from shared design + copy blocks."""
+"""Builds the deductible-angle pages (long + short) and the bottom-funnel booking page
+from shared design + copy blocks."""
 import os, re
 
 LOGO = open(os.environ.get('LOGO_FILE', './src/logo_uri.txt')).read().strip()
@@ -157,6 +158,39 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
 .sticky .btn{min-height:50px;font-size:16px;box-shadow:0 4px 0 var(--green-dk)}
 .sticky .btn small{font-weight:500;opacity:.85;font-size:12.5px}
 
+/* bottom-funnel page: two-column hero with the form beside the copy */
+.bf{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start;padding:34px 0 8px}
+.bf h1{font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 12px}
+.bf .sub{font-size:17px;color:var(--muted);line-height:1.55;margin:0 0 18px;max-width:30em}
+.bfpts{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:11px}
+.bfpts li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--navy)}
+.bfpts svg{width:19px;height:19px;flex:0 0 auto;color:var(--green);margin-top:2px}
+.bfcard{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 10px 30px rgba(22,50,78,.07)}
+.bfcard .bfk{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
+.bfcard h2{font-size:21px;line-height:1.25;margin:0 0 6px}
+.bfcard .fsub{font-size:14px;color:var(--muted);margin:0 0 16px}
+.bfnote{font-size:12.5px;color:var(--muted);margin:14px 0 0;text-align:center;line-height:1.5}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 11px}
+.badge svg{width:14px;height:14px;flex:0 0 auto;color:var(--green)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:6px 0 0}
+.step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px 18px}
+.step .n{width:30px;height:30px;border-radius:999px;background:var(--green);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 0 11px}
+.step b{display:block;font-size:16px;margin:0 0 5px}
+.step span{font-size:14.5px;color:var(--muted);line-height:1.55}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;margin:14px 0 0}
+.checks div{display:flex;gap:9px;align-items:flex-start;font-size:15px;color:var(--navy)}
+.checks svg{width:18px;height:18px;flex:0 0 auto;color:var(--green);margin-top:3px}
+.fine{font-size:13px;color:var(--muted);line-height:1.6;margin:18px 0 0;padding:14px 16px;background:var(--soft);border:1px solid var(--line);border-radius:12px}
+.fine svg{width:15px;height:15px;color:var(--muted);vertical-align:-2px;margin-right:5px}
+/* the deductible pages are a 640px single column; the two-column booking hero needs room. */
+@media(min-width:861px){ body.wide .wrap{max-width:1040px} }
+@media(max-width:860px){
+  .bf{grid-template-columns:1fr;gap:22px;padding:22px 0 4px}
+  .steps{grid-template-columns:1fr}
+  .checks{grid-template-columns:1fr}
+}
+
 @media(min-width:640px){
   h1{font-size:36px}h2{font-size:26px}.hero{padding:34px 32px 28px}
   .trust{grid-template-columns:repeat(4,1fr)}
@@ -253,21 +287,30 @@ def honest(short=False):
   <p>He won't "waive" your deductible, "cover" it, or "work it into the estimate." Texas law says the deductible is yours to pay, and any roofer offering otherwise is offering something illegal, usually right before knocking on your neighbor's door.</p>
   <p>He also won't file for you or promise what your insurance company will decide. That's theirs to decide. His job is to give you the real number so <strong>you</strong> can decide.</p></div></div>"""
 
+LC_EMBED = """<!-- LEADCAPTURE.IO FORM EMBED — funnel 6oeHZT9ts5 ("Service Matchup Roofing",
+     3a6436bf-6b28-4dbc-890e-5c8f32a53f34, hosted at my.leadcapture.io/p/yltkxh0_).
+     Identical snippet and identical funnel to every other embed lander in this repo.
+     The funnel owns the question set, validation, and Lead Prosper -> GHL routing, and
+     it fires Meta `Lead` on its true submission — so this page must never fire `Lead`
+     or `InitiateCheckout` (commit db71ba7; a duplicate double-counts every conversion).
+     The script is nested inside #lc-embed rather than replacing it so the container
+     keeps its min-height:400px and cannot collapse before the form paints. -->
+<div id="lc-embed"><script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script></div>"""
+
+def lc_embed(indent="  "):
+    """The LeadCapture funnel embed, indented to sit inside whichever card holds it.
+
+    Shared so the deductible pages and the booking page can never drift onto
+    different funnels or lose the min-height guard independently."""
+    return "\n".join(indent + line for line in LC_EMBED.split("\n"))
+
 def formcard(kick, h2):
     c = ICONS['check']
     return f"""<section id="check"><div class="formcard">
   <p class="kick">{kick}</p>
   <h2>{h2}</h2>
   <p class="fsub">A few quick questions so we can match you with the right local roofer. About 90 seconds.</p>
-  <!-- LEADCAPTURE.IO FORM EMBED — funnel 6oeHZT9ts5 ("Service Matchup Roofing",
-       3a6436bf-6b28-4dbc-890e-5c8f32a53f34, hosted at my.leadcapture.io/p/yltkxh0_).
-       Identical snippet and identical funnel to every other embed lander in this repo.
-       The funnel owns the question set, validation, and Lead Prosper -> GHL routing, and
-       it fires Meta `Lead` on its true submission — so this page must never fire `Lead`
-       or `InitiateCheckout` (commit db71ba7; a duplicate double-counts every conversion).
-       The script is nested inside #lc-embed rather than replacing it so the container
-       keeps its min-height:400px and cannot collapse before the form paints. -->
-  <div id="lc-embed"><script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script></div>
+{lc_embed()}
   <div class="chips">
     <span class="chip">{c}Free on-site 23-Point Check</span>
     <span class="chip">{c}Straight answer: file, pay, or wait</span>
@@ -380,13 +423,14 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document
 </script>
 <style>__CSS__</style>
 </head>
-<body>
+<body__BODYCLASS__>
 <div class="top"><div class="wrap"><img class="logo" src="__LOGO__" alt="Service Matchup"><span class="loc"><span class="dot"></span>Roofers available in <span data-m="name2">Texas</span></span></div></div>
 <div class="wrap">
 """
 
-def page(title, body, skip, reach, sticky_label, sticky_sub):
+def page(title, body, skip, reach, sticky_label, sticky_sub, wide=False):
     html = HEAD.replace('__TITLE__', title).replace('__CSS__', CSS)
+    html = html.replace('__BODYCLASS__', ' class="wide"' if wide else '')
     html += body + FOOTER + "\n</div>\n" + sticky(sticky_label, sticky_sub)
     html += JS.replace('__SKIP__', skip).replace('__REACH__', reach) + "\n</body>\n</html>\n"
     return html
@@ -470,11 +514,77 @@ SHORT = f"""
 {how()}
 """
 
+# ---------------- BOTTOM (most-aware, already ready to book) ----------------
+# No deductible math here on purpose: this page is for traffic that has already
+# decided it wants an inspection, so the form sits beside the headline instead of
+# after an argument. The hero CTA still carries id="jumpTop" — the shared JS binds
+# SkipToForm/sticky-CTA to it and throws without it.
+BOTTOM = f"""
+<section class="bf">
+  <div>
+    <span class="eyebrow">{ICONS['home']} Dallas–Fort Worth</span>
+    <h1 id="h1">Get a <span class="ac">free roof inspection</span> from one local roofer.</h1>
+    <p class="sub">About 45 minutes, on your roof. You get a written number and a straight answer — whether it's worth doing now, or worth waiting.</p>
+    <a class="btn gold" href="#check" id="jumpTop">Get my free inspection →</a>
+    <ul class="bfpts">
+      <li>{ICONS['check']}<span><b>One roofer.</b> Not a call list, not fifteen phones ringing.</span></li>
+      <li>{ICONS['nodoor']}<span><b>Nobody knocks on your door.</b> You pick the time.</span></li>
+      <li>{ICONS['lock']}<span><b>Your information is never listed, sold, or resold.</b></span></li>
+      <li>{ICONS['shield']}<span><b>If your roof has years left, he'll tell you that.</b></span></li>
+    </ul>
+  </div>
+
+  <div class="bfcard" id="check">
+    <p class="bfk">Free · No obligation</p>
+    <h2>Book your free inspection</h2>
+    <p class="fsub">A few quick questions so we can match you with the right local roofer. About 90 seconds.</p>
+{lc_embed("    ")}
+    <p class="bfnote">No cost. No obligation. You keep the decision.</p>
+    <div class="badges">
+      <span class="badge">{ICONS['check']}Licensed &amp; insured</span>
+      <span class="badge">{ICONS['home']}Serving Dallas–Fort Worth</span>
+      <span class="badge">{ICONS['nodoor']}No door knocking</span>
+      <span class="badge">{ICONS['lock']}Never resold</span>
+    </div>
+  </div>
+</section>
+
+<section class="s">
+  <p class="kick">How it works</p>
+  <h2>Three steps. Most of it happens without you.</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b>Tell us about your roof</b><span>About 90 seconds. No phone call to get started.</span></div>
+    <div class="step"><div class="n">2</div><b>One roofer calls to confirm</b><span>A licensed local pro, once, to set a time that works. Not fifteen callbacks.</span></div>
+    <div class="step"><div class="n">3</div><b>He inspects and gives you the number</b><span>On the roof, about 45 minutes, documented — and a straight answer either way.</span></div>
+  </div>
+</section>
+
+<section class="s">
+  <p class="kick">What he checks</p>
+  <h2>The things nobody can see from the ground.</h2>
+  <div class="checks">
+    <div>{ICONS['check']}<span>Shingle condition and granule loss</span></div>
+    <div>{ICONS['check']}<span>Flashing, valleys and penetrations</span></div>
+    <div>{ICONS['check']}<span>The decking underneath</span></div>
+    <div>{ICONS['check']}<span>How much life the roof actually has left</span></div>
+  </div>
+  <p class="fine">{ICONS['alert']} What he won&#39;t do: waive a deductible — Texas law says it&#39;s yours — or tell you what an insurer will decide. That&#39;s theirs. He gives you the number so you can decide.</p>
+</section>
+
+<section class="s" style="text-align:center">
+  <h2>Ready when you are.</h2>
+  <p class="lede" style="margin-left:auto;margin-right:auto">One free inspection. One local roofer. About 45 minutes, and you keep the decision either way.</p>
+  <a class="btn gold" style="max-width:420px;margin-left:auto;margin-right:auto" href="#check">Get my free inspection →</a>
+  <p class="bfnote">Free · No obligation · Nobody knocks on your door</p>
+</section>
+"""
+
 os.makedirs(OUT, exist_ok=True)
 os.makedirs(TPL_OUT, exist_ok=True)
 pages = {
  'decide': page("File, Pay, or Wait? Get the Number That Decides It | Service Matchup", LONG, 'SkipToForm','ReachedForm', "Get my real number", "free, 90 sec"),
  'decide-rt':      page("Still Deciding on the Roof? | Service Matchup", SHORT, 'SkipToForm_RT','ReachedForm_RT', "Get my real number", "free, 90 sec"),
+ 'book':           page("Free Roof Inspection in Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec", wide=True),
 }
 for name, html in pages.items():
     html = html.replace('__CLARITY_ID__', CLARITY_ID)

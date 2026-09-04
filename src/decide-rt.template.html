@@ -171,6 +171,39 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
 .sticky .btn{min-height:50px;font-size:16px;box-shadow:0 4px 0 var(--green-dk)}
 .sticky .btn small{font-weight:500;opacity:.85;font-size:12.5px}
 
+/* bottom-funnel page: two-column hero with the form beside the copy */
+.bf{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:start;padding:34px 0 8px}
+.bf h1{font-size:clamp(30px,4.4vw,46px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 12px}
+.bf .sub{font-size:17px;color:var(--muted);line-height:1.55;margin:0 0 18px;max-width:30em}
+.bfpts{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:11px}
+.bfpts li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--navy)}
+.bfpts svg{width:19px;height:19px;flex:0 0 auto;color:var(--green);margin-top:2px}
+.bfcard{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 10px 30px rgba(22,50,78,.07)}
+.bfcard .bfk{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
+.bfcard h2{font-size:21px;line-height:1.25;margin:0 0 6px}
+.bfcard .fsub{font-size:14px;color:var(--muted);margin:0 0 16px}
+.bfnote{font-size:12.5px;color:var(--muted);margin:14px 0 0;text-align:center;line-height:1.5}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 11px}
+.badge svg{width:14px;height:14px;flex:0 0 auto;color:var(--green)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:6px 0 0}
+.step{background:var(--soft);border:1px solid var(--line);border-radius:14px;padding:20px 18px}
+.step .n{width:30px;height:30px;border-radius:999px;background:var(--green);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin:0 0 11px}
+.step b{display:block;font-size:16px;margin:0 0 5px}
+.step span{font-size:14.5px;color:var(--muted);line-height:1.55}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:11px 22px;margin:14px 0 0}
+.checks div{display:flex;gap:9px;align-items:flex-start;font-size:15px;color:var(--navy)}
+.checks svg{width:18px;height:18px;flex:0 0 auto;color:var(--green);margin-top:3px}
+.fine{font-size:13px;color:var(--muted);line-height:1.6;margin:18px 0 0;padding:14px 16px;background:var(--soft);border:1px solid var(--line);border-radius:12px}
+.fine svg{width:15px;height:15px;color:var(--muted);vertical-align:-2px;margin-right:5px}
+/* the deductible pages are a 640px single column; the two-column booking hero needs room. */
+@media(min-width:861px){ body.wide .wrap{max-width:1040px} }
+@media(max-width:860px){
+  .bf{grid-template-columns:1fr;gap:22px;padding:22px 0 4px}
+  .steps{grid-template-columns:1fr}
+  .checks{grid-template-columns:1fr}
+}
+
 @media(min-width:640px){
   h1{font-size:36px}h2{font-size:26px}.hero{padding:34px 32px 28px}
   .trust{grid-template-columns:repeat(4,1fr)}
