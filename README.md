@@ -228,10 +228,13 @@ drop the form into `<section id="check">` and let the card collapse before the e
 ### COMPLIANCE (/decide, /decide-rt, /book — verbatim, keep intact)
 Same rules as `/qualify`.
 
-**The footer is built per page, from four blocks (`footer()` in `src/build.py`).** The financing
-footnote is the referent for "$99/mo\*" and the deductible paragraph is the referent for the math
-box, so they ship on `/decide` and `/decide-rt` and are dropped on `/book` (`claims=False`), which
-makes neither claim — carrying them there disclosed nothing and buried the line that does apply.
+**The footer is built per page (`footer()` in `src/build.py`).** Each block discloses something the
+body says, so a page carries the ones its own copy earns. The financing footnote is the referent for
+"$99/mo\*" and the deductible paragraph is the referent for the math box, so they ship on `/decide`
+and `/decide-rt` and are dropped on `/book` (`claims=False`), which makes neither claim — carrying
+them there disclosed nothing and buried the line that does apply. The sentence defining the
+23-Point Real-Price Check is dropped there too (`mechanism=False`), since that page leads on the
+45-Minute Roof Check and never uses the term.
 **The last two blocks are not optional on any page**: every page promises a roofer comes out, so
 every page has to carry the identity line ("we are not a roofing contractor, not a public adjuster,
 and not a lender") and the copyright/Privacy/Terms line. Add a financing or deductible claim back
@@ -242,8 +245,11 @@ into `/book`'s body and its `claims=False` has to come off in the same edit.
 "works through 23 points" carrying the point count inside the first bullet. That is an intentional
 repositioning around duration, not a drift — but it does mean the body's name for the offer and the
 footer's ("The 23-Point Real-Price Check is a free, no-obligation on-site inspection") no longer
-match on that one page. Two things follow. Keep the "23 points" reference in the bullet, or the
-footer's defined term has no anchor in the body at all. And treat **forty-five minutes on the roof
+match on that one page — and as of the footer split, `/book` no longer carries the sentence defining
+the 23-Point Real-Price Check either (`mechanism=False`), because it never uses the term. The
+"works through 23 points" phrase in the first bullet now stands on its own as plain description
+rather than as a reference to a defined term. If `/book` ever names the 23-Point Real-Price Check
+again, `mechanism=False` comes off in the same edit. Also treat **forty-five minutes on the roof
 as an operational promise**, not a flourish: the old copy hedged with "about 45 minutes", this names
 the duration in the offer itself, so a partner roofer who does a thirty-minute look breaks the
 headline. On `/decide` and `/decide-rt` the deductible copy is presented as **illustrative Texas

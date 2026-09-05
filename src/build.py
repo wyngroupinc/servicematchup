@@ -316,13 +316,19 @@ def how():
 # comes out, so every page has to say Service Matchup is not that roofer.
 FOOT_FINANCE = """*Financing is subject to approved credit. Terms are set by the independent roofer and lender, and not everyone qualifies. Monthly payment examples are illustrative and are not an offer of credit. Checking available options will not affect your credit score."""
 FOOT_DEDUCTIBLE = """Deductible figures are illustrative examples of common Texas wind-and-hail deductible structures and are not a statement about your policy; check your declarations page. Under Texas law (HB 2102) the policyholder is responsible for paying the deductible in full. Service Matchup and its independent partner roofers do not waive, rebate, or absorb deductibles, do not adjust or file insurance claims on your behalf, and make no representation about whether any damage is covered. Coverage decisions are made solely by your insurer."""
-FOOT_IDENTITY = """The 23-Point Real-Price Check is a free, no-obligation on-site inspection. Service Matchup connects homeowners with independent licensed roofing contractors; we are not a roofing contractor, not a public adjuster, and not a lender."""
+FOOT_MECHANISM = """The 23-Point Real-Price Check is a free, no-obligation on-site inspection."""
+FOOT_IDENTITY = """Service Matchup connects homeowners with independent licensed roofing contractors; we are not a roofing contractor, not a public adjuster, and not a lender."""
 FOOT_LEGAL = """© <span id="yr"></span> Service Matchup · Wyn Group Inc · Privacy Policy · Terms of Service"""
 
-def footer(claims=True):
-    """claims=False drops the financing and deductible blocks, for a page that makes
-    neither claim. Never drop the last two."""
-    blocks = ([FOOT_FINANCE, FOOT_DEDUCTIBLE] if claims else []) + [FOOT_IDENTITY, FOOT_LEGAL]
+def footer(claims=True, mechanism=True):
+    """Each block discloses something the body says, so a page carries the ones its own
+    copy earns. claims=False for a page making no financing or deductible claim;
+    mechanism=False for a page that does not call the offer the 23-Point Real-Price
+    Check by name. FOOT_IDENTITY and FOOT_LEGAL are on every page, always."""
+    # the mechanism sentence leads the identity paragraph rather than forming its own,
+    # so dropping it does not leave a paragraph break behind on the pages that keep it
+    who = (FOOT_MECHANISM + " " if mechanism else "") + FOOT_IDENTITY
+    blocks = ([FOOT_FINANCE, FOOT_DEDUCTIBLE] if claims else []) + [who, FOOT_LEGAL]
     return "<footer>\n" + "<br><br>\n".join(blocks) + "\n</footer>"
 
 def sticky(label, sub):
@@ -421,9 +427,9 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document
 <div class="wrap">
 """
 
-def page(title, body, skip, reach, sticky_label, sticky_sub, claims=True):
+def page(title, body, skip, reach, sticky_label, sticky_sub, claims=True, mechanism=True):
     html = HEAD.replace('__TITLE__', title).replace('__CSS__', CSS)
-    html += body + footer(claims) + "\n</div>\n" + sticky(sticky_label, sticky_sub)
+    html += body + footer(claims, mechanism) + "\n</div>\n" + sticky(sticky_label, sticky_sub)
     html += JS.replace('__SKIP__', skip).replace('__REACH__', reach) + "\n</body>\n</html>\n"
     return html
 
@@ -536,7 +542,7 @@ os.makedirs(TPL_OUT, exist_ok=True)
 pages = {
  'decide': page("File, Pay, or Wait? Get the Number That Decides It | Service Matchup", LONG, 'SkipToForm','ReachedForm', "Get my real number", "free, 90 sec"),
  'decide-rt':      page("Still Deciding on the Roof? | Service Matchup", SHORT, 'SkipToForm_RT','ReachedForm_RT', "Get my real number", "free, 90 sec"),
- 'book':           page("The 45-Minute Roof Check | Free, Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec", claims=False),
+ 'book':           page("The 45-Minute Roof Check | Free, Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec", claims=False, mechanism=False),
 }
 for name, html in pages.items():
     html = html.replace('__CLARITY_ID__', CLARITY_ID)
