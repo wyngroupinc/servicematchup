@@ -226,9 +226,16 @@ drop the form into `<section id="check">` and let the card collapse before the e
   fallback.
 
 ### COMPLIANCE (/decide, /decide-rt, /book — verbatim, keep intact)
-Same rules as `/qualify`. `/book` makes no deductible or coverage claim in the body at all — its
-disclosure is carried entirely by the shared footer, which is why the footer is not optional on that
-page.
+Same rules as `/qualify`.
+
+**The footer is built per page, from four blocks (`footer()` in `src/build.py`).** The financing
+footnote is the referent for "$99/mo\*" and the deductible paragraph is the referent for the math
+box, so they ship on `/decide` and `/decide-rt` and are dropped on `/book` (`claims=False`), which
+makes neither claim — carrying them there disclosed nothing and buried the line that does apply.
+**The last two blocks are not optional on any page**: every page promises a roofer comes out, so
+every page has to carry the identity line ("we are not a roofing contractor, not a public adjuster,
+and not a lender") and the copyright/Privacy/Terms line. Add a financing or deductible claim back
+into `/book`'s body and its `claims=False` has to come off in the same edit.
 
 **`/book` deliberately names the mechanism differently.** Elsewhere the name is fixed as
 **23-Point Real-Price Check**; on `/book` the offer leads as **the 45-Minute Roof Check**, with

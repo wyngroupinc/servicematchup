@@ -221,15 +221,13 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
   </div>
 </section>
 <footer>
-*Financing is subject to approved credit. Terms are set by the independent roofer and lender, and not everyone qualifies. Monthly payment examples are illustrative and are not an offer of credit. Checking available options will not affect your credit score.<br><br>
-Deductible figures are illustrative examples of common Texas wind-and-hail deductible structures and are not a statement about your policy; check your declarations page. Under Texas law (HB 2102) the policyholder is responsible for paying the deductible in full. Service Matchup and its independent partner roofers do not waive, rebate, or absorb deductibles, do not adjust or file insurance claims on your behalf, and make no representation about whether any damage is covered. Coverage decisions are made solely by your insurer.<br><br>
 The 23-Point Real-Price Check is a free, no-obligation on-site inspection. Service Matchup connects homeowners with independent licensed roofing contractors; we are not a roofing contractor, not a public adjuster, and not a lender.<br><br>
 © <span id="yr"></span> Service Matchup · Wyn Group Inc · Privacy Policy · Terms of Service
 </footer>
 </div>
 <div class="sticky" id="sticky"><a class="btn" href="#check">Get my free inspection <small>· free, 90 sec</small></a></div>
 <script>
-document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();})();
 var MARKETS = {
   dfw:{name:"Dallas–Fort Worth",metro:"623",lat:32.80,lon:-97.04,radiusMi:60},
   houston:{name:"Houston",metro:"618",lat:29.76,lon:-95.37,radiusMi:60},

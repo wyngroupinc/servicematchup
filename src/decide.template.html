@@ -326,7 +326,7 @@ The 23-Point Real-Price Check is a free, no-obligation on-site inspection. Servi
 </div>
 <div class="sticky" id="sticky"><a class="btn" href="#check">Get my real number <small>· free, 90 sec</small></a></div>
 <script>
-document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();})();
 var MARKETS = {
   dfw:{name:"Dallas–Fort Worth",metro:"623",lat:32.80,lon:-97.04,radiusMi:60},
   houston:{name:"Houston",metro:"618",lat:29.76,lon:-95.37,radiusMi:60},
