@@ -25,7 +25,8 @@ The online form does **not** return a price or an instant qualification. The vis
 number comes from, and it is stated above the form (subhead + chip), at the contact step, and on the
 button. Never write copy implying an on-screen quote. The button reads **"Set Up My Free Check →"**,
 never "get my number/quote". The mechanism name is fixed: **23-Point Real-Price Check**, capitalized
-exactly. The copy is ~5th-grade reading level on purpose — do not formalize it.
+exactly — with one deliberate exception, `/book`, which leads on duration instead; see its
+compliance note below. The copy is ~5th-grade reading level on purpose — do not formalize it.
 
 **Page shape (nothing else belongs here):** logo-only header (no nav, no header CTA) · thin progress
 bar under it, 8% filled on load · three-line intro (h1 + one-sentence sub + three trust chips) · the
@@ -227,7 +228,18 @@ drop the form into `<section id="check">` and let the card collapse before the e
 ### COMPLIANCE (/decide, /decide-rt, /book — verbatim, keep intact)
 Same rules as `/qualify`. `/book` makes no deductible or coverage claim in the body at all — its
 disclosure is carried entirely by the shared footer, which is why the footer is not optional on that
-page. On `/decide` and `/decide-rt` the deductible copy is presented as **illustrative Texas
+page.
+
+**`/book` deliberately names the mechanism differently.** Elsewhere the name is fixed as
+**23-Point Real-Price Check**; on `/book` the offer leads as **the 45-Minute Roof Check**, with
+"works through 23 points" carrying the point count inside the first bullet. That is an intentional
+repositioning around duration, not a drift — but it does mean the body's name for the offer and the
+footer's ("The 23-Point Real-Price Check is a free, no-obligation on-site inspection") no longer
+match on that one page. Two things follow. Keep the "23 points" reference in the bullet, or the
+footer's defined term has no anchor in the body at all. And treat **forty-five minutes on the roof
+as an operational promise**, not a flourish: the old copy hedged with "about 45 minutes", this names
+the duration in the offer itself, so a partner roofer who does a thirty-minute look breaks the
+headline. On `/decide` and `/decide-rt` the deductible copy is presented as **illustrative Texas
 wind-and-hail structures**, explicitly "not a statement about your policy". Under **Texas HB 2102**
 the homeowner pays the deductible in full, and the pages state that Service Matchup and its partner
 roofers **do not waive, rebate, or absorb deductibles**, do not adjust or file claims, and make no

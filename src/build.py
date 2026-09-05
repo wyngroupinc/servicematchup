@@ -504,13 +504,13 @@ SHORT = f"""
 # falls back to "show whenever the form is off screen". The JS handles both.
 BOTTOM = f"""
 <section class="mini">
-  <h1>Get a <span class="ac">free roof inspection</span> from one local roofer.</h1>
-  <p class="sub">About 45 minutes, on your roof. You get a written number and a straight answer &mdash; whether it&#39;s worth doing now, or worth waiting.</p>
+  <h1>Get the <span class="ac">45-Minute Roof Check</span>. Free, from one local roofer.</h1>
+  <p class="sub">Forty-five minutes <b>on</b> the roof &mdash; not ten minutes from the driveway. You get your real number in writing, and a straight answer about whether it&#39;s worth doing now.</p>
 
   <div class="bfcard" id="check">
     <p class="bfk">What you get</p>
     <ul class="gets">
-      <li>{ICONS['check']}<span>A <b>free on-site inspection</b> from one licensed local roofer &mdash; about 45 minutes, no obligation.</span></li>
+      <li>{ICONS['check']}<span><b>Forty-five minutes, on the roof.</b> Not a walk around the perimeter. One licensed local roofer gets up there and works through 23 points.</span></li>
       <li>{ICONS['check']}<span><b>Your real number, in writing.</b> What the roof actually costs, not a range off the internet.</span></li>
       <li>{ICONS['check']}<span><b>A straight answer:</b> worth doing now, or worth waiting. If it has years left, he&#39;ll tell you that.</span></li>
       <li>{ICONS['check']}<span><b>One roofer. One call.</b> Nobody knocks on your door, and your info is never listed, sold, or resold.</span></li>
@@ -526,7 +526,7 @@ os.makedirs(TPL_OUT, exist_ok=True)
 pages = {
  'decide': page("File, Pay, or Wait? Get the Number That Decides It | Service Matchup", LONG, 'SkipToForm','ReachedForm', "Get my real number", "free, 90 sec"),
  'decide-rt':      page("Still Deciding on the Roof? | Service Matchup", SHORT, 'SkipToForm_RT','ReachedForm_RT', "Get my real number", "free, 90 sec"),
- 'book':           page("Free Roof Inspection in Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec"),
+ 'book':           page("The 45-Minute Roof Check | Free, Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec"),
 }
 for name, html in pages.items():
     html = html.replace('__CLARITY_ID__', CLARITY_ID)
