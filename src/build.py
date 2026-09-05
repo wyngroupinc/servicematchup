@@ -308,19 +308,29 @@ def how():
   <li><span class="n">4</span><div><b>You get your real number and a straight answer</b>File, pay, or wait. If paying makes sense, whether it qualifies for a monthly plan as low as $99/mo.*</div></li>
 </ol></section>"""
 
-FOOTER = """<footer>
-*Financing is subject to approved credit. Terms are set by the independent roofer and lender, and not everyone qualifies. Monthly payment examples are illustrative and are not an offer of credit. Checking available options will not affect your credit score.<br><br>
-Deductible figures are illustrative examples of common Texas wind-and-hail deductible structures and are not a statement about your policy; check your declarations page. Under Texas law (HB 2102) the policyholder is responsible for paying the deductible in full. Service Matchup and its independent partner roofers do not waive, rebate, or absorb deductibles, do not adjust or file insurance claims on your behalf, and make no representation about whether any damage is covered. Coverage decisions are made solely by your insurer.<br><br>
-The 23-Point Real-Price Check is a free, no-obligation on-site inspection. Service Matchup connects homeowners with independent licensed roofing contractors; we are not a roofing contractor, not a public adjuster, and not a lender.<br><br>
-© <span id="yr"></span> Service Matchup · Wyn Group Inc · Privacy Policy · Terms of Service
-</footer>"""
+# Four blocks, but only the last two belong on every page. The financing footnote is
+# the referent for "$99/mo*" and the deductible paragraph is the referent for the math
+# box — a page that makes neither claim has nothing for them to disclose, and carrying
+# them anyway buries the disclosure that does apply. The identity line and the
+# copyright/Privacy/Terms line are not optional anywhere: every page promises a roofer
+# comes out, so every page has to say Service Matchup is not that roofer.
+FOOT_FINANCE = """*Financing is subject to approved credit. Terms are set by the independent roofer and lender, and not everyone qualifies. Monthly payment examples are illustrative and are not an offer of credit. Checking available options will not affect your credit score."""
+FOOT_DEDUCTIBLE = """Deductible figures are illustrative examples of common Texas wind-and-hail deductible structures and are not a statement about your policy; check your declarations page. Under Texas law (HB 2102) the policyholder is responsible for paying the deductible in full. Service Matchup and its independent partner roofers do not waive, rebate, or absorb deductibles, do not adjust or file insurance claims on your behalf, and make no representation about whether any damage is covered. Coverage decisions are made solely by your insurer."""
+FOOT_IDENTITY = """The 23-Point Real-Price Check is a free, no-obligation on-site inspection. Service Matchup connects homeowners with independent licensed roofing contractors; we are not a roofing contractor, not a public adjuster, and not a lender."""
+FOOT_LEGAL = """© <span id="yr"></span> Service Matchup · Wyn Group Inc · Privacy Policy · Terms of Service"""
+
+def footer(claims=True):
+    """claims=False drops the financing and deductible blocks, for a page that makes
+    neither claim. Never drop the last two."""
+    blocks = ([FOOT_FINANCE, FOOT_DEDUCTIBLE] if claims else []) + [FOOT_IDENTITY, FOOT_LEGAL]
+    return "<footer>\n" + "<br><br>\n".join(blocks) + "\n</footer>"
 
 def sticky(label, sub):
     return f"""<div class="sticky" id="sticky"><a class="btn" href="#check">{label} <small>· {sub}</small></a></div>"""
 
 JS = r"""
 <script>
-document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){var y=document.getElementById('yr'); if(y) y.textContent=new Date().getFullYear();})();
 var MARKETS = {
   dfw:{name:"Dallas–Fort Worth",metro:"623",lat:32.80,lon:-97.04,radiusMi:60},
   houston:{name:"Houston",metro:"618",lat:29.76,lon:-95.37,radiusMi:60},
@@ -411,9 +421,9 @@ y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document
 <div class="wrap">
 """
 
-def page(title, body, skip, reach, sticky_label, sticky_sub):
+def page(title, body, skip, reach, sticky_label, sticky_sub, claims=True):
     html = HEAD.replace('__TITLE__', title).replace('__CSS__', CSS)
-    html += body + FOOTER + "\n</div>\n" + sticky(sticky_label, sticky_sub)
+    html += body + footer(claims) + "\n</div>\n" + sticky(sticky_label, sticky_sub)
     html += JS.replace('__SKIP__', skip).replace('__REACH__', reach) + "\n</body>\n</html>\n"
     return html
 
@@ -526,7 +536,7 @@ os.makedirs(TPL_OUT, exist_ok=True)
 pages = {
  'decide': page("File, Pay, or Wait? Get the Number That Decides It | Service Matchup", LONG, 'SkipToForm','ReachedForm', "Get my real number", "free, 90 sec"),
  'decide-rt':      page("Still Deciding on the Roof? | Service Matchup", SHORT, 'SkipToForm_RT','ReachedForm_RT', "Get my real number", "free, 90 sec"),
- 'book':           page("The 45-Minute Roof Check | Free, Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec"),
+ 'book':           page("The 45-Minute Roof Check | Free, Dallas\u2013Fort Worth | Service Matchup", BOTTOM, 'SkipToForm_BF','ReachedForm_BF', "Get my free inspection", "free, 90 sec", claims=False),
 }
 for name, html in pages.items():
     html = html.replace('__CLARITY_ID__', CLARITY_ID)
