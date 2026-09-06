@@ -178,9 +178,9 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
 .mini .sub{font-size:17px;color:var(--muted);line-height:1.55;margin:0 auto 26px;max-width:33em}
 .mini .bfcard{text-align:left}
 .bfcard{background:var(--soft);border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 10px 30px rgba(22,50,78,.07)}
-.bfcard .bfk{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:0 0 6px}
+.bfcard .bfk{font-size:12px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--green);margin:22px 0 10px;padding-top:20px;border-top:1px solid var(--line)}
 .bfnote{font-size:12.5px;color:var(--muted);margin:14px 0 0;text-align:center;line-height:1.5}
-.gets{list-style:none;padding:0 0 18px;margin:0 0 20px;display:grid;gap:12px;border-bottom:1px solid var(--line)}
+.gets{list-style:none;padding:0;margin:0;display:grid;gap:12px}
 .gets li{display:flex;gap:11px;align-items:flex-start;font-size:15.5px;color:var(--navy);line-height:1.5}
 .gets svg{width:19px;height:19px;flex:0 0 auto;color:var(--green);margin-top:2px}
 @media(max-width:860px){.mini{padding:26px 0 6px}}
@@ -199,16 +199,9 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
 
 <section class="mini">
   <h1>Get the <span class="ac">45-Minute Roof Check</span>. Free, from one local roofer.</h1>
-  <p class="sub">Forty-five minutes <b>on</b> the roof &mdash; not ten minutes from the driveway. You get your real number in writing, and a straight answer about whether it&#39;s worth doing now.</p>
+  <p class="sub"><b>Forty-five minutes on the roof</b> &mdash; not ten minutes from the driveway. You get your real number in writing, and a straight answer about whether it&#39;s worth doing now.</p>
 
   <div class="bfcard" id="check">
-    <p class="bfk">What you get</p>
-    <ul class="gets">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Forty-five minutes, on the roof.</b> Not a walk around the perimeter. One licensed local roofer gets up there and works through 23 points.</span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Your real number, in writing.</b> What the roof actually costs, not a range off the internet.</span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>A straight answer:</b> worth doing now, or worth waiting. If it has years left, he&#39;ll tell you that.</span></li>
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>One roofer. One call.</b> Nobody knocks on your door, and your info is never listed, sold, or resold.</span></li>
-    </ul>
     <!-- LEADCAPTURE.IO FORM EMBED — funnel 6oeHZT9ts5 ("Service Matchup Roofing",
          3a6436bf-6b28-4dbc-890e-5c8f32a53f34, hosted at my.leadcapture.io/p/yltkxh0_).
          Identical snippet and identical funnel to every other embed lander in this repo.
@@ -219,11 +212,19 @@ padding:10px 16px calc(10px + env(safe-area-inset-bottom));transform:translateY(
          keeps its min-height:400px and cannot collapse before the form paints. -->
     <div id="lc-embed"><script src="https://my.leadcapture.io/embed.min.js" data-funnel="6oeHZT9ts5"></script></div>
     <p class="bfnote">Free &middot; No obligation &middot; About 90 seconds to start</p>
+    <p class="bfk">What you get</p>
+    <ul class="gets">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Forty-five minutes, on the roof.</b> Not a walk around the perimeter. One licensed local roofer gets up there and works through 23 points.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>Your real number, in writing.</b> What the roof actually costs, not a range off the internet.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>A straight answer:</b> worth doing now, or worth waiting. If it has years left, he&#39;ll tell you that.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b>One roofer. One call.</b> Nobody knocks on your door, and your info is never listed, sold, or resold.</span></li>
+    </ul>
   </div>
 </section>
 <footer>
-The 23-Point Real-Price Check is a free, no-obligation on-site inspection. Service Matchup connects homeowners with independent licensed roofing contractors; we are not a roofing contractor, not a public adjuster, and not a lender.<br><br>
-© <span id="yr"></span> Service Matchup · Wyn Group Inc · Privacy Policy · Terms of Service
+Service Matchup connects homeowners with independent licensed roofing contractors; we are not a roofing contractor, not a public adjuster, and not a lender.<br><br>
+This site is not part of, or affiliated with, Facebook, Instagram, or Meta Platforms, Inc., and is not endorsed by Meta in any way. Facebook and Instagram are trademarks of Meta Platforms, Inc.<br><br>
+© <span id="yr"></span> Service Matchup · Privacy Policy · Terms of Service
 </footer>
 </div>
 <div class="sticky" id="sticky"><a class="btn" href="#check">Get my free inspection <small>· free, 90 sec</small></a></div>
